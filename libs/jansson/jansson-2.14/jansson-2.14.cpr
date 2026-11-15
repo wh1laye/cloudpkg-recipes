@@ -1,0 +1,27 @@
+PACKAGE=jansson
+VERSION=2.14
+CATEGORY=.
+DESCRIPTION="C library for encoding, decoding and manipulating JSON"
+HOMEPAGE="https://jansson.readthedocs.io/"
+LICENSE="MIT"
+SRC_URI="https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.gz -> jansson-2.14.tar.gz"
+DEPEND=""
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfDESTDIR=/etc \
+        --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j$(nproc) || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    echo " installed successfully"
+}

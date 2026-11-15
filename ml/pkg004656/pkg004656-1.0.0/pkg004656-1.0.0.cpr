@@ -1,0 +1,19 @@
+PACKAGE=pkg004656
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 4656"
+HOMEPAGE="https://pkg004656.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004656.org/pkg004656-1.0.0.tar.gz -> pkg004656-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

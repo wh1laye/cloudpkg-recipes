@@ -1,0 +1,19 @@
+PACKAGE=pkg004139
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 4139"
+HOMEPAGE="https://pkg004139.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004139.org/pkg004139-1.0.0.tar.gz -> pkg004139-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

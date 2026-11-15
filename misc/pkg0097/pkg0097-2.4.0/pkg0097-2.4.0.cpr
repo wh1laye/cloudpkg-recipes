@@ -1,0 +1,19 @@
+PACKAGE=pkg0097
+VERSION=2.4.0
+CATEGORY=.
+DESCRIPTION="Package 97"
+HOMEPAGE="https://example.com/pkg0097"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0097/pkg0097-2.4.0.tar.gz -> pkg0097-2.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

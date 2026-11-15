@@ -1,0 +1,19 @@
+PACKAGE=pkg000623
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 623"
+HOMEPAGE="https://pkg000623.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000623.org/pkg000623-1.0.0.tar.gz -> pkg000623-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

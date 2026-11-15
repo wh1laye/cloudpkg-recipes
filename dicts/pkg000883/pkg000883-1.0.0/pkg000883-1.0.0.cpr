@@ -1,0 +1,19 @@
+PACKAGE=pkg000883
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 883"
+HOMEPAGE="https://pkg000883.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000883.org/pkg000883-1.0.0.tar.gz -> pkg000883-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

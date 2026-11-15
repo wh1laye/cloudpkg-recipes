@@ -1,0 +1,19 @@
+PACKAGE=pkg0649
+VERSION=1.5.0
+CATEGORY=.
+DESCRIPTION="Package 649"
+HOMEPAGE="https://example.com/pkg0649"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0649/pkg0649-1.5.0.tar.gz -> pkg0649-1.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

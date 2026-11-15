@@ -1,0 +1,19 @@
+PACKAGE=app0386
+VERSION=2.1.0
+CATEGORY=.
+DESCRIPTION="Package 386"
+HOMEPAGE="https://example.com/app0386"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0386/app0386-2.1.0.tar.gz -> app0386-2.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

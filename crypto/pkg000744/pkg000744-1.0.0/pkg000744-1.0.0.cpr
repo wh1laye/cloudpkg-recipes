@@ -1,0 +1,19 @@
+PACKAGE=pkg000744
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 744"
+HOMEPAGE="https://pkg000744.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000744.org/pkg000744-1.0.0.tar.gz -> pkg000744-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

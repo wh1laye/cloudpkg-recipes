@@ -1,0 +1,24 @@
+PACKAGE=symfony
+VERSION=6.4.7
+CATEGORY=.
+DESCRIPTION="PHP framework for web projects"
+HOMEPAGE="https://symfony.com/"
+LICENSE="MIT"
+SRC_URI="https://github.com/symfony/symfony/archive/refs/tags/v6.4.7.tar.gz -> symfony-6.4.7.tar.gz"
+DEPEND="dev-lang/php"
+RDEPEND="dev-lang/php"
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    echo "symfony installed successfully"
+}

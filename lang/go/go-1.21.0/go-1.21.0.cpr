@@ -1,0 +1,34 @@
+PACKAGE=go
+VERSION=1.21.0
+CATEGORY=.
+DESCRIPTION="Go programming language compiler"
+HOMEPAGE="https://golang.org/"
+LICENSE="BSD-3"
+SRC_URI="https://go.dev/dl/go${VERSION}.src.tar.gz -> ${P}-${VERSION}.src.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+BUILD_FLAGS="-v"
+GO_BUILD_MODE="default"
+src_compile() {
+    cd src
+    ./make.bash ${BUILD_FLAGS} || exit 1
+    cd ..
+}
+src_install() {
+    local goDESTDIR="${D}/usr/local/go"
+    mkdir -p "${godir}"
+    cp -r bin doc lib misc pkg src test "${godir}" || exit 1
+    dosym /usr/local/go/bin/go /usr/bin/go
+    dosym /usr/local/go/bin/gofmt /usr/bin/gofmt
+    dosym /usr/local/go/bin/godoc /usr/bin/godoc
+    echo "GOROOT=/usr/local/go" > "${D}/etc/env.d/99go"
+    install -Dm644 README.md LICENSE
+}
+pkg_postinst() {
+    echo "Go ${VERSION} installed to /usr/local/go"
+    echo "Symlinks created in /usr/bin"
+    echo "GOROOT set to /usr/local/go"
+    echo "Add to PATH: export PATH=$PATH:/usr/local/go/bin"
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg004520
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 4520"
+HOMEPAGE="https://pkg004520.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004520.org/pkg004520-1.0.0.tar.gz -> pkg004520-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

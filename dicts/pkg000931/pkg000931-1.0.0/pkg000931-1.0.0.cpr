@@ -1,0 +1,19 @@
+PACKAGE=pkg000931
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 931"
+HOMEPAGE="https://pkg000931.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000931.org/pkg000931-1.0.0.tar.gz -> pkg000931-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

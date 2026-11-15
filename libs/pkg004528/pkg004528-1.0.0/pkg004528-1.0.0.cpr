@@ -1,0 +1,19 @@
+PACKAGE=pkg004528
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 4528"
+HOMEPAGE="https://pkg004528.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004528.org/pkg004528-1.0.0.tar.gz -> pkg004528-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=atkmm
+VERSION=2.28.3
+CATEGORY=.
+DESCRIPTION="C++ interface for ATK"
+HOMEPAGE="https://example.com/atkmm"
+LICENSE="LGPL-2"
+SRC_URI="https://example.com/atkmm/atkmm-2.28.3.tar.gz -> atkmm-2.28.3.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

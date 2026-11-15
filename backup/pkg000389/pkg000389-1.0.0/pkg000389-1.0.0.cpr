@@ -1,0 +1,19 @@
+PACKAGE=pkg000389
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 389"
+HOMEPAGE="https://pkg000389.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000389.org/pkg000389-1.0.0.tar.gz -> pkg000389-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

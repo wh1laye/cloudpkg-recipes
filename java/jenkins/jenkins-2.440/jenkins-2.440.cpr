@@ -1,0 +1,24 @@
+PACKAGE=jenkins
+VERSION=2.440
+CATEGORY=.
+DESCRIPTION="Extensible continuous integration server"
+HOMEPAGE="https://www.jenkins.io/"
+LICENSE="MIT"
+SRC_URI="https://get.jenkins.io/war-stable/2.440/jenkins.war -> jenkins-2.440.war"
+DEPEND="dev-java/openjdk-bin"
+RDEPEND="dev-java/openjdk-bin"
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    echo "jenkins installed successfully"
+}

@@ -1,0 +1,21 @@
+PACKAGE=bash-completion
+VERSION=2.11
+CATEGORY=.
+DESCRIPTION="Programmable completion for bash"
+HOMEPAGE="https://github.com/scop/bash-completion"
+LICENSE="GPL-2"
+SRC_URI="https://github.com/scop/bash-completion/archive/refs/tags/2.11.tar.gz -> bash-completion-2.11.tar.gz"
+DEPEND="app-shells/bash"
+RDEPEND="app-shells/bash"
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}

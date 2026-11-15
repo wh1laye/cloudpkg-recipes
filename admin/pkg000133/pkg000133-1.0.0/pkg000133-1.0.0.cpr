@@ -1,0 +1,19 @@
+PACKAGE=pkg000133
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 133"
+HOMEPAGE="https://pkg000133.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000133.org/pkg000133-1.0.0.tar.gz -> pkg000133-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

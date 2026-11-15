@@ -1,0 +1,19 @@
+PACKAGE=pkg004684
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 4684"
+HOMEPAGE="https://pkg004684.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004684.org/pkg004684-1.0.0.tar.gz -> pkg004684-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

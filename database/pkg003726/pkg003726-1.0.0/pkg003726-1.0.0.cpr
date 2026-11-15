@@ -1,0 +1,19 @@
+PACKAGE=pkg003726
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 3726"
+HOMEPAGE="https://pkg003726.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003726.org/pkg003726-1.0.0.tar.gz -> pkg003726-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

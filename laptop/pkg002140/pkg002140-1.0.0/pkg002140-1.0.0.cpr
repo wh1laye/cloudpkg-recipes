@@ -1,0 +1,19 @@
+PACKAGE=pkg002140
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 2140"
+HOMEPAGE="https://pkg002140.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002140.org/pkg002140-1.0.0.tar.gz -> pkg002140-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

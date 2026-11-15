@@ -1,0 +1,28 @@
+PACKAGE=zstd
+VERSION=1.5.5
+CATEGORY=.
+DESCRIPTION="Zstandard compression library and tools"
+HOMEPAGE="https://facebook.github.io/zstd/"
+LICENSE="BSD-3"
+SRC_URI="https://github.com/facebook/zstd/releases/download/v1.5.5/zstd-1.5.5.tar.gz -> zstd-1.5.5.tar.gz"
+DEPEND=""
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+BUILD_FLAGS="--enable-threads"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfDESTDIR=/etc \
+        --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j$(nproc) || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    echo " installed successfully"
+}

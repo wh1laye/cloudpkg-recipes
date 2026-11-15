@@ -1,0 +1,21 @@
+PACKAGE=zsh-completions
+VERSION=0.35.1
+CATEGORY=.
+DESCRIPTION="Additional completion definitions for zsh"
+HOMEPAGE="https://github.com/zsh-users/zsh-completions"
+LICENSE="MIT"
+SRC_URI="https://github.com/zsh-users/zsh-completions/archive/refs/tags/0.35.1.tar.gz -> zsh-completions-0.35.1.tar.gz"
+DEPEND="app-shells/zsh"
+RDEPEND="app-shells/zsh"
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}

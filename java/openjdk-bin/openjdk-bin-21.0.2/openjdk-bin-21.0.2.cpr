@@ -1,0 +1,24 @@
+PACKAGE=openjdk-bin
+VERSION=21.0.2
+CATEGORY=.
+DESCRIPTION="OpenJDK binary distribution"
+HOMEPAGE="https://openjdk.org/"
+LICENSE="GPL-2"
+SRC_URI="https://download.java.net/java/GA/jdk21/877d6127e982470ba2a7faa31cc93d04/36/GPL/openjdk-21.0.2_linux-x64_bin.tar.gz -> openjdk-bin-21.0.2.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=21
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    echo "openjdk-bin installed successfully"
+}

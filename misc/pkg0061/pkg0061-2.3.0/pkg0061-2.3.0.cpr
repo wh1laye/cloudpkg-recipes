@@ -1,0 +1,19 @@
+PACKAGE=pkg0061
+VERSION=2.3.0
+CATEGORY=.
+DESCRIPTION="Package 61"
+HOMEPAGE="https://example.com/pkg0061"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0061/pkg0061-2.3.0.tar.gz -> pkg0061-2.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

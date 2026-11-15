@@ -1,0 +1,24 @@
+PACKAGE=php
+VERSION=8.3.12
+CATEGORY=.
+DESCRIPTION="PHP scripting language"
+HOMEPAGE="https://www.php.net/"
+LICENSE="PHP-3.01"
+SRC_URI="https://www.php.net/distributions/php-8.3.12.tar.gz -> php-8.3.12.tar.gz"
+DEPEND="sys-libs/zlib dev-libs/openssl"
+RDEPEND="sys-libs/zlib dev-libs/openssl"
+SLOT=8.3
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    echo "php installed successfully"
+}

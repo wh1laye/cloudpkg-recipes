@@ -1,0 +1,19 @@
+PACKAGE=pkg003937
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 3937"
+HOMEPAGE="https://pkg003937.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003937.org/pkg003937-1.0.0.tar.gz -> pkg003937-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

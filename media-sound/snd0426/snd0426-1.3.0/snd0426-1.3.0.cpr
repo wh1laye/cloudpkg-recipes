@@ -1,6 +1,6 @@
 PACKAGE=snd0426
 VERSION=1.3.0
-CATEGORY=media-sound
+CATEGORY=.
 DESCRIPTION="Package 426"
 HOMEPAGE="https://example.com/snd0426"
 LICENSE=""MIT""
@@ -11,9 +11,9 @@ SLOT=0
 KEYWORDS="amd64"
 
 src_compile() {
-    make -j\(nproc\) || die
+    make -j\(nproc\) || exit 1
 }
 
 src_install() {
-    make DESTDIR="\(D\)" install || die
+    make DESTDIR="\(D\)" install || exit 1
 }

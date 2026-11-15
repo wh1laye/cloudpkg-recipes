@@ -1,0 +1,19 @@
+PACKAGE=ltrace
+VERSION=2.0.0
+CATEGORY=.
+DESCRIPTION="Library call tracer"
+HOMEPAGE="https://example.com/ltrace"
+LICENSE=""GPL-2""
+SRC_URI="https://example.com/ltrace/ltrace-2.0.0.tar.gz -> ltrace-2.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,28 @@
+PACKAGE=bmon
+VERSION=4.0.6
+CATEGORY=.
+DESCRIPTION="Portable bandwidth monitor and rate estimator"
+HOMEPAGE="https://github.com/tgraf/bmon"
+LICENSE="MIT"
+SRC_URI="https://github.com/tgraf/bmon/archive/refs/tags/v${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
+DEPEND="sys-libs/ncurses dev-libs/confuse"
+RDEPEND="${DEPEND}"
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfDESTDIR=/etc \
+        --with-ncurses \
+        --with-confuse
+}
+src_compile() {
+    make -j$(nproc) || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+    install -Dm644 README.md CHANGELOG
+}
+pkg_postinst() {
+    echo "bmon installed"
+}

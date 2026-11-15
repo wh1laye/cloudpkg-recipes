@@ -1,0 +1,19 @@
+PACKAGE=atf
+VERSION=2.4.0
+CATEGORY=.
+DESCRIPTION="Automated Testing Framework"
+HOMEPAGE="https://example.com/atf"
+LICENSE=""BSD-2""
+SRC_URI="https://example.com/atf/atf-2.4.0.tar.gz -> atf-2.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

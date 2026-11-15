@@ -1,0 +1,19 @@
+PACKAGE=pkg002514
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 2514"
+HOMEPAGE="https://pkg002514.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002514.org/pkg002514-1.0.0.tar.gz -> pkg002514-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

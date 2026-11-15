@@ -1,0 +1,19 @@
+PACKAGE=pkg003691
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 3691"
+HOMEPAGE="https://pkg003691.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003691.org/pkg003691-1.0.0.tar.gz -> pkg003691-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

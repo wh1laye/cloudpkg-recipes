@@ -1,0 +1,19 @@
+PACKAGE=pkg0405
+VERSION=1.3.0
+CATEGORY=.
+DESCRIPTION="Package 405"
+HOMEPAGE="https://example.com/pkg0405"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0405/pkg0405-1.3.0.tar.gz -> pkg0405-1.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg003948
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 3948"
+HOMEPAGE="https://pkg003948.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003948.org/pkg003948-1.0.0.tar.gz -> pkg003948-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

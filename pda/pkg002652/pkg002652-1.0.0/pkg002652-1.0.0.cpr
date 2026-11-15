@@ -1,0 +1,19 @@
+PACKAGE=pkg002652
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 2652"
+HOMEPAGE="https://pkg002652.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002652.org/pkg002652-1.0.0.tar.gz -> pkg002652-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

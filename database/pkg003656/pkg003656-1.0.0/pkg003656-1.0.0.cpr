@@ -1,0 +1,19 @@
+PACKAGE=pkg003656
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 3656"
+HOMEPAGE="https://pkg003656.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003656.org/pkg003656-1.0.0.tar.gz -> pkg003656-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

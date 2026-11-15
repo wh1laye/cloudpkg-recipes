@@ -1,0 +1,19 @@
+PACKAGE=app0416
+VERSION=1.5.0
+CATEGORY=.
+DESCRIPTION="Package 416"
+HOMEPAGE="https://example.com/app0416"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0416/app0416-1.5.0.tar.gz -> app0416-1.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

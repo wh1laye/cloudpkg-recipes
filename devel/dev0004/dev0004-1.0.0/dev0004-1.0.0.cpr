@@ -1,0 +1,19 @@
+PACKAGE=dev0004
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 4"
+HOMEPAGE="https://example.com/dev0004"
+LICENSE="MIT"
+SRC_URI="https://example.com/dev0004/dev0004-1.0.0.tar.gz -> dev0004-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

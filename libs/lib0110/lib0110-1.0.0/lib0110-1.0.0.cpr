@@ -1,0 +1,19 @@
+PACKAGE=lib0110
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 110"
+HOMEPAGE="https://example.com/lib0110"
+LICENSE="MIT"
+SRC_URI="https://example.com/lib0110/lib0110-1.0.0.tar.gz -> lib0110-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

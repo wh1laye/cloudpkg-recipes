@@ -1,0 +1,19 @@
+PACKAGE=pkg004725
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 4725"
+HOMEPAGE="https://pkg004725.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004725.org/pkg004725-1.0.0.tar.gz -> pkg004725-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

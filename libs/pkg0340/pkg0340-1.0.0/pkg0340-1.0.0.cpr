@@ -1,0 +1,17 @@
+PACKAGE=pkg0340
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 340"
+HOMEPAGE="https://example.com/pkg0340"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0340/pkg0340-1.0.0.tar.gz -> pkg0340-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

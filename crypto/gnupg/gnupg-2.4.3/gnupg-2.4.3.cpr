@@ -1,0 +1,27 @@
+PACKAGE=gnupg
+VERSION=2.4.3
+CATEGORY=.
+DESCRIPTION="GNU Privacy Guard - encryption software"
+HOMEPAGE="https://www.gnupg.org/"
+LICENSE="GPL-3"
+SRC_URI="https://www.gnupg.org/download/GNUPG/gpg-2.4.3.tar.bz2 -> gnupg-2.4.3.tar.bz2"
+DEPEND="dev-libs/libgpg-error dev-libs/libgcrypt dev-libs/libassuan"
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfDESTDIR=/etc \
+        --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j$(nproc) || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    echo " installed successfully"
+}

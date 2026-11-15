@@ -1,0 +1,19 @@
+PACKAGE=pkg005976
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 5976"
+HOMEPAGE="https://pkg005976.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005976.org/pkg005976-1.0.0.tar.gz -> pkg005976-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=lib0395
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 395"
+HOMEPAGE="https://example.com/lib0395"
+LICENSE="MIT"
+SRC_URI="https://example.com/lib0395/lib0395-1.0.0.tar.gz -> lib0395-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

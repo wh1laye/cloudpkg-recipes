@@ -1,0 +1,48 @@
+PACKAGE=python
+VERSION=3.12.0
+CATEGORY=.
+DESCRIPTION="Python programming language interpreter"
+HOMEPAGE="https://www.python.org/"
+LICENSE="PSF-2"
+SRC_URI="https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tar.xz -> ${P}-${VERSION}.tar.xz"
+DEPEND="dev-libs/openssl dev-libs/libffi sys-libs/zlib sys-libs/readline dev-libs/expat sys-libs/bzip2"
+RDEPEND="${DEPEND}"
+SLOT=3.12
+KEYWORDS="amd64"
+BUILD_FLAGS="--enable-optimizations --enable-shared --with-lto --with-system-expat --with-system-ffi --with-system-libmpdec"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --libDESTDIR=/usr/lib/python${SLOT} \
+        --includeDESTDIR=/usr/include/python${SLOT} \
+        --datarootDESTDIR=/usr/share \
+        --manDESTDIR=/usr/share/man \
+        --docDESTDIR=/usr/share/doc/python-${SLOT} \
+        --with-platlibDESTDIR=/usr/lib/python${SLOT}/site-packages \
+        ${BUILD_FLAGS}
+}
+src_compile() {
+    make -j$(nproc) || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+    dosym python${VERSION%.*} /usr/bin/python3
+    dosym python3 /usr/bin/python
+    ensure_pip_install() {
+        local pip_ver="24.0"
+        local pip_url="https://github.com/pypa/pip/archive/refs/tags/${pip_ver}.tar.gz"
+        curl -L "${pip_url}" | tar xz
+        cd pip-${pip_ver}
+        python${VERSION%.*} setup.py install --root="${D}" --prefix=/usr || exit 1
+        cd ..
+        rm -rf pip-${pip_ver}
+    }
+    rm -f "${D}"/usr/lib/python${SLOT}/_sysconfigdata__linux_*
+    rm -f "${D}"/usr/lib/python${SLOT}/config-${SLOT}*/Makefile
+    install -Dm644 README.rst LICENSE
+}
+pkg_postinst() {
+    echo "Python ${VERSION} installed"
+    echo "Symlinks: python -> python3 -> python${VERSION%.*}"
+    echo "pip available: pip3"
+}

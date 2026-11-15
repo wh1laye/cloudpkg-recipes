@@ -1,0 +1,19 @@
+PACKAGE=pkg004915
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 4915"
+HOMEPAGE="https://pkg004915.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004915.org/pkg004915-1.0.0.tar.gz -> pkg004915-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

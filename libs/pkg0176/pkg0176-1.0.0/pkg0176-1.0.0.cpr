@@ -1,0 +1,17 @@
+PACKAGE=pkg0176
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 176"
+HOMEPAGE="https://example.com/pkg0176"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0176/pkg0176-1.0.0.tar.gz -> pkg0176-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

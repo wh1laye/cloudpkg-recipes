@@ -1,0 +1,19 @@
+PACKAGE=pkg002800
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 2800"
+HOMEPAGE="https://pkg002800.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002800.org/pkg002800-1.0.0.tar.gz -> pkg002800-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg003895
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 3895"
+HOMEPAGE="https://pkg003895.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003895.org/pkg003895-1.0.0.tar.gz -> pkg003895-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

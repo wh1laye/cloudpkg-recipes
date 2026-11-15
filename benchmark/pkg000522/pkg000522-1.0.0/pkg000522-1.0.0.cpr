@@ -1,0 +1,19 @@
+PACKAGE=pkg000522
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 522"
+HOMEPAGE="https://pkg000522.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000522.org/pkg000522-1.0.0.tar.gz -> pkg000522-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

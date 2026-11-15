@@ -1,0 +1,19 @@
+PACKAGE=pkg005348
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 5348"
+HOMEPAGE="https://pkg005348.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005348.org/pkg005348-1.0.0.tar.gz -> pkg005348-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=asyncns
+VERSION=0.8
+CATEGORY=.
+DESCRIPTION="Asynchronous DNS resolver library"
+HOMEPAGE="https://example.com/asyncns"
+LICENSE="LGPL-2.1"
+SRC_URI="https://example.com/asyncns/asyncns-0.8.tar.gz -> asyncns-0.8.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

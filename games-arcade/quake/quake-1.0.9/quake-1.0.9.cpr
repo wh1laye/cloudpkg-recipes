@@ -1,6 +1,6 @@
 PACKAGE=quake
 VERSION=1.0.9
-CATEGORY=games-arcade
+CATEGORY=.
 DESCRIPTION="Quake game engine"
 HOMEPAGE="https://quake.fandom.com/"
 LICENSE="GPL-2"
@@ -10,15 +10,15 @@ RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 src_configure() {
-    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
 }
 src_compile() {
-    make -j\(nproc\) || die "Compilation failed"
+    make -j\(nproc\) || exit 1
 }
 src_install() {
-    make DESTDIR="\(D\)" install || die "Installation failed"
-    dodoc README* CHANGELOG* LICENSE*
+    make DESTDIR="\(D\)" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
 }
 pkg_postinst() {
-    einfo "quake installed successfully"
+    echo "quake installed successfully"
 }

@@ -1,0 +1,19 @@
+PACKAGE=dev0114
+VERSION=2.3.0
+CATEGORY=.
+DESCRIPTION="Package 114"
+HOMEPAGE="https://example.com/dev0114"
+LICENSE=""MIT""
+SRC_URI="https://example.com/dev0114/dev0114-2.3.0.tar.gz -> dev0114-2.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

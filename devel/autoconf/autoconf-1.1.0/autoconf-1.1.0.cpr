@@ -1,0 +1,19 @@
+PACKAGE=autoconf
+VERSION=1.1.0
+CATEGORY=.
+DESCRIPTION="GNU autoconf"
+HOMEPAGE="https://example.com/autoconf"
+LICENSE=""GPL-3""
+SRC_URI="https://example.com/autoconf/autoconf-1.1.0.tar.gz -> autoconf-1.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

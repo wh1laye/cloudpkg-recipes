@@ -1,0 +1,19 @@
+PACKAGE=lib0215
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 215"
+HOMEPAGE="https://example.com/lib0215"
+LICENSE="MIT"
+SRC_URI="https://example.com/lib0215/lib0215-1.0.0.tar.gz -> lib0215-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

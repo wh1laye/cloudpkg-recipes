@@ -1,0 +1,19 @@
+PACKAGE=dvd+rw-tools
+VERSION=1.3.0
+CATEGORY=.
+DESCRIPTION="DVD+RW tools"
+HOMEPAGE="https://example.com/dvd+rw-tools"
+LICENSE=""GPL-2""
+SRC_URI="https://example.com/dvd+rw-tools/dvd+rw-tools-1.3.0.tar.gz -> dvd+rw-tools-1.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,6 +1,6 @@
 PACKAGE=mpg123
 VERSION=1.32.3
-CATEGORY=media-sound
+CATEGORY=.
 DESCRIPTION="MPEG audio player"
 HOMEPAGE="https://www.mpg123.de/"
 LICENSE="LGPL-2.1"
@@ -12,16 +12,16 @@ KEYWORDS="amd64"
 src_configure() {
     ./configure \
         --prefix=/usr \
-        --sysconfdir=/etc \
-        --localstatedir=/var
+        --sysconfDESTDIR=/etc \
+        --localstateDESTDIR=/var
 }
 src_compile() {
-    make -j$(nproc) || die "Compilation failed"
+    make -j$(nproc) || exit 1
 }
 src_install() {
-    make DESTDIR="${D}" install || die "Installation failed"
-    dodoc README* CHANGELOG* LICENSE*
+    make DESTDIR="${D}" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
 }
 pkg_postinst() {
-    einfo " installed successfully"
+    echo " installed successfully"
 }

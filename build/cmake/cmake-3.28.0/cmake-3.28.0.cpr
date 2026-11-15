@@ -1,0 +1,28 @@
+PACKAGE=cmake
+VERSION=3.28.0
+CATEGORY=.
+DESCRIPTION="Cross-platform make system"
+HOMEPAGE="https://cmake.org/"
+LICENSE="BSD-3"
+SRC_URI="https://github.com/Kitware/CMake/releases/download/v3.28.0/cmake-3.28.0.tar.gz -> cmake-3.28.0.tar.gz"
+DEPEND="dev-lang/python dev-libs/openssl"
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+BUILD_FLAGS="--parallel=6"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfDESTDIR=/etc \
+        --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j$(nproc) || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    echo " installed successfully"
+}

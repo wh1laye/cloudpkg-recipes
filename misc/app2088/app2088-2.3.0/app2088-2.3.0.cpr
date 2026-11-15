@@ -1,0 +1,19 @@
+PACKAGE=app2088
+VERSION=2.3.0
+CATEGORY=.
+DESCRIPTION="Package 88"
+HOMEPAGE="https://example.com/app2088"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app2088/app2088-2.3.0.tar.gz -> app2088-2.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,23 @@
+PACKAGE=neofetch
+VERSION=7.1.0
+CATEGORY=.
+DESCRIPTION="Fast, highly customizable system info script"
+HOMEPAGE="https://github.com/dylanaraps/neofetch"
+LICENSE="MIT"
+SRC_URI="https://github.com/dylanaraps/neofetch/archive/refs/tags/${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    : 
+}
+src_install() {
+    dobin neofetch
+    /usr/share/neofetch
+    doins -r ascii images
+    install -Dm644 README.md LICENSE.md
+}
+pkg_postinst() {
+    echo "neofetch installed"
+}

@@ -1,0 +1,19 @@
+PACKAGE=curl
+VERSION=2.0.0
+CATEGORY=.
+DESCRIPTION="URL retrieval utility and library"
+HOMEPAGE="https://example.com/curl"
+LICENSE=""MIT""
+SRC_URI="https://example.com/curl/curl-2.0.0.tar.gz -> curl-2.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

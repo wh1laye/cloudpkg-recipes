@@ -1,0 +1,19 @@
+PACKAGE=pkg002012
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 2012"
+HOMEPAGE="https://pkg002012.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002012.org/pkg002012-1.0.0.tar.gz -> pkg002012-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg001344
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 1344"
+HOMEPAGE="https://pkg001344.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001344.org/pkg001344-1.0.0.tar.gz -> pkg001344-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg001123
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 1123"
+HOMEPAGE="https://pkg001123.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001123.org/pkg001123-1.0.0.tar.gz -> pkg001123-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

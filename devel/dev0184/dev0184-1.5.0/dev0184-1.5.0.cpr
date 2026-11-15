@@ -1,0 +1,19 @@
+PACKAGE=dev0184
+VERSION=1.5.0
+CATEGORY=.
+DESCRIPTION="Package 184"
+HOMEPAGE="https://example.com/dev0184"
+LICENSE=""MIT""
+SRC_URI="https://example.com/dev0184/dev0184-1.5.0.tar.gz -> dev0184-1.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

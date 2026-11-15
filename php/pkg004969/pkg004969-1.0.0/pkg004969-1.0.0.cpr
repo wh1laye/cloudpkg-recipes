@@ -1,0 +1,19 @@
+PACKAGE=pkg004969
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 4969"
+HOMEPAGE="https://pkg004969.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004969.org/pkg004969-1.0.0.tar.gz -> pkg004969-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

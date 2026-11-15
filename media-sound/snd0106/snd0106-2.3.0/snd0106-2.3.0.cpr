@@ -1,6 +1,6 @@
 PACKAGE=snd0106
 VERSION=2.3.0
-CATEGORY=media-sound
+CATEGORY=.
 DESCRIPTION="Package 106"
 HOMEPAGE="https://example.com/snd0106"
 LICENSE=""MIT""
@@ -11,9 +11,9 @@ SLOT=0
 KEYWORDS="amd64"
 
 src_compile() {
-    make -j\(nproc\) || die
+    make -j\(nproc\) || exit 1
 }
 
 src_install() {
-    make DESTDIR="\(D\)" install || die
+    make DESTDIR="\(D\)" install || exit 1
 }

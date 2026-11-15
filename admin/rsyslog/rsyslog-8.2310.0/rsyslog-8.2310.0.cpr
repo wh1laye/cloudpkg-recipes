@@ -1,0 +1,37 @@
+PACKAGE=rsyslog
+VERSION=8.2310.0
+CATEGORY=.
+DESCRIPTION="Reliable and extended syslog daemon"
+HOMEPAGE="https://www.rsyslog.com/"
+LICENSE="Apache-2.0"
+SRC_URI="https://www.rsyslog.com/files/download/rsyslog/rsyslog-${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
+DEPEND="dev-libs/libestr dev-libs/liblogging sys-libs/zlib"
+RDEPEND="${DEPEND}"
+SLOT=0
+KEYWORDS="amd64"
+BUILD_FLAGS="--enable-imfile --enable-imtcp --enable-imudp --enable-mmsnmptrapd --enable-mmjsonparse"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfDESTDIR=/etc/rsyslog \
+        --localstateDESTDIR=/var \
+        --disable-static \
+        ${BUILD_FLAGS}
+}
+src_compile() {
+    make -j$(nproc) || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+    /etc/rsyslog
+    doins runtime/rsyslog.conf
+    keepdir /var/spool/rsyslog
+    /usr/lib/systemd/system
+    cp tools/rsyslog.service rsyslog.service
+    install -Dm644 README.md CHANGELOG
+}
+pkg_postinst() {
+    echo "rsyslog installed"
+    echo "Configure /etc/rsyslog/rsyslog.conf"
+    echo "Enable with: rc-update add rsyslog default"
+}

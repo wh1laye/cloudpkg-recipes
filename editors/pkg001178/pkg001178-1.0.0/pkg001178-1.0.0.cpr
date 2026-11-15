@@ -1,0 +1,19 @@
+PACKAGE=pkg001178
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 1178"
+HOMEPAGE="https://pkg001178.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001178.org/pkg001178-1.0.0.tar.gz -> pkg001178-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

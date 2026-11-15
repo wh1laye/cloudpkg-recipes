@@ -1,0 +1,19 @@
+PACKAGE=pkg003539
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 3539"
+HOMEPAGE="https://pkg003539.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003539.org/pkg003539-1.0.0.tar.gz -> pkg003539-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

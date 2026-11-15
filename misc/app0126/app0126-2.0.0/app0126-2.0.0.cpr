@@ -1,0 +1,19 @@
+PACKAGE=app0126
+VERSION=2.0.0
+CATEGORY=.
+DESCRIPTION="Package 126"
+HOMEPAGE="https://example.com/app0126"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0126/app0126-2.0.0.tar.gz -> app0126-2.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

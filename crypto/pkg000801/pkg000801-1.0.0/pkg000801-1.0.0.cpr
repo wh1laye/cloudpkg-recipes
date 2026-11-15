@@ -1,0 +1,19 @@
+PACKAGE=pkg000801
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 801"
+HOMEPAGE="https://pkg000801.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000801.org/pkg000801-1.0.0.tar.gz -> pkg000801-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=app0366
+VERSION=1.3.0
+CATEGORY=.
+DESCRIPTION="Package 366"
+HOMEPAGE="https://example.com/app0366"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0366/app0366-1.3.0.tar.gz -> app0366-1.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

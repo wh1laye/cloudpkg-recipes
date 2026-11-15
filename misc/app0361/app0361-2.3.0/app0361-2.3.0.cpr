@@ -1,0 +1,19 @@
+PACKAGE=app0361
+VERSION=2.3.0
+CATEGORY=.
+DESCRIPTION="Package 361"
+HOMEPAGE="https://example.com/app0361"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0361/app0361-2.3.0.tar.gz -> app0361-2.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

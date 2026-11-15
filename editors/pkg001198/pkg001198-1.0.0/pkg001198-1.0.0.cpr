@@ -1,0 +1,19 @@
+PACKAGE=pkg001198
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 1198"
+HOMEPAGE="https://pkg001198.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001198.org/pkg001198-1.0.0.tar.gz -> pkg001198-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

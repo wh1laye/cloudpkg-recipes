@@ -1,0 +1,19 @@
+PACKAGE=lib1114
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 114"
+HOMEPAGE="https://example.com/lib1114"
+LICENSE="MIT"
+SRC_URI="https://example.com/lib1114/lib1114-1.0.0.tar.gz -> lib1114-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

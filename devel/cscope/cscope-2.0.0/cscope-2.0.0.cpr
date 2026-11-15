@@ -1,0 +1,19 @@
+PACKAGE=cscope
+VERSION=2.0.0
+CATEGORY=.
+DESCRIPTION="Interactive C symbol cross-reference"
+HOMEPAGE="https://example.com/cscope"
+LICENSE=""BSD-3""
+SRC_URI="https://example.com/cscope/cscope-2.0.0.tar.gz -> cscope-2.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

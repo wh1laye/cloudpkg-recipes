@@ -1,0 +1,19 @@
+PACKAGE=pkg001462
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 1462"
+HOMEPAGE="https://pkg001462.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001462.org/pkg001462-1.0.0.tar.gz -> pkg001462-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,27 @@
+PACKAGE=mercurial
+VERSION=6.6.1
+CATEGORY=.
+DESCRIPTION="Distributed version control system"
+HOMEPAGE="https://www.mercurial-scm.org/"
+LICENSE="GPL-2"
+SRC_URI="https://www.mercurial-scm.org/release/mercurial-6.6.1.tar.gz -> mercurial-6.6.1.tar.gz"
+DEPEND="dev-lang/python"
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfDESTDIR=/etc \
+        --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j$(nproc) || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    echo " installed successfully"
+}

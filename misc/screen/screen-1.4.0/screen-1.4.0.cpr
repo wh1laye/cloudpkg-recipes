@@ -1,0 +1,19 @@
+PACKAGE=screen
+VERSION=1.4.0
+CATEGORY=.
+DESCRIPTION="Terminal screen multiplexer"
+HOMEPAGE="https://example.com/screen"
+LICENSE=""GPL-3""
+SRC_URI="https://example.com/screen/screen-1.4.0.tar.gz -> screen-1.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

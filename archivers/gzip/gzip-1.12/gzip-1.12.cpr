@@ -1,0 +1,19 @@
+PACKAGE=gzip
+VERSION=1.12
+CATEGORY=.
+DESCRIPTION="GNU compression"
+HOMEPAGE="https://gzip.org/"
+LICENSE="GPL-3"
+SRC_URI="https://downloads.gzip.org/gzip-1.12.tar.gz -> gzip-1.12.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

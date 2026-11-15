@@ -1,0 +1,19 @@
+PACKAGE=autoconf-archive
+VERSION=1.4.0
+CATEGORY=.
+DESCRIPTION="GNU Autoconf Macro Archive"
+HOMEPAGE="https://example.com/autoconf-archive"
+LICENSE=""GPL-3""
+SRC_URI="https://example.com/autoconf-archive/autoconf-archive-1.4.0.tar.gz -> autoconf-archive-1.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=app0401
+VERSION=2.4.0
+CATEGORY=.
+DESCRIPTION="Package 401"
+HOMEPAGE="https://example.com/app0401"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0401/app0401-2.4.0.tar.gz -> app0401-2.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=htop
+VERSION=2.4.0
+CATEGORY=.
+DESCRIPTION="Interactive process viewer with a friendly interface"
+HOMEPAGE="https://example.com/htop"
+LICENSE=""BSD-2""
+SRC_URI="https://example.com/htop/htop-2.4.0.tar.gz -> htop-2.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

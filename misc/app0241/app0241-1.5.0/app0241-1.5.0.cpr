@@ -1,0 +1,19 @@
+PACKAGE=app0241
+VERSION=1.5.0
+CATEGORY=.
+DESCRIPTION="Package 241"
+HOMEPAGE="https://example.com/app0241"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0241/app0241-1.5.0.tar.gz -> app0241-1.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=astyle
+VERSION=1.5.0
+CATEGORY=.
+DESCRIPTION="Source code beautifier"
+HOMEPAGE="https://example.com/astyle"
+LICENSE=""LGPL-3""
+SRC_URI="https://example.com/astyle/astyle-1.5.0.tar.gz -> astyle-1.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

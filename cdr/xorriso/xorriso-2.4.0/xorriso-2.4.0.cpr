@@ -1,0 +1,19 @@
+PACKAGE=xorriso
+VERSION=2.4.0
+CATEGORY=.
+DESCRIPTION="ISO9660 Rock Ridge filesystem manipulator"
+HOMEPAGE="https://example.com/xorriso"
+LICENSE=""GPL-3""
+SRC_URI="https://example.com/xorriso/xorriso-2.4.0.tar.gz -> xorriso-2.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

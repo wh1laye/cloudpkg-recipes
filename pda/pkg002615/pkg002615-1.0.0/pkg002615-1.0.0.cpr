@@ -1,0 +1,19 @@
+PACKAGE=pkg002615
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 2615"
+HOMEPAGE="https://pkg002615.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002615.org/pkg002615-1.0.0.tar.gz -> pkg002615-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

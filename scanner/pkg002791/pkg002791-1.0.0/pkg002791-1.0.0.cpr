@@ -1,0 +1,19 @@
+PACKAGE=pkg002791
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 2791"
+HOMEPAGE="https://pkg002791.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002791.org/pkg002791-1.0.0.tar.gz -> pkg002791-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

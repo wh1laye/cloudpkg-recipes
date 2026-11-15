@@ -1,0 +1,19 @@
+PACKAGE=dev0054
+VERSION=1.2.0
+CATEGORY=.
+DESCRIPTION="Package 54"
+HOMEPAGE="https://example.com/dev0054"
+LICENSE=""MIT""
+SRC_URI="https://example.com/dev0054/dev0054-1.2.0.tar.gz -> dev0054-1.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

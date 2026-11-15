@@ -1,0 +1,21 @@
+PACKAGE=lz4
+VERSION=1.10.0
+CATEGORY=.
+DESCRIPTION="Extremely fast compression algorithm"
+HOMEPAGE="https://lz4.github.io/lz4/"
+LICENSE="BSD-2"
+SRC_URI="https://github.com/lz4/lz4/archive/refs/tags/v1.10.0.tar.gz -> lz4-1.10.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}

@@ -1,0 +1,19 @@
+PACKAGE=bmon
+VERSION=1.1.0
+CATEGORY=.
+DESCRIPTION="Portable bandwidth monitor and rate estimator"
+HOMEPAGE="https://example.com/bmon"
+LICENSE=""MIT""
+SRC_URI="https://example.com/bmon/bmon-1.1.0.tar.gz -> bmon-1.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

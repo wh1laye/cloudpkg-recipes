@@ -1,0 +1,19 @@
+PACKAGE=app2097
+VERSION=1.3.0
+CATEGORY=.
+DESCRIPTION="Package 97"
+HOMEPAGE="https://example.com/app2097"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app2097/app2097-1.3.0.tar.gz -> app2097-1.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

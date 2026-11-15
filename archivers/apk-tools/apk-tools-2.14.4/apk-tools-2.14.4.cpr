@@ -1,0 +1,19 @@
+PACKAGE=apk-tools
+VERSION=2.14.4
+CATEGORY=.
+DESCRIPTION="Alpine package manager"
+HOMEPAGE="https://apk-tools.org/"
+LICENSE="GPL-2"
+SRC_URI="https://downloads.apk-tools.org/apk-tools-2.14.4.tar.gz -> apk-tools-2.14.4.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=dev0094
+VERSION=1.5.0
+CATEGORY=.
+DESCRIPTION="Package 94"
+HOMEPAGE="https://example.com/dev0094"
+LICENSE=""MIT""
+SRC_URI="https://example.com/dev0094/dev0094-1.5.0.tar.gz -> dev0094-1.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

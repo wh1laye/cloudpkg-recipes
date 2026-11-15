@@ -1,0 +1,19 @@
+PACKAGE=pkg002133
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 2133"
+HOMEPAGE="https://pkg002133.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002133.org/pkg002133-1.0.0.tar.gz -> pkg002133-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

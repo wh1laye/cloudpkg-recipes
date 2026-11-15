@@ -1,0 +1,19 @@
+PACKAGE=pkg000769
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 769"
+HOMEPAGE="https://pkg000769.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000769.org/pkg000769-1.0.0.tar.gz -> pkg000769-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,27 @@
+PACKAGE=bonnie++
+VERSION=2.00a
+CATEGORY=.
+DESCRIPTION="Hard drive and file system performance test"
+HOMEPAGE="https://www.coker.com.au/bonnie++/"
+LICENSE="GPL-2"
+SRC_URI="http://www.coker.com.au/bonnie++/bonnie++-2.00a.tgz -> bonnie++-2.00a.tgz"
+DEPEND=""
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfDESTDIR=/etc \
+        --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j$(nproc) || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    echo " installed successfully"
+}

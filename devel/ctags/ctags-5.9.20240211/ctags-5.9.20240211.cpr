@@ -1,0 +1,21 @@
+PACKAGE=ctags
+VERSION=5.9.20240211
+CATEGORY=.
+DESCRIPTION="Generate tag files for source code"
+HOMEPAGE="https://ctags.sourceforge.io/"
+LICENSE="GPL-2"
+SRC_URI="https://downloads.sourceforge.net/project/ctags/ctags/5.9.20240211/ctags-5.9.20240211.tar.gz -> ctags-5.9.20240211.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}

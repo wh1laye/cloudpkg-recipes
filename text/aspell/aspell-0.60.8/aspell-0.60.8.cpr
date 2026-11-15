@@ -1,0 +1,19 @@
+PACKAGE=aspell
+VERSION=0.60.8
+CATEGORY=.
+DESCRIPTION="GNU spell checker"
+HOMEPAGE="https://example.com/aspell"
+LICENSE="LGPL-2"
+SRC_URI="https://example.com/aspell/aspell-0.60.8.tar.gz -> aspell-0.60.8.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

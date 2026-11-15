@@ -1,0 +1,19 @@
+PACKAGE=runc
+VERSION=1.1.12
+CATEGORY=.
+DESCRIPTION="OCI runtime"
+HOMEPAGE="https://runc.org/"
+LICENSE="BSD-3"
+SRC_URI="https://downloads.runc.org/runc-1.1.12.tar.gz -> runc-1.1.12.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

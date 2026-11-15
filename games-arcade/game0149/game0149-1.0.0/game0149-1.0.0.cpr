@@ -1,6 +1,6 @@
 PACKAGE=game0149
 VERSION=1.0.0
-CATEGORY=games-arcade
+CATEGORY=.
 DESCRIPTION="Package 149"
 HOMEPAGE="https://example.com/game0149"
 LICENSE="MIT"
@@ -11,9 +11,9 @@ SLOT=0
 KEYWORDS="amd64"
 
 src_compile() {
-    make -j\(nproc\) || die
+    make -j\(nproc\) || exit 1
 }
 
 src_install() {
-    make DESTDIR="\(D\)" install || die
+    make DESTDIR="\(D\)" install || exit 1
 }

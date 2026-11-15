@@ -1,6 +1,6 @@
 PACKAGE=sox
 VERSION=14.4.2
-CATEGORY=media-sound
+CATEGORY=.
 DESCRIPTION="Sound eXchange - audio processing"
 HOMEPAGE="https://sourceforge.net/p/sox/"
 LICENSE="GPL-2"
@@ -13,16 +13,16 @@ BUILD_FLAGS="--with-mad --with-sndfile"
 src_configure() {
     ./configure \
         --prefix=/usr \
-        --sysconfdir=/etc \
-        --localstatedir=/var
+        --sysconfDESTDIR=/etc \
+        --localstateDESTDIR=/var
 }
 src_compile() {
-    make -j$(nproc) || die "Compilation failed"
+    make -j$(nproc) || exit 1
 }
 src_install() {
-    make DESTDIR="${D}" install || die "Installation failed"
-    dodoc README* CHANGELOG* LICENSE*
+    make DESTDIR="${D}" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
 }
 pkg_postinst() {
-    einfo " installed successfully"
+    echo " installed successfully"
 }

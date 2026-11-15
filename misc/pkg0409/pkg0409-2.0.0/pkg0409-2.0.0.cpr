@@ -1,0 +1,19 @@
+PACKAGE=pkg0409
+VERSION=2.0.0
+CATEGORY=.
+DESCRIPTION="Package 409"
+HOMEPAGE="https://example.com/pkg0409"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0409/pkg0409-2.0.0.tar.gz -> pkg0409-2.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg000061
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 61"
+HOMEPAGE="https://pkg000061.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000061.org/pkg000061-1.0.0.tar.gz -> pkg000061-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

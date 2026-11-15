@@ -1,0 +1,19 @@
+PACKAGE=pkg002744
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 2744"
+HOMEPAGE="https://pkg002744.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002744.org/pkg002744-1.0.0.tar.gz -> pkg002744-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

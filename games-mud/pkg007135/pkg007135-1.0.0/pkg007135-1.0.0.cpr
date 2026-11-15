@@ -1,6 +1,6 @@
 PACKAGE=pkg007135
 VERSION=1.0.0
-CATEGORY=games-mud
+CATEGORY=.
 DESCRIPTION="Package 7135"
 HOMEPAGE="https://pkg007135.org/"
 LICENSE="MIT"
@@ -11,9 +11,9 @@ SLOT=0
 KEYWORDS="amd64"
 
 src_compile() {
-    make -j\(nproc\) || die
+    make -j\(nproc\) || exit 1
 }
 
 src_install() {
-    make DESTDIR="\(D\)" install || die
+    make DESTDIR="\(D\)" install || exit 1
 }

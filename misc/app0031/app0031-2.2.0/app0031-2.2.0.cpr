@@ -1,0 +1,19 @@
+PACKAGE=app0031
+VERSION=2.2.0
+CATEGORY=.
+DESCRIPTION="Package 31"
+HOMEPAGE="https://example.com/app0031"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0031/app0031-2.2.0.tar.gz -> app0031-2.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

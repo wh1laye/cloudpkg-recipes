@@ -1,0 +1,19 @@
+PACKAGE=pkg004568
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 4568"
+HOMEPAGE="https://pkg004568.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004568.org/pkg004568-1.0.0.tar.gz -> pkg004568-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

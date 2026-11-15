@@ -1,0 +1,19 @@
+PACKAGE=pkg005175
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 5175"
+HOMEPAGE="https://pkg005175.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005175.org/pkg005175-1.0.0.tar.gz -> pkg005175-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

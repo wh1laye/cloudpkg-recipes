@@ -1,0 +1,19 @@
+PACKAGE=dev0374
+VERSION=1.1.0
+CATEGORY=.
+DESCRIPTION="Package 374"
+HOMEPAGE="https://example.com/dev0374"
+LICENSE=""MIT""
+SRC_URI="https://example.com/dev0374/dev0374-1.1.0.tar.gz -> dev0374-1.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

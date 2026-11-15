@@ -1,0 +1,35 @@
+PACKAGE=ruby
+VERSION=3.3.0
+CATEGORY=.
+DESCRIPTION="Ruby programming language interpreter"
+HOMEPAGE="https://www.ruby-lang.org/"
+LICENSE="BSD-2"
+SRC_URI="https://cache.ruby-lang.org/pub/ruby/${VERSION%.*}/ruby-${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
+DEPEND="sys-libs/zlib sys-libs/readline dev-libs/openssl dev-libs/libyaml"
+RDEPEND="${DEPEND}"
+SLOT=3.3
+KEYWORDS="amd64"
+BUILD_FLAGS="--enable-shared --disable-install-doc --with-openssl-DESTDIR=/usr"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --libDESTDIR=/usr/lib/ruby/${SLOT} \
+        --includeDESTDIR=/usr/include/ruby-${SLOT} \
+        --datarootDESTDIR=/usr/share \
+        --docDESTDIR=/usr/share/doc/ruby-${SLOT} \
+        --with-siteDESTDIR=/usr/lib/ruby/${SLOT}/site_ruby \
+        --with-vendorDESTDIR=/usr/lib/ruby/${SLOT}/vendor_ruby \
+        ${BUILD_FLAGS}
+}
+src_compile() {
+    make -j$(nproc) || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+    dosym ruby${VERSION%.*} /usr/bin/ruby
+    install -Dm644 README.md COPYING
+}
+pkg_postinst() {
+    echo "Ruby ${VERSION} installed"
+    echo "Symlink: ruby -> ruby${VERSION%.*}"
+}

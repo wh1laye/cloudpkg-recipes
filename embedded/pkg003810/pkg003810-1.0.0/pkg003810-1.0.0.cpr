@@ -1,0 +1,19 @@
+PACKAGE=pkg003810
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 3810"
+HOMEPAGE="https://pkg003810.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003810.org/pkg003810-1.0.0.tar.gz -> pkg003810-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

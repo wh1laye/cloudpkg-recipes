@@ -1,0 +1,24 @@
+PACKAGE=cdrtools
+VERSION=3.02a09
+CATEGORY=.
+DESCRIPTION="CD/DVD recording tools"
+HOMEPAGE="https://cdrtools.sourceforge.io/"
+LICENSE="CDDL-1.0"
+SRC_URI="https://downloads.sourceforge.net/project/cdrtools/aoe/cdrtools-3.02a09.tar.gz -> cdrtools-3.02a09.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    echo "cdrtools installed successfully"
+}

@@ -1,0 +1,28 @@
+PACKAGE=fossil
+VERSION=2.22
+CATEGORY=.
+DESCRIPTION="Distributed version control system"
+HOMEPAGE="https://fossil-scm.org/"
+LICENSE="BSD-2"
+SRC_URI="https://fossil-scm.org/home/uv/fossil-src-2.22.tar.gz -> fossil-2.22.tar.gz"
+DEPEND="sys-libs/zlib sys-libs/openssl"
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+BUILD_FLAGS="--with-openssl --with-zlib"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfDESTDIR=/etc \
+        --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j$(nproc) || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    echo " installed successfully"
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg003416
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 3416"
+HOMEPAGE="https://pkg003416.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003416.org/pkg003416-1.0.0.tar.gz -> pkg003416-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

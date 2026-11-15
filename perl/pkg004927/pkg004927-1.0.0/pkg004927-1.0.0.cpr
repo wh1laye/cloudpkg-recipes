@@ -1,0 +1,19 @@
+PACKAGE=pkg004927
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 4927"
+HOMEPAGE="https://pkg004927.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004927.org/pkg004927-1.0.0.tar.gz -> pkg004927-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

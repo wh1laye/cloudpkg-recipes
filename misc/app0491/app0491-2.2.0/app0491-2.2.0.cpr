@@ -1,0 +1,19 @@
+PACKAGE=app0491
+VERSION=2.2.0
+CATEGORY=.
+DESCRIPTION="Package 491"
+HOMEPAGE="https://example.com/app0491"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0491/app0491-2.2.0.tar.gz -> app0491-2.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

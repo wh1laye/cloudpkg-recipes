@@ -1,0 +1,19 @@
+PACKAGE=ctags
+VERSION=1.1.0
+CATEGORY=.
+DESCRIPTION="Generate tag files for source code"
+HOMEPAGE="https://example.com/ctags"
+LICENSE=""GPL-2""
+SRC_URI="https://example.com/ctags/ctags-1.1.0.tar.gz -> ctags-1.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

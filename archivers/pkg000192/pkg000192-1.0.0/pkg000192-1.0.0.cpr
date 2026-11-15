@@ -1,0 +1,19 @@
+PACKAGE=pkg000192
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 192"
+HOMEPAGE="https://pkg000192.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000192.org/pkg000192-1.0.0.tar.gz -> pkg000192-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

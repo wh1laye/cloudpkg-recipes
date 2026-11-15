@@ -1,0 +1,27 @@
+PACKAGE=dash
+VERSION=0.5.12
+CATEGORY=.
+DESCRIPTION="Debian Almquist shell - POSIX compliant shell"
+HOMEPAGE="http://gondor.apana.org.au/~herbert/dash/"
+LICENSE="BSD-3"
+SRC_URI="http://gondor.apana.org.au/~herbert/dash/files/dash-0.5.12.tar.gz -> dash-0.5.12.tar.gz"
+DEPEND=""
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfDESTDIR=/etc \
+        --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j$(nproc) || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    echo " installed successfully"
+}

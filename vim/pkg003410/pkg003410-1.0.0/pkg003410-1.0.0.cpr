@@ -1,0 +1,19 @@
+PACKAGE=pkg003410
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 3410"
+HOMEPAGE="https://pkg003410.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003410.org/pkg003410-1.0.0.tar.gz -> pkg003410-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

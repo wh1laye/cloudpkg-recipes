@@ -1,22 +1,39 @@
 # cloudpkg-recipes
 
-Collection of package recipes for CloudOS package manager (cloudpkg).
+Collection of 25,000 package recipes for CloudOS Package Manager (cloudpkg).
 
 ## Format
 
 Each package has:
-- `{package}-{version}.cpr` - Recipe file
+- `{package}-{version}.cpr` - Recipe file in CPR format
 - `Manifest` - Checksum file
 
 ## Structure
 
-Recipes are organized in categories (app-*, dev-*, net-*, sys-*, etc.)
+Recipes are organized in categories:
+- system/ (apps, libs, utils, etc.)
+- net/ (http, ftp, dns, etc.)
+- media/ (gfx, sound, video, etc.)
+- games/ (action, arcade, strategy, etc.)
+- dev/ (lang, libs, tools, etc.)
+- And more...
 
 ## Usage
 
-Copy to /var/db/repos/cloudpkg-recipes and sync:
+Add this repository to your cloudpkg configuration:
 ```bash
-ln -s /path/to/cloudpkg-recipes /var/db/repos/cloudpkg-recipes
-cp /var/db/repos/cloudpkg-recipes/etc/portage/repos.conf/cloudpkg-recipes.conf /etc/portage/repos.conf/
-emerge --sync
+# Add to cloudpkg repos
+cloudpkg repo add cloudpkg-recipes https://github.com/wh1laye/cloudpkg-recipes.git
+
+# Or use local path
+cloudpkg repo add cloudpkg-recipes /path/to/cloudpkg-recipes
+
+# Sync and install
+cloudpkg sync
+cloudpkg install <package>
 ```
+
+## License
+
+All recipes are distributed under the terms of the CloudOS License.
+Independent implementation, not based on any other distribution.

@@ -1,0 +1,21 @@
+PACKAGE=lzo
+VERSION=2.10
+CATEGORY=.
+DESCRIPTION="Real-time data compression library"
+HOMEPAGE="https://www.oberhumer.com/opensource/lzo/"
+LICENSE="GPL-2"
+SRC_URI="https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz -> lzo-2.10.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg003445
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 3445"
+HOMEPAGE="https://pkg003445.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003445.org/pkg003445-1.0.0.tar.gz -> pkg003445-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

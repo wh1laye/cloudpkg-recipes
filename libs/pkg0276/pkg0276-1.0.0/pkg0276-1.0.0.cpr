@@ -1,0 +1,17 @@
+PACKAGE=pkg0276
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 276"
+HOMEPAGE="https://example.com/pkg0276"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0276/pkg0276-1.0.0.tar.gz -> pkg0276-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

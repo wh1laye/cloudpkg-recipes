@@ -1,0 +1,19 @@
+PACKAGE=dev0354
+VERSION=1.5.0
+CATEGORY=.
+DESCRIPTION="Package 354"
+HOMEPAGE="https://example.com/dev0354"
+LICENSE=""MIT""
+SRC_URI="https://example.com/dev0354/dev0354-1.5.0.tar.gz -> dev0354-1.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

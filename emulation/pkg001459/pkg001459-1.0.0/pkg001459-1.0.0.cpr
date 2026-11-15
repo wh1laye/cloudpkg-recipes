@@ -1,0 +1,19 @@
+PACKAGE=pkg001459
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 1459"
+HOMEPAGE="https://pkg001459.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001459.org/pkg001459-1.0.0.tar.gz -> pkg001459-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

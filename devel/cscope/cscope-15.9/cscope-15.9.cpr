@@ -1,0 +1,21 @@
+PACKAGE=cscope
+VERSION=15.9
+CATEGORY=.
+DESCRIPTION="Interactive C symbol cross-reference"
+HOMEPAGE="http://cscope.sourceforge.net/"
+LICENSE="BSD-3"
+SRC_URI="https://downloads.sourceforge.net/project/cscope/cscope/15.9/cscope-15.9.tar.gz -> cscope-15.9.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+}
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+    install -Dm644 README* CHANGELOG* LICENSE*
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg005745
+VERSION=1.0.0
+CATEGORY=.
+DESCRIPTION="Package 5745"
+HOMEPAGE="https://pkg005745.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005745.org/pkg005745-1.0.0.tar.gz -> pkg005745-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}

@@ -1,0 +1,19 @@
+PACKAGE=app0296
+VERSION=1.3.0
+CATEGORY=.
+DESCRIPTION="Package 296"
+HOMEPAGE="https://example.com/app0296"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0296/app0296-1.3.0.tar.gz -> app0296-1.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || exit 1
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || exit 1
+}
