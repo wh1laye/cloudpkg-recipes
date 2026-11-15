@@ -1,0 +1,19 @@
+PACKAGE=snd0276
+VERSION=1.0.0
+CATEGORY=media-sound
+DESCRIPTION="Package 276"
+HOMEPAGE="https://example.com/snd0276"
+LICENSE="MIT"
+SRC_URI="https://example.com/snd0276/snd0276-1.0.0.tar.gz -> snd0276-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

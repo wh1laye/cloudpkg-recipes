@@ -1,0 +1,19 @@
+PACKAGE=app0196
+VERSION=1.5.0
+CATEGORY=app-misc
+DESCRIPTION="Package 196"
+HOMEPAGE="https://example.com/app0196"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0196/app0196-1.5.0.tar.gz -> app0196-1.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

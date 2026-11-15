@@ -1,0 +1,19 @@
+PACKAGE=pkg014457
+VERSION=1.0.0
+CATEGORY=sci-calculators
+DESCRIPTION="Package 14457"
+HOMEPAGE="https://pkg014457.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014457.org/pkg014457-1.0.0.tar.gz -> pkg014457-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

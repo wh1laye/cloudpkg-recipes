@@ -1,0 +1,19 @@
+PACKAGE=pkg006947
+VERSION=1.0.0
+CATEGORY=games-emulation
+DESCRIPTION="Package 6947"
+HOMEPAGE="https://pkg006947.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg006947.org/pkg006947-1.0.0.tar.gz -> pkg006947-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

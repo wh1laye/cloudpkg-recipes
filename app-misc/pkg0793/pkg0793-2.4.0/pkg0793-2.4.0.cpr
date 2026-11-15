@@ -1,0 +1,19 @@
+PACKAGE=pkg0793
+VERSION=2.4.0
+CATEGORY=app-misc
+DESCRIPTION="Package 793"
+HOMEPAGE="https://example.com/pkg0793"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0793/pkg0793-2.4.0.tar.gz -> pkg0793-2.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

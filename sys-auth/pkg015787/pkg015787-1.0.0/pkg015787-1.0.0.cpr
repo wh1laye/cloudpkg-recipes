@@ -1,0 +1,19 @@
+PACKAGE=pkg015787
+VERSION=1.0.0
+CATEGORY=sys-auth
+DESCRIPTION="Package 15787"
+HOMEPAGE="https://pkg015787.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015787.org/pkg015787-1.0.0.tar.gz -> pkg015787-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

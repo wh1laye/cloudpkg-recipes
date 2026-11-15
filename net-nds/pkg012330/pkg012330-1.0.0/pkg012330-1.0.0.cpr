@@ -1,0 +1,19 @@
+PACKAGE=pkg012330
+VERSION=1.0.0
+CATEGORY=net-nds
+DESCRIPTION="Package 12330"
+HOMEPAGE="https://pkg012330.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012330.org/pkg012330-1.0.0.tar.gz -> pkg012330-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

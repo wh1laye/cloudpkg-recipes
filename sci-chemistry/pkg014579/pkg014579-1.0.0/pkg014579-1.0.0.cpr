@@ -1,0 +1,19 @@
+PACKAGE=pkg014579
+VERSION=1.0.0
+CATEGORY=sci-chemistry
+DESCRIPTION="Package 14579"
+HOMEPAGE="https://pkg014579.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014579.org/pkg014579-1.0.0.tar.gz -> pkg014579-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

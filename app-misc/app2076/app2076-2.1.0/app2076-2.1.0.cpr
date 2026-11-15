@@ -1,0 +1,19 @@
+PACKAGE=app2076
+VERSION=2.1.0
+CATEGORY=app-misc
+DESCRIPTION="Package 76"
+HOMEPAGE="https://example.com/app2076"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app2076/app2076-2.1.0.tar.gz -> app2076-2.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

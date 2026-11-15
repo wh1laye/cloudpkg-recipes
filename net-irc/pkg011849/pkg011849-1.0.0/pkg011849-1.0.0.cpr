@@ -1,0 +1,19 @@
+PACKAGE=pkg011849
+VERSION=1.0.0
+CATEGORY=net-irc
+DESCRIPTION="Package 11849"
+HOMEPAGE="https://pkg011849.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011849.org/pkg011849-1.0.0.tar.gz -> pkg011849-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

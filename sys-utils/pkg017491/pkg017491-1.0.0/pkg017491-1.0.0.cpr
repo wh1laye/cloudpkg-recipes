@@ -1,0 +1,19 @@
+PACKAGE=pkg017491
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="Package 17491"
+HOMEPAGE="https://pkg017491.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017491.org/pkg017491-1.0.0.tar.gz -> pkg017491-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

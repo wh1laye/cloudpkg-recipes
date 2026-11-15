@@ -1,0 +1,19 @@
+PACKAGE=dev0074
+VERSION=1.2.0
+CATEGORY=dev-util
+DESCRIPTION="Package 74"
+HOMEPAGE="https://example.com/dev0074"
+LICENSE=""MIT""
+SRC_URI="https://example.com/dev0074/dev0074-1.2.0.tar.gz -> dev0074-1.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

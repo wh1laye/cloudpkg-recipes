@@ -1,0 +1,19 @@
+PACKAGE=pkg015232
+VERSION=1.0.0
+CATEGORY=sci-physics
+DESCRIPTION="Package 15232"
+HOMEPAGE="https://pkg015232.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015232.org/pkg015232-1.0.0.tar.gz -> pkg015232-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

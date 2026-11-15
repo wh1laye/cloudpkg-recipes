@@ -1,0 +1,19 @@
+PACKAGE=snd0206
+VERSION=2.1.0
+CATEGORY=media-sound
+DESCRIPTION="Package 206"
+HOMEPAGE="https://example.com/snd0206"
+LICENSE=""MIT""
+SRC_URI="https://example.com/snd0206/snd0206-2.1.0.tar.gz -> snd0206-2.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

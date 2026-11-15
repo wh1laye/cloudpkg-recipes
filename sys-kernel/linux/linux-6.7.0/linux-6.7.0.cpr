@@ -1,0 +1,28 @@
+PACKAGE=linux
+VERSION=6.7.0
+CATEGORY=sys-kernel
+DESCRIPTION="Linux kernel"
+HOMEPAGE="https://www.kernel.org/"
+LICENSE="GPL-2"
+SRC_URI="https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.tar.xz -> linux-6.7.tar.xz"
+DEPEND=""
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+BUILD_FLAGS="--enable-all"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j$(nproc) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="${D}" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo " installed successfully"
+}

@@ -1,0 +1,19 @@
+PACKAGE=dev0024
+VERSION=1.5.0
+CATEGORY=dev-util
+DESCRIPTION="Package 24"
+HOMEPAGE="https://example.com/dev0024"
+LICENSE=""MIT""
+SRC_URI="https://example.com/dev0024/dev0024-1.5.0.tar.gz -> dev0024-1.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=app0231
+VERSION=2.3.0
+CATEGORY=app-misc
+DESCRIPTION="Package 231"
+HOMEPAGE="https://example.com/app0231"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0231/app0231-2.3.0.tar.gz -> app0231-2.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

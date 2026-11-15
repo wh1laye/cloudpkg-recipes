@@ -1,0 +1,19 @@
+PACKAGE=pkg011611
+VERSION=1.0.0
+CATEGORY=net-im
+DESCRIPTION="Package 11611"
+HOMEPAGE="https://pkg011611.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011611.org/pkg011611-1.0.0.tar.gz -> pkg011611-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

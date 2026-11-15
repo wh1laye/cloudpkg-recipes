@@ -1,0 +1,19 @@
+PACKAGE=pkg001004
+VERSION=1.0.0
+CATEGORY=app-dicts
+DESCRIPTION="Package 1004"
+HOMEPAGE="https://pkg001004.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001004.org/pkg001004-1.0.0.tar.gz -> pkg001004-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

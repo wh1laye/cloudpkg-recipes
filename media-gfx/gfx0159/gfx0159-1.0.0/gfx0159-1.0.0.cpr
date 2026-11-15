@@ -1,0 +1,19 @@
+PACKAGE=gfx0159
+VERSION=1.0.0
+CATEGORY=media-gfx
+DESCRIPTION="Package 159"
+HOMEPAGE="https://example.com/gfx0159"
+LICENSE="MIT"
+SRC_URI="https://example.com/gfx0159/gfx0159-1.0.0.tar.gz -> gfx0159-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg006619
+VERSION=1.0.0
+CATEGORY=games-card
+DESCRIPTION="Package 6619"
+HOMEPAGE="https://pkg006619.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg006619.org/pkg006619-1.0.0.tar.gz -> pkg006619-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

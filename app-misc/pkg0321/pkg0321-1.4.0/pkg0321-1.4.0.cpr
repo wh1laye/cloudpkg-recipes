@@ -1,0 +1,19 @@
+PACKAGE=pkg0321
+VERSION=1.4.0
+CATEGORY=app-misc
+DESCRIPTION="Package 321"
+HOMEPAGE="https://example.com/pkg0321"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0321/pkg0321-1.4.0.tar.gz -> pkg0321-1.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

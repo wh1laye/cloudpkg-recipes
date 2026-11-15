@@ -1,0 +1,19 @@
+PACKAGE=pkg007237
+VERSION=1.0.0
+CATEGORY=games-mud
+DESCRIPTION="Package 7237"
+HOMEPAGE="https://pkg007237.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007237.org/pkg007237-1.0.0.tar.gz -> pkg007237-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

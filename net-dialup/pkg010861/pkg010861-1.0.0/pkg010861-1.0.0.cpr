@@ -1,0 +1,19 @@
+PACKAGE=pkg010861
+VERSION=1.0.0
+CATEGORY=net-dialup
+DESCRIPTION="Package 10861"
+HOMEPAGE="https://pkg010861.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010861.org/pkg010861-1.0.0.tar.gz -> pkg010861-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

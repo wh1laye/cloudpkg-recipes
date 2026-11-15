@@ -1,0 +1,19 @@
+PACKAGE=pkg001408
+VERSION=1.0.0
+CATEGORY=app-emacs
+DESCRIPTION="Package 1408"
+HOMEPAGE="https://pkg001408.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001408.org/pkg001408-1.0.0.tar.gz -> pkg001408-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

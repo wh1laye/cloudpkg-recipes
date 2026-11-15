@@ -1,0 +1,19 @@
+PACKAGE=dev0044
+VERSION=1.4.0
+CATEGORY=dev-util
+DESCRIPTION="Package 44"
+HOMEPAGE="https://example.com/dev0044"
+LICENSE=""MIT""
+SRC_URI="https://example.com/dev0044/dev0044-1.4.0.tar.gz -> dev0044-1.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

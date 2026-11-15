@@ -1,0 +1,19 @@
+PACKAGE=abyss
+VERSION=2.3.7
+CATEGORY=net-misc
+DESCRIPTION="Web server"
+HOMEPAGE="https://example.com/abyss"
+LICENSE="GPL-2"
+SRC_URI="https://example.com/abyss/abyss-2.3.7.tar.gz -> abyss-2.3.7.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg004943
+VERSION=1.0.0
+CATEGORY=dev-php
+DESCRIPTION="Package 4943"
+HOMEPAGE="https://pkg004943.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004943.org/pkg004943-1.0.0.tar.gz -> pkg004943-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

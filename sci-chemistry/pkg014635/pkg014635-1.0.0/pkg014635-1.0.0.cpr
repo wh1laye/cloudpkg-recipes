@@ -1,0 +1,19 @@
+PACKAGE=pkg014635
+VERSION=1.0.0
+CATEGORY=sci-chemistry
+DESCRIPTION="Package 14635"
+HOMEPAGE="https://pkg014635.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014635.org/pkg014635-1.0.0.tar.gz -> pkg014635-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=asp
+VERSION=2.2.0
+CATEGORY=dev-util
+DESCRIPTION="Apple Service Provider"
+HOMEPAGE="https://example.com/asp"
+LICENSE=""GPL-2""
+SRC_URI="https://example.com/asp/asp-2.2.0.tar.gz -> asp-2.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

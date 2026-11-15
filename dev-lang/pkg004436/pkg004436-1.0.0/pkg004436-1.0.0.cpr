@@ -1,0 +1,19 @@
+PACKAGE=pkg004436
+VERSION=1.0.0
+CATEGORY=dev-lang
+DESCRIPTION="Package 4436"
+HOMEPAGE="https://pkg004436.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004436.org/pkg004436-1.0.0.tar.gz -> pkg004436-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

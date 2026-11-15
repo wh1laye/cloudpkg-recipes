@@ -1,0 +1,19 @@
+PACKAGE=pkg012655
+VERSION=1.0.0
+CATEGORY=net-nntp
+DESCRIPTION="Package 12655"
+HOMEPAGE="https://pkg012655.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012655.org/pkg012655-1.0.0.tar.gz -> pkg012655-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

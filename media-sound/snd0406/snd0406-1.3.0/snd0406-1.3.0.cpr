@@ -1,0 +1,19 @@
+PACKAGE=snd0406
+VERSION=1.3.0
+CATEGORY=media-sound
+DESCRIPTION="Package 406"
+HOMEPAGE="https://example.com/snd0406"
+LICENSE=""MIT""
+SRC_URI="https://example.com/snd0406/snd0406-1.3.0.tar.gz -> snd0406-1.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

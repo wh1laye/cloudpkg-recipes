@@ -1,0 +1,19 @@
+PACKAGE=pkg016178
+VERSION=1.0.0
+CATEGORY=sys-cluster
+DESCRIPTION="Package 16178"
+HOMEPAGE="https://pkg016178.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016178.org/pkg016178-1.0.0.tar.gz -> pkg016178-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

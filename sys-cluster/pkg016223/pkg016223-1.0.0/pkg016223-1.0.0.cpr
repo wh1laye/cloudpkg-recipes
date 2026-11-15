@@ -1,0 +1,19 @@
+PACKAGE=pkg016223
+VERSION=1.0.0
+CATEGORY=sys-cluster
+DESCRIPTION="Package 16223"
+HOMEPAGE="https://pkg016223.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016223.org/pkg016223-1.0.0.tar.gz -> pkg016223-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

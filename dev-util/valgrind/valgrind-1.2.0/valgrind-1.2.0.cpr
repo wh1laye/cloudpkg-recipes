@@ -1,0 +1,19 @@
+PACKAGE=valgrind
+VERSION=1.2.0
+CATEGORY=dev-util
+DESCRIPTION="Memory debugging and profiling tool"
+HOMEPAGE="https://example.com/valgrind"
+LICENSE=""GPL-2""
+SRC_URI="https://example.com/valgrind/valgrind-1.2.0.tar.gz -> valgrind-1.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg012094
+VERSION=1.0.0
+CATEGORY=net-mail
+DESCRIPTION="Package 12094"
+HOMEPAGE="https://pkg012094.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012094.org/pkg012094-1.0.0.tar.gz -> pkg012094-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

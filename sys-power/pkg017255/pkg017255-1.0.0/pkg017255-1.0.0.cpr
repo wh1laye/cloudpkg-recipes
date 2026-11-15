@@ -1,0 +1,19 @@
+PACKAGE=pkg017255
+VERSION=1.0.0
+CATEGORY=sys-power
+DESCRIPTION="Package 17255"
+HOMEPAGE="https://pkg017255.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017255.org/pkg017255-1.0.0.tar.gz -> pkg017255-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

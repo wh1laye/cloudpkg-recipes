@@ -1,0 +1,19 @@
+PACKAGE=pkg009928
+VERSION=1.0.0
+CATEGORY=media-plugins
+DESCRIPTION="Package 9928"
+HOMEPAGE="https://pkg009928.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009928.org/pkg009928-1.0.0.tar.gz -> pkg009928-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

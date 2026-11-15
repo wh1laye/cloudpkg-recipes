@@ -1,0 +1,19 @@
+PACKAGE=pkg000790
+VERSION=1.0.0
+CATEGORY=app-crypt
+DESCRIPTION="Package 790"
+HOMEPAGE="https://pkg000790.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000790.org/pkg000790-1.0.0.tar.gz -> pkg000790-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

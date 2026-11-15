@@ -1,0 +1,19 @@
+PACKAGE=pkg012634
+VERSION=1.0.0
+CATEGORY=net-nntp
+DESCRIPTION="Package 12634"
+HOMEPAGE="https://pkg012634.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012634.org/pkg012634-1.0.0.tar.gz -> pkg012634-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

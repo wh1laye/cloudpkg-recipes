@@ -1,0 +1,19 @@
+PACKAGE=sci0118
+VERSION=1.0.0
+CATEGORY=sci-mathematics
+DESCRIPTION="Package 118"
+HOMEPAGE="https://example.com/sci0118"
+LICENSE="MIT"
+SRC_URI="https://example.com/sci0118/sci0118-1.0.0.tar.gz -> sci0118-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

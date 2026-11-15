@@ -1,0 +1,19 @@
+PACKAGE=pkg004667
+VERSION=1.0.0
+CATEGORY=dev-ml
+DESCRIPTION="Package 4667"
+HOMEPAGE="https://pkg004667.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004667.org/pkg004667-1.0.0.tar.gz -> pkg004667-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

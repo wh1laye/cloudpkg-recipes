@@ -1,0 +1,19 @@
+PACKAGE=pkg011181
+VERSION=1.0.0
+CATEGORY=net-firewall
+DESCRIPTION="Package 11181"
+HOMEPAGE="https://pkg011181.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011181.org/pkg011181-1.0.0.tar.gz -> pkg011181-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

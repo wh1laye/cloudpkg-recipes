@@ -1,0 +1,17 @@
+PACKAGE=pkg0796
+VERSION=1.0.0
+CATEGORY=dev-libs
+DESCRIPTION="Package 796"
+HOMEPAGE="https://example.com/pkg0796"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0796/pkg0796-1.0.0.tar.gz -> pkg0796-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || die
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

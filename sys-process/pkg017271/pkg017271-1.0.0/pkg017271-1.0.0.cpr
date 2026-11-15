@@ -1,0 +1,19 @@
+PACKAGE=pkg017271
+VERSION=1.0.0
+CATEGORY=sys-process
+DESCRIPTION="Package 17271"
+HOMEPAGE="https://pkg017271.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017271.org/pkg017271-1.0.0.tar.gz -> pkg017271-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

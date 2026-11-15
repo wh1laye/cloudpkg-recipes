@@ -1,0 +1,19 @@
+PACKAGE=pkg006791
+VERSION=1.0.0
+CATEGORY=games-console
+DESCRIPTION="Package 6791"
+HOMEPAGE="https://pkg006791.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg006791.org/pkg006791-1.0.0.tar.gz -> pkg006791-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

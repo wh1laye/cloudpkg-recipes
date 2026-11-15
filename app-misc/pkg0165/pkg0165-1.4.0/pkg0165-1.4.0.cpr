@@ -1,0 +1,19 @@
+PACKAGE=pkg0165
+VERSION=1.4.0
+CATEGORY=app-misc
+DESCRIPTION="Package 165"
+HOMEPAGE="https://example.com/pkg0165"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0165/pkg0165-1.4.0.tar.gz -> pkg0165-1.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

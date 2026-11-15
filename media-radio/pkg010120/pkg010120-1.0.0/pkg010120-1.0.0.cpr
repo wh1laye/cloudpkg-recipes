@@ -1,0 +1,19 @@
+PACKAGE=pkg010120
+VERSION=1.0.0
+CATEGORY=media-radio
+DESCRIPTION="Package 10120"
+HOMEPAGE="https://pkg010120.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010120.org/pkg010120-1.0.0.tar.gz -> pkg010120-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

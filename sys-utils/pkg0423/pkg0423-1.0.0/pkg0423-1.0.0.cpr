@@ -1,0 +1,17 @@
+PACKAGE=pkg0423
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="Package 423"
+HOMEPAGE="https://example.com/pkg0423"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0423/pkg0423-1.0.0.tar.gz -> pkg0423-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || die
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

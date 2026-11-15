@@ -1,0 +1,22 @@
+PACKAGE=glances
+VERSION=3.4.0
+CATEGORY=app-misc
+DESCRIPTION="Comprehensive system monitoring tool"
+HOMEPAGE="https://github.com/nicolargo/glances"
+LICENSE="LGPL-3"
+SRC_URI="https://github.com/nicolargo/glances/archive/refs/tags/v${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
+DEPEND="dev-python/setuptools dev-python/psutil dev-python/requests"
+RDEPEND="${DEPEND}"
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    python3 setup.py build || die "Build failed"
+}
+src_install() {
+    python3 setup.py install --root="${D}" --prefix=/usr || die "Install failed"
+    dobin bin/glances
+    dodoc README.rst CHANGELOG.md
+}
+pkg_postinst() {
+    einfo "Glances installed"
+}

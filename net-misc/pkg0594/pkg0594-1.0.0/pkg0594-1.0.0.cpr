@@ -1,0 +1,17 @@
+PACKAGE=pkg0594
+VERSION=1.0.0
+CATEGORY=net-misc
+DESCRIPTION="Package 594"
+HOMEPAGE="https://example.com/pkg0594"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0594/pkg0594-1.0.0.tar.gz -> pkg0594-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || die
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg004752
+VERSION=1.0.0
+CATEGORY=dev-ml
+DESCRIPTION="Package 4752"
+HOMEPAGE="https://pkg004752.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004752.org/pkg004752-1.0.0.tar.gz -> pkg004752-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

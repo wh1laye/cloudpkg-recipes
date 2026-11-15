@@ -1,0 +1,19 @@
+PACKAGE=pkg013541
+VERSION=1.0.0
+CATEGORY=net-vpn
+DESCRIPTION="Package 13541"
+HOMEPAGE="https://pkg013541.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013541.org/pkg013541-1.0.0.tar.gz -> pkg013541-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

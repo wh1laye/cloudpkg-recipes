@@ -1,0 +1,24 @@
+PACKAGE=liberation
+VERSION=2.1.5
+CATEGORY=media-fonts
+DESCRIPTION="Liberation fonts"
+HOMEPAGE="https://github.com/liberationfonts/liberation-fonts"
+LICENSE="SIL-OFL-1.1"
+SRC_URI="https://github.com/liberationfonts/liberation-fonts/releases/download/2.1.5/liberation-fonts-ttf-2.1.5.tar.gz -> liberation-2.1.5.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+src_compile() {
+    make -j\(nproc\) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo "liberation installed successfully"
+}

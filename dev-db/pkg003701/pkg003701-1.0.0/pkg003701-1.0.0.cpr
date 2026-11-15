@@ -1,0 +1,19 @@
+PACKAGE=pkg003701
+VERSION=1.0.0
+CATEGORY=dev-db
+DESCRIPTION="Package 3701"
+HOMEPAGE="https://pkg003701.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003701.org/pkg003701-1.0.0.tar.gz -> pkg003701-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

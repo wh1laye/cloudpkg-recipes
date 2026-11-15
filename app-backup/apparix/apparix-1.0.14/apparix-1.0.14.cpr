@@ -1,0 +1,19 @@
+PACKAGE=apparix
+VERSION=1.0.14
+CATEGORY=app-backup
+DESCRIPTION="Backup and restore application data"
+HOMEPAGE="https://example.com/apparix"
+LICENSE="GPL-2"
+SRC_URI="https://example.com/apparix/apparix-1.0.14.tar.gz -> apparix-1.0.14.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

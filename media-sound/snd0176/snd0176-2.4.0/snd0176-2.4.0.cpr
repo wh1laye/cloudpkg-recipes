@@ -1,0 +1,19 @@
+PACKAGE=snd0176
+VERSION=2.4.0
+CATEGORY=media-sound
+DESCRIPTION="Package 176"
+HOMEPAGE="https://example.com/snd0176"
+LICENSE=""MIT""
+SRC_URI="https://example.com/snd0176/snd0176-2.4.0.tar.gz -> snd0176-2.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

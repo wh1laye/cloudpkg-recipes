@@ -1,0 +1,19 @@
+PACKAGE=argyllcms
+VERSION=2.3.1
+CATEGORY=media-gfx
+DESCRIPTION="Color management system"
+HOMEPAGE="https://example.com/argyllcms"
+LICENSE="AGPL-3"
+SRC_URI="https://example.com/argyllcms/argyllcms-2.3.1.tar.gz -> argyllcms-2.3.1.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

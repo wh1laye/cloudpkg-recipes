@@ -1,0 +1,19 @@
+PACKAGE=sci0158
+VERSION=1.0.0
+CATEGORY=sci-mathematics
+DESCRIPTION="Package 158"
+HOMEPAGE="https://example.com/sci0158"
+LICENSE="MIT"
+SRC_URI="https://example.com/sci0158/sci0158-1.0.0.tar.gz -> sci0158-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg008957
+VERSION=1.0.0
+CATEGORY=mail-client
+DESCRIPTION="Package 8957"
+HOMEPAGE="https://pkg008957.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg008957.org/pkg008957-1.0.0.tar.gz -> pkg008957-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg011016
+VERSION=1.0.0
+CATEGORY=net-dns
+DESCRIPTION="Package 11016"
+HOMEPAGE="https://pkg011016.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011016.org/pkg011016-1.0.0.tar.gz -> pkg011016-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

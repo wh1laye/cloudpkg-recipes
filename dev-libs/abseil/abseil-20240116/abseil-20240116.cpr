@@ -1,0 +1,19 @@
+PACKAGE=abseil
+VERSION=20240116
+CATEGORY=dev-libs
+DESCRIPTION="Abseil C++ libraries"
+HOMEPAGE="https://example.com/abseil"
+LICENSE="Apache-2.0"
+SRC_URI="https://example.com/abseil/abseil-20240116.tar.gz -> abseil-20240116.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

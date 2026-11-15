@@ -1,0 +1,19 @@
+PACKAGE=pkg006525
+VERSION=1.0.0
+CATEGORY=games-board
+DESCRIPTION="Package 6525"
+HOMEPAGE="https://pkg006525.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg006525.org/pkg006525-1.0.0.tar.gz -> pkg006525-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

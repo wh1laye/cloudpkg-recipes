@@ -1,0 +1,19 @@
+PACKAGE=app0326
+VERSION=1.0.0
+CATEGORY=app-misc
+DESCRIPTION="Package 326"
+HOMEPAGE="https://example.com/app0326"
+LICENSE="MIT"
+SRC_URI="https://example.com/app0326/app0326-1.0.0.tar.gz -> app0326-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

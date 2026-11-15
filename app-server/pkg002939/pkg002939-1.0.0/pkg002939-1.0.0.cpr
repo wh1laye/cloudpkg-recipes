@@ -1,0 +1,19 @@
+PACKAGE=pkg002939
+VERSION=1.0.0
+CATEGORY=app-server
+DESCRIPTION="Package 2939"
+HOMEPAGE="https://pkg002939.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002939.org/pkg002939-1.0.0.tar.gz -> pkg002939-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

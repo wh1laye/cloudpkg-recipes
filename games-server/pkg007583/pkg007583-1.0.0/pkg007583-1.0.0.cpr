@@ -1,0 +1,19 @@
+PACKAGE=pkg007583
+VERSION=1.0.0
+CATEGORY=games-server
+DESCRIPTION="Package 7583"
+HOMEPAGE="https://pkg007583.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007583.org/pkg007583-1.0.0.tar.gz -> pkg007583-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg006150
+VERSION=1.0.0
+CATEGORY=games-action
+DESCRIPTION="Package 6150"
+HOMEPAGE="https://pkg006150.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg006150.org/pkg006150-1.0.0.tar.gz -> pkg006150-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

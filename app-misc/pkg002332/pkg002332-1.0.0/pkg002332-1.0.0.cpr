@@ -1,0 +1,19 @@
+PACKAGE=pkg002332
+VERSION=1.0.0
+CATEGORY=app-misc
+DESCRIPTION="Package 2332"
+HOMEPAGE="https://pkg002332.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002332.org/pkg002332-1.0.0.tar.gz -> pkg002332-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

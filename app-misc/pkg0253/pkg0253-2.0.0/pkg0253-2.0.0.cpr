@@ -1,0 +1,19 @@
+PACKAGE=pkg0253
+VERSION=2.0.0
+CATEGORY=app-misc
+DESCRIPTION="Package 253"
+HOMEPAGE="https://example.com/pkg0253"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0253/pkg0253-2.0.0.tar.gz -> pkg0253-2.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

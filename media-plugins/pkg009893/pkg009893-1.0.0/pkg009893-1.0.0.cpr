@@ -1,0 +1,19 @@
+PACKAGE=pkg009893
+VERSION=1.0.0
+CATEGORY=media-plugins
+DESCRIPTION="Package 9893"
+HOMEPAGE="https://pkg009893.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009893.org/pkg009893-1.0.0.tar.gz -> pkg009893-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

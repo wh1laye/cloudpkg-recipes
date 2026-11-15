@@ -1,0 +1,19 @@
+PACKAGE=dev0454
+VERSION=1.5.0
+CATEGORY=dev-util
+DESCRIPTION="Package 454"
+HOMEPAGE="https://example.com/dev0454"
+LICENSE=""MIT""
+SRC_URI="https://example.com/dev0454/dev0454-1.5.0.tar.gz -> dev0454-1.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

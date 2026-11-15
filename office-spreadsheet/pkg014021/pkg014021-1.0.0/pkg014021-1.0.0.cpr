@@ -1,0 +1,19 @@
+PACKAGE=pkg014021
+VERSION=1.0.0
+CATEGORY=office-spreadsheet
+DESCRIPTION="Package 14021"
+HOMEPAGE="https://pkg014021.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014021.org/pkg014021-1.0.0.tar.gz -> pkg014021-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

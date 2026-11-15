@@ -1,0 +1,17 @@
+PACKAGE=pkg0791
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="Package 791"
+HOMEPAGE="https://example.com/pkg0791"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0791/pkg0791-1.0.0.tar.gz -> pkg0791-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || die
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

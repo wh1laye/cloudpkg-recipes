@@ -1,0 +1,19 @@
+PACKAGE=pkg012412
+VERSION=1.0.0
+CATEGORY=net-nds
+DESCRIPTION="Package 12412"
+HOMEPAGE="https://pkg012412.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012412.org/pkg012412-1.0.0.tar.gz -> pkg012412-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

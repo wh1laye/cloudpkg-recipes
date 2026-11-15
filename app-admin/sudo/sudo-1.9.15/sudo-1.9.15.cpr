@@ -1,0 +1,36 @@
+PACKAGE=sudo
+VERSION=1.9.15
+CATEGORY=app-admin
+DESCRIPTION="Execute commands with elevated privileges"
+HOMEPAGE="https://www.sudo.ws/"
+LICENSE="ISC"
+SRC_URI="https://www.sudo.ws/dist/sudo-${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
+DEPEND="sys-libs/pam sys-libs/libaudit"
+RDEPEND="${DEPEND}"
+SLOT=0
+KEYWORDS="amd64"
+BUILD_FLAGS="--with-pam --with-audit --with-logging=syslog --with-env-editor"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --libexecdir=/usr/lib/sudo \
+        --with-rundir=/run/sudo \
+        --with-vardir=/var/db/sudo \
+        --disable-static \
+        ${BUILD_FLAGS}
+}
+src_compile() {
+    make -j$(nproc) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="${D}" install || die "Installation failed"
+    keepdir /etc/sudoers.d
+    insinto /etc
+    newins sudoers sudoers
+    dodoc README.LDAP README.PAM README.PLUGIN README.SUDOERS
+}
+pkg_postinst() {
+    einfo "sudo installed successfully"
+    einfo "Configure /etc/sudoers before use"
+    einfo "Default sudoers file installed - edit with visudo"
+}

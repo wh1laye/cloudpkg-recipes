@@ -1,0 +1,19 @@
+PACKAGE=pkg005293
+VERSION=1.0.0
+CATEGORY=dev-ruby
+DESCRIPTION="Package 5293"
+HOMEPAGE="https://pkg005293.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005293.org/pkg005293-1.0.0.tar.gz -> pkg005293-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

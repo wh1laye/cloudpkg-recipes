@@ -1,0 +1,19 @@
+PACKAGE=web0117
+VERSION=1.0.0
+CATEGORY=www-client
+DESCRIPTION="Package 117"
+HOMEPAGE="https://example.com/web0117"
+LICENSE="MIT"
+SRC_URI="https://example.com/web0117/web0117-1.0.0.tar.gz -> web0117-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

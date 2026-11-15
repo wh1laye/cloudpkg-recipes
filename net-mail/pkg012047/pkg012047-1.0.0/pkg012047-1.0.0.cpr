@@ -1,0 +1,19 @@
+PACKAGE=pkg012047
+VERSION=1.0.0
+CATEGORY=net-mail
+DESCRIPTION="Package 12047"
+HOMEPAGE="https://pkg012047.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012047.org/pkg012047-1.0.0.tar.gz -> pkg012047-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

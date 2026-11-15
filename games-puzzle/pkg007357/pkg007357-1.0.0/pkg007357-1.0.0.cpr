@@ -1,0 +1,19 @@
+PACKAGE=pkg007357
+VERSION=1.0.0
+CATEGORY=games-puzzle
+DESCRIPTION="Package 7357"
+HOMEPAGE="https://pkg007357.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007357.org/pkg007357-1.0.0.tar.gz -> pkg007357-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

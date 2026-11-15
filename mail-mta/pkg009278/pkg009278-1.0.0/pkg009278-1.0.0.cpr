@@ -1,0 +1,19 @@
+PACKAGE=pkg009278
+VERSION=1.0.0
+CATEGORY=mail-mta
+DESCRIPTION="Package 9278"
+HOMEPAGE="https://pkg009278.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009278.org/pkg009278-1.0.0.tar.gz -> pkg009278-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

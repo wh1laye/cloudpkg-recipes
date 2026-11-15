@@ -1,0 +1,19 @@
+PACKAGE=pkg017067
+VERSION=1.0.0
+CATEGORY=sys-libs
+DESCRIPTION="Package 17067"
+HOMEPAGE="https://pkg017067.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017067.org/pkg017067-1.0.0.tar.gz -> pkg017067-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

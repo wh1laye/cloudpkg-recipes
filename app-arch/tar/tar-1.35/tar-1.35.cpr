@@ -1,0 +1,19 @@
+PACKAGE=tar
+VERSION=1.35
+CATEGORY=app-arch
+DESCRIPTION="Tar archiver"
+HOMEPAGE="https://tar.org/"
+LICENSE="GPL-3"
+SRC_URI="https://downloads.tar.org/tar-1.35.tar.gz -> tar-1.35.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

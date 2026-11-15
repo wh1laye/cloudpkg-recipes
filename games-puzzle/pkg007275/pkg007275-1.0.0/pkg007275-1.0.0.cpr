@@ -1,0 +1,19 @@
+PACKAGE=pkg007275
+VERSION=1.0.0
+CATEGORY=games-puzzle
+DESCRIPTION="Package 7275"
+HOMEPAGE="https://pkg007275.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007275.org/pkg007275-1.0.0.tar.gz -> pkg007275-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

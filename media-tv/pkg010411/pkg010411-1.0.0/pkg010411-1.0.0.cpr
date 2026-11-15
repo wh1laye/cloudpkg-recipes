@@ -1,0 +1,19 @@
+PACKAGE=pkg010411
+VERSION=1.0.0
+CATEGORY=media-tv
+DESCRIPTION="Package 10411"
+HOMEPAGE="https://pkg010411.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010411.org/pkg010411-1.0.0.tar.gz -> pkg010411-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

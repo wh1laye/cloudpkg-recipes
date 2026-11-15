@@ -1,0 +1,19 @@
+PACKAGE=pkg010264
+VERSION=1.0.0
+CATEGORY=media-sound
+DESCRIPTION="Package 10264"
+HOMEPAGE="https://pkg010264.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010264.org/pkg010264-1.0.0.tar.gz -> pkg010264-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

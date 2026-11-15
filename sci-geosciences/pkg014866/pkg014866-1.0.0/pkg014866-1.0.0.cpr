@@ -1,0 +1,19 @@
+PACKAGE=pkg014866
+VERSION=1.0.0
+CATEGORY=sci-geosciences
+DESCRIPTION="Package 14866"
+HOMEPAGE="https://pkg014866.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014866.org/pkg014866-1.0.0.tar.gz -> pkg014866-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

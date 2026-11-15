@@ -1,0 +1,19 @@
+PACKAGE=git
+VERSION=1.5.0
+CATEGORY=app-misc
+DESCRIPTION="Distributed version control system"
+HOMEPAGE="https://example.com/git"
+LICENSE=""GPL-2""
+SRC_URI="https://example.com/git/git-1.5.0.tar.gz -> git-1.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

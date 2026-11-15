@@ -1,0 +1,19 @@
+PACKAGE=app2091
+VERSION=1.0.0
+CATEGORY=app-misc
+DESCRIPTION="Package 91"
+HOMEPAGE="https://example.com/app2091"
+LICENSE="MIT"
+SRC_URI="https://example.com/app2091/app2091-1.0.0.tar.gz -> app2091-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg000175
+VERSION=1.0.0
+CATEGORY=app-arch
+DESCRIPTION="Package 175"
+HOMEPAGE="https://pkg000175.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000175.org/pkg000175-1.0.0.tar.gz -> pkg000175-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

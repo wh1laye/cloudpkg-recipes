@@ -1,0 +1,19 @@
+PACKAGE=pkg0217
+VERSION=1.2.0
+CATEGORY=app-misc
+DESCRIPTION="Package 217"
+HOMEPAGE="https://example.com/pkg0217"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0217/pkg0217-1.2.0.tar.gz -> pkg0217-1.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

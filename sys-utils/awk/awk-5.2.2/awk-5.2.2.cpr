@@ -1,0 +1,27 @@
+PACKAGE=awk
+VERSION=5.2.2
+CATEGORY=sys-utils
+DESCRIPTION="Pattern scanning and processing language"
+HOMEPAGE="https://www.gnu.org/software/gawk/"
+LICENSE="GPL-3"
+SRC_URI="https://ftp.gnu.org/gnu/gawk/gawk-5.2.2.tar.xz -> awk-5.2.2.tar.xz"
+DEPEND=""
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j$(nproc) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="${D}" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo " installed successfully"
+}

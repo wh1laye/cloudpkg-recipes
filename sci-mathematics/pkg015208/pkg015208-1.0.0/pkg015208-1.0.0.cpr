@@ -1,0 +1,19 @@
+PACKAGE=pkg015208
+VERSION=1.0.0
+CATEGORY=sci-mathematics
+DESCRIPTION="Package 15208"
+HOMEPAGE="https://pkg015208.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015208.org/pkg015208-1.0.0.tar.gz -> pkg015208-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

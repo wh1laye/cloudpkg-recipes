@@ -1,0 +1,19 @@
+PACKAGE=pkg010121
+VERSION=1.0.0
+CATEGORY=media-radio
+DESCRIPTION="Package 10121"
+HOMEPAGE="https://pkg010121.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010121.org/pkg010121-1.0.0.tar.gz -> pkg010121-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

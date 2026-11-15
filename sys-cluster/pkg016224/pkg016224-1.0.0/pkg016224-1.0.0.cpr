@@ -1,0 +1,19 @@
+PACKAGE=pkg016224
+VERSION=1.0.0
+CATEGORY=sys-cluster
+DESCRIPTION="Package 16224"
+HOMEPAGE="https://pkg016224.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016224.org/pkg016224-1.0.0.tar.gz -> pkg016224-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

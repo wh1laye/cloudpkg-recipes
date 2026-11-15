@@ -1,0 +1,19 @@
+PACKAGE=pkg015451
+VERSION=1.0.0
+CATEGORY=sci-visualization
+DESCRIPTION="Package 15451"
+HOMEPAGE="https://pkg015451.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015451.org/pkg015451-1.0.0.tar.gz -> pkg015451-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

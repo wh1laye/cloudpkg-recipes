@@ -1,0 +1,19 @@
+PACKAGE=atlas
+VERSION=3.10.3
+CATEGORY=sci-libs
+DESCRIPTION="Automatically Tuned Linear Algebra Software"
+HOMEPAGE="https://example.com/atlas"
+LICENSE="BSD-3"
+SRC_URI="https://example.com/atlas/atlas-3.10.3.tar.gz -> atlas-3.10.3.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

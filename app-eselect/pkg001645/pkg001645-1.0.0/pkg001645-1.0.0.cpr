@@ -1,0 +1,19 @@
+PACKAGE=pkg001645
+VERSION=1.0.0
+CATEGORY=app-eselect
+DESCRIPTION="Package 1645"
+HOMEPAGE="https://pkg001645.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001645.org/pkg001645-1.0.0.tar.gz -> pkg001645-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

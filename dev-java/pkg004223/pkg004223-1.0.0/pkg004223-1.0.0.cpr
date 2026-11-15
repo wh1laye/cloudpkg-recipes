@@ -1,0 +1,19 @@
+PACKAGE=pkg004223
+VERSION=1.0.0
+CATEGORY=dev-java
+DESCRIPTION="Package 4223"
+HOMEPAGE="https://pkg004223.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004223.org/pkg004223-1.0.0.tar.gz -> pkg004223-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

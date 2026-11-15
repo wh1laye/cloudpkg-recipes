@@ -1,0 +1,19 @@
+PACKAGE=pkg012656
+VERSION=1.0.0
+CATEGORY=net-nntp
+DESCRIPTION="Package 12656"
+HOMEPAGE="https://pkg012656.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012656.org/pkg012656-1.0.0.tar.gz -> pkg012656-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

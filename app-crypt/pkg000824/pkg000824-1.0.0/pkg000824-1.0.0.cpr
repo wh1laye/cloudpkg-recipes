@@ -1,0 +1,19 @@
+PACKAGE=pkg000824
+VERSION=1.0.0
+CATEGORY=app-crypt
+DESCRIPTION="Package 824"
+HOMEPAGE="https://pkg000824.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000824.org/pkg000824-1.0.0.tar.gz -> pkg000824-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

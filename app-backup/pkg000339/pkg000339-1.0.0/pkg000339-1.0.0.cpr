@@ -1,0 +1,19 @@
+PACKAGE=pkg000339
+VERSION=1.0.0
+CATEGORY=app-backup
+DESCRIPTION="Package 339"
+HOMEPAGE="https://pkg000339.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000339.org/pkg000339-1.0.0.tar.gz -> pkg000339-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

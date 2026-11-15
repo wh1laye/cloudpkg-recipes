@@ -1,0 +1,19 @@
+PACKAGE=web0327
+VERSION=1.0.0
+CATEGORY=www-client
+DESCRIPTION="Package 327"
+HOMEPAGE="https://example.com/web0327"
+LICENSE="MIT"
+SRC_URI="https://example.com/web0327/web0327-1.0.0.tar.gz -> web0327-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

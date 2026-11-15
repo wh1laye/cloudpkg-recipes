@@ -1,0 +1,19 @@
+PACKAGE=pkg016073
+VERSION=1.0.0
+CATEGORY=sys-boot
+DESCRIPTION="Package 16073"
+HOMEPAGE="https://pkg016073.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016073.org/pkg016073-1.0.0.tar.gz -> pkg016073-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

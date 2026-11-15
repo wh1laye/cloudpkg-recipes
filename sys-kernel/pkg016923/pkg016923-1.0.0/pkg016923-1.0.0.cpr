@@ -1,0 +1,19 @@
+PACKAGE=pkg016923
+VERSION=1.0.0
+CATEGORY=sys-kernel
+DESCRIPTION="Package 16923"
+HOMEPAGE="https://pkg016923.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016923.org/pkg016923-1.0.0.tar.gz -> pkg016923-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg013428
+VERSION=1.0.0
+CATEGORY=net-voip
+DESCRIPTION="Package 13428"
+HOMEPAGE="https://pkg013428.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013428.org/pkg013428-1.0.0.tar.gz -> pkg013428-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

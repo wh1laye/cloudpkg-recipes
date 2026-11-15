@@ -1,0 +1,19 @@
+PACKAGE=pkg0289
+VERSION=1.3.0
+CATEGORY=app-misc
+DESCRIPTION="Package 289"
+HOMEPAGE="https://example.com/pkg0289"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0289/pkg0289-1.3.0.tar.gz -> pkg0289-1.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

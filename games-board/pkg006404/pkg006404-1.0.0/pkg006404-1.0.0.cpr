@@ -1,0 +1,19 @@
+PACKAGE=pkg006404
+VERSION=1.0.0
+CATEGORY=games-board
+DESCRIPTION="Package 6404"
+HOMEPAGE="https://pkg006404.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg006404.org/pkg006404-1.0.0.tar.gz -> pkg006404-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

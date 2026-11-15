@@ -1,0 +1,19 @@
+PACKAGE=pkg001112
+VERSION=1.0.0
+CATEGORY=app-doc
+DESCRIPTION="Package 1112"
+HOMEPAGE="https://pkg001112.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001112.org/pkg001112-1.0.0.tar.gz -> pkg001112-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg004726
+VERSION=1.0.0
+CATEGORY=dev-ml
+DESCRIPTION="Package 4726"
+HOMEPAGE="https://pkg004726.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004726.org/pkg004726-1.0.0.tar.gz -> pkg004726-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

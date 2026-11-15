@@ -1,0 +1,19 @@
+PACKAGE=pkg001648
+VERSION=1.0.0
+CATEGORY=app-eselect
+DESCRIPTION="Package 1648"
+HOMEPAGE="https://pkg001648.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001648.org/pkg001648-1.0.0.tar.gz -> pkg001648-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

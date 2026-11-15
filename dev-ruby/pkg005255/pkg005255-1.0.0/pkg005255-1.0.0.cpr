@@ -1,0 +1,19 @@
+PACKAGE=pkg005255
+VERSION=1.0.0
+CATEGORY=dev-ruby
+DESCRIPTION="Package 5255"
+HOMEPAGE="https://pkg005255.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005255.org/pkg005255-1.0.0.tar.gz -> pkg005255-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

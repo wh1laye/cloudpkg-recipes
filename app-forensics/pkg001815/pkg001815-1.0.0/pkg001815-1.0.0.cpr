@@ -1,0 +1,19 @@
+PACKAGE=pkg001815
+VERSION=1.0.0
+CATEGORY=app-forensics
+DESCRIPTION="Package 1815"
+HOMEPAGE="https://pkg001815.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001815.org/pkg001815-1.0.0.tar.gz -> pkg001815-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

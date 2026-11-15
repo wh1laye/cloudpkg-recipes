@@ -1,0 +1,19 @@
+PACKAGE=gfx0134
+VERSION=1.0.0
+CATEGORY=media-gfx
+DESCRIPTION="Package 134"
+HOMEPAGE="https://example.com/gfx0134"
+LICENSE="MIT"
+SRC_URI="https://example.com/gfx0134/gfx0134-1.0.0.tar.gz -> gfx0134-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

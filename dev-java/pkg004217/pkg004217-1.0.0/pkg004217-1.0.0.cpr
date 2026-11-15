@@ -1,0 +1,19 @@
+PACKAGE=pkg004217
+VERSION=1.0.0
+CATEGORY=dev-java
+DESCRIPTION="Package 4217"
+HOMEPAGE="https://pkg004217.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004217.org/pkg004217-1.0.0.tar.gz -> pkg004217-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

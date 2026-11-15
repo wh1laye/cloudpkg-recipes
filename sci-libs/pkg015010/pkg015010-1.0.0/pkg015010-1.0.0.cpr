@@ -1,0 +1,19 @@
+PACKAGE=pkg015010
+VERSION=1.0.0
+CATEGORY=sci-libs
+DESCRIPTION="Package 15010"
+HOMEPAGE="https://pkg015010.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015010.org/pkg015010-1.0.0.tar.gz -> pkg015010-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

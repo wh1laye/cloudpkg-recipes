@@ -1,0 +1,19 @@
+PACKAGE=pkg001666
+VERSION=1.0.0
+CATEGORY=app-eselect
+DESCRIPTION="Package 1666"
+HOMEPAGE="https://pkg001666.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001666.org/pkg001666-1.0.0.tar.gz -> pkg001666-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg003292
+VERSION=1.0.0
+CATEGORY=app-text
+DESCRIPTION="Package 3292"
+HOMEPAGE="https://pkg003292.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003292.org/pkg003292-1.0.0.tar.gz -> pkg003292-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

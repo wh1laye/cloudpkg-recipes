@@ -1,0 +1,19 @@
+PACKAGE=pkg024806
+VERSION=1.0.0
+CATEGORY=media-gfx
+DESCRIPTION="pkg024806 package"
+HOMEPAGE="https://pkg024806.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg024806.org/pkg024806-1.0.0.tar.gz -> pkg024806-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

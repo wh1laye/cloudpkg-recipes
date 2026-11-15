@@ -1,0 +1,18 @@
+PACKAGE=iotop
+VERSION=0.6
+CATEGORY=sys-apps
+DESCRIPTION="Simple top-like I/O monitor"
+HOMEPAGE="https://github.com/Tomas-M/iotop"
+LICENSE="GPL-2"
+SRC_URI="https://github.com/Tomas-M/iotop/archive/refs/tags/v${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
+DEPEND="dev-python/setuptools sys-libs/ncurses"
+RDEPEND="${DEPEND}"
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    python3 setup.py build || die "Build failed"
+}
+src_install() {
+    python3 setup.py install --root="${D}" --prefix=/usr || die "Install failed"
+    dodoc README.rst
+}

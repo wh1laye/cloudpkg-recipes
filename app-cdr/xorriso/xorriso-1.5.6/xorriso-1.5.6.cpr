@@ -1,0 +1,24 @@
+PACKAGE=xorriso
+VERSION=1.5.6
+CATEGORY=app-cdr
+DESCRIPTION="ISO9660 Rock Ridge filesystem manipulator"
+HOMEPAGE="https://www.gnu.org/software/xorriso/"
+LICENSE="GPL-3"
+SRC_URI="https://ftp.gnu.org/gnu/xorriso/xorriso-1.5.6.tar.gz -> xorriso-1.5.6.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+src_compile() {
+    make -j\(nproc\) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo "xorriso installed successfully"
+}

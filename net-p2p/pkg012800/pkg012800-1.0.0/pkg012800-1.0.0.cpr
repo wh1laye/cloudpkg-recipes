@@ -1,0 +1,19 @@
+PACKAGE=pkg012800
+VERSION=1.0.0
+CATEGORY=net-p2p
+DESCRIPTION="Package 12800"
+HOMEPAGE="https://pkg012800.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012800.org/pkg012800-1.0.0.tar.gz -> pkg012800-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg009114
+VERSION=1.0.0
+CATEGORY=mail-filter
+DESCRIPTION="Package 9114"
+HOMEPAGE="https://pkg009114.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009114.org/pkg009114-1.0.0.tar.gz -> pkg009114-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

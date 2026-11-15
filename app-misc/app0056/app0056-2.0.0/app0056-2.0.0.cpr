@@ -1,0 +1,19 @@
+PACKAGE=app0056
+VERSION=2.0.0
+CATEGORY=app-misc
+DESCRIPTION="Package 56"
+HOMEPAGE="https://example.com/app0056"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0056/app0056-2.0.0.tar.gz -> app0056-2.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

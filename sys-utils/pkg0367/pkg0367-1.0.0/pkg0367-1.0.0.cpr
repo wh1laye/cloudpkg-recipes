@@ -1,0 +1,17 @@
+PACKAGE=pkg0367
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="Package 367"
+HOMEPAGE="https://example.com/pkg0367"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0367/pkg0367-1.0.0.tar.gz -> pkg0367-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || die
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

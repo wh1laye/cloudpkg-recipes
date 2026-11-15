@@ -1,0 +1,19 @@
+PACKAGE=pkg001580
+VERSION=1.0.0
+CATEGORY=app-emulation
+DESCRIPTION="Package 1580"
+HOMEPAGE="https://pkg001580.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001580.org/pkg001580-1.0.0.tar.gz -> pkg001580-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

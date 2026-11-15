@@ -1,0 +1,19 @@
+PACKAGE=pkg012532
+VERSION=1.0.0
+CATEGORY=net-news
+DESCRIPTION="Package 12532"
+HOMEPAGE="https://pkg012532.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012532.org/pkg012532-1.0.0.tar.gz -> pkg012532-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

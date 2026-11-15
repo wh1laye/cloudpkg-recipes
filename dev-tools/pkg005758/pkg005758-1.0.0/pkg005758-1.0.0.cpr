@@ -1,0 +1,19 @@
+PACKAGE=pkg005758
+VERSION=1.0.0
+CATEGORY=dev-tools
+DESCRIPTION="Package 5758"
+HOMEPAGE="https://pkg005758.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005758.org/pkg005758-1.0.0.tar.gz -> pkg005758-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg017531
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="Package 17531"
+HOMEPAGE="https://pkg017531.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017531.org/pkg017531-1.0.0.tar.gz -> pkg017531-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg003023
+VERSION=1.0.0
+CATEGORY=app-server
+DESCRIPTION="Package 3023"
+HOMEPAGE="https://pkg003023.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003023.org/pkg003023-1.0.0.tar.gz -> pkg003023-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

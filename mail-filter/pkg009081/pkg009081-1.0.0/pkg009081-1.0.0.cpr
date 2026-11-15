@@ -1,0 +1,19 @@
+PACKAGE=pkg009081
+VERSION=1.0.0
+CATEGORY=mail-filter
+DESCRIPTION="Package 9081"
+HOMEPAGE="https://pkg009081.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009081.org/pkg009081-1.0.0.tar.gz -> pkg009081-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

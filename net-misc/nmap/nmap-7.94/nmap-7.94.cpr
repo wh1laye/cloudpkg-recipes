@@ -1,0 +1,28 @@
+PACKAGE=nmap
+VERSION=7.94
+CATEGORY=net-misc
+DESCRIPTION="Network mapper - security scanner"
+HOMEPAGE="https://nmap.org/"
+LICENSE="GPL-2"
+SRC_URI="https://nmap.org/dist/nmap-7.94.tar.bz2 -> nmap-7.94.tar.bz2"
+DEPEND="dev-libs/openssl dev-libs/libpcre"
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+BUILD_FLAGS="--with-openssl"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j$(nproc) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="${D}" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo " installed successfully"
+}

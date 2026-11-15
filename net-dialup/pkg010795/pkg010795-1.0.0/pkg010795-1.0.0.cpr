@@ -1,0 +1,19 @@
+PACKAGE=pkg010795
+VERSION=1.0.0
+CATEGORY=net-dialup
+DESCRIPTION="Package 10795"
+HOMEPAGE="https://pkg010795.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010795.org/pkg010795-1.0.0.tar.gz -> pkg010795-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

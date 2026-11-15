@@ -1,0 +1,19 @@
+PACKAGE=pkg015447
+VERSION=1.0.0
+CATEGORY=sci-visualization
+DESCRIPTION="Package 15447"
+HOMEPAGE="https://pkg015447.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015447.org/pkg015447-1.0.0.tar.gz -> pkg015447-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

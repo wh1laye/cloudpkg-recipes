@@ -1,0 +1,19 @@
+PACKAGE=pkg015692
+VERSION=1.0.0
+CATEGORY=sys-auth
+DESCRIPTION="Package 15692"
+HOMEPAGE="https://pkg015692.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015692.org/pkg015692-1.0.0.tar.gz -> pkg015692-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

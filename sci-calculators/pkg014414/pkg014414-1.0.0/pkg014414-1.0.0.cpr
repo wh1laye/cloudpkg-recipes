@@ -1,0 +1,19 @@
+PACKAGE=pkg014414
+VERSION=1.0.0
+CATEGORY=sci-calculators
+DESCRIPTION="Package 14414"
+HOMEPAGE="https://pkg014414.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014414.org/pkg014414-1.0.0.tar.gz -> pkg014414-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

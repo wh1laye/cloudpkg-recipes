@@ -1,0 +1,19 @@
+PACKAGE=pkg007574
+VERSION=1.0.0
+CATEGORY=games-server
+DESCRIPTION="Package 7574"
+HOMEPAGE="https://pkg007574.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007574.org/pkg007574-1.0.0.tar.gz -> pkg007574-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

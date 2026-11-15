@@ -1,0 +1,19 @@
+PACKAGE=pkg007067
+VERSION=1.0.0
+CATEGORY=games-fps
+DESCRIPTION="Package 7067"
+HOMEPAGE="https://pkg007067.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007067.org/pkg007067-1.0.0.tar.gz -> pkg007067-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

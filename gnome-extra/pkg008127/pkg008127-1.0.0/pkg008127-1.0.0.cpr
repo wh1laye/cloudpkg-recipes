@@ -1,0 +1,19 @@
+PACKAGE=pkg008127
+VERSION=1.0.0
+CATEGORY=gnome-extra
+DESCRIPTION="Package 8127"
+HOMEPAGE="https://pkg008127.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg008127.org/pkg008127-1.0.0.tar.gz -> pkg008127-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=app0141
+VERSION=1.1.0
+CATEGORY=app-misc
+DESCRIPTION="Package 141"
+HOMEPAGE="https://example.com/app0141"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0141/app0141-1.1.0.tar.gz -> app0141-1.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

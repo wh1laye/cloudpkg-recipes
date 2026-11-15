@@ -1,0 +1,19 @@
+PACKAGE=pkg009100
+VERSION=1.0.0
+CATEGORY=mail-filter
+DESCRIPTION="Package 9100"
+HOMEPAGE="https://pkg009100.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009100.org/pkg009100-1.0.0.tar.gz -> pkg009100-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

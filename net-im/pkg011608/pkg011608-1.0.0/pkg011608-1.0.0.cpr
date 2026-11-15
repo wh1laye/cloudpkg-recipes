@@ -1,0 +1,19 @@
+PACKAGE=pkg011608
+VERSION=1.0.0
+CATEGORY=net-im
+DESCRIPTION="Package 11608"
+HOMEPAGE="https://pkg011608.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011608.org/pkg011608-1.0.0.tar.gz -> pkg011608-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

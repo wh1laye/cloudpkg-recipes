@@ -1,0 +1,19 @@
+PACKAGE=pkg010764
+VERSION=1.0.0
+CATEGORY=net-dialup
+DESCRIPTION="Package 10764"
+HOMEPAGE="https://pkg010764.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010764.org/pkg010764-1.0.0.tar.gz -> pkg010764-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

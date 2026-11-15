@@ -1,0 +1,19 @@
+PACKAGE=apngasm
+VERSION=2.91
+CATEGORY=media-gfx
+DESCRIPTION="APNG assembler"
+HOMEPAGE="https://example.com/apngasm"
+LICENSE="ZLIB"
+SRC_URI="https://example.com/apngasm/apngasm-2.91.tar.gz -> apngasm-2.91.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

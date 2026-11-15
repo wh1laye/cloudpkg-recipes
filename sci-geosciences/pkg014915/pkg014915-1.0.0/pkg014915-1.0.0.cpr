@@ -1,0 +1,19 @@
+PACKAGE=pkg014915
+VERSION=1.0.0
+CATEGORY=sci-geosciences
+DESCRIPTION="Package 14915"
+HOMEPAGE="https://pkg014915.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014915.org/pkg014915-1.0.0.tar.gz -> pkg014915-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

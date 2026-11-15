@@ -1,0 +1,19 @@
+PACKAGE=pkg010804
+VERSION=1.0.0
+CATEGORY=net-dialup
+DESCRIPTION="Package 10804"
+HOMEPAGE="https://pkg010804.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010804.org/pkg010804-1.0.0.tar.gz -> pkg010804-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

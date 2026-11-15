@@ -1,0 +1,19 @@
+PACKAGE=pkg024925
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="pkg024925 package"
+HOMEPAGE="https://pkg024925.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg024925.org/pkg024925-1.0.0.tar.gz -> pkg024925-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

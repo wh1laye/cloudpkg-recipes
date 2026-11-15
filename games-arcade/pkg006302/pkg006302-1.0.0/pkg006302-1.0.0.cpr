@@ -1,0 +1,19 @@
+PACKAGE=pkg006302
+VERSION=1.0.0
+CATEGORY=games-arcade
+DESCRIPTION="Package 6302"
+HOMEPAGE="https://pkg006302.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg006302.org/pkg006302-1.0.0.tar.gz -> pkg006302-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

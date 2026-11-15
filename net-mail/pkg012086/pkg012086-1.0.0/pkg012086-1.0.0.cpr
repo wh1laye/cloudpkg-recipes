@@ -1,0 +1,19 @@
+PACKAGE=pkg012086
+VERSION=1.0.0
+CATEGORY=net-mail
+DESCRIPTION="Package 12086"
+HOMEPAGE="https://pkg012086.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012086.org/pkg012086-1.0.0.tar.gz -> pkg012086-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

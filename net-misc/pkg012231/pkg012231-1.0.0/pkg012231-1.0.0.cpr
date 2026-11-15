@@ -1,0 +1,19 @@
+PACKAGE=pkg012231
+VERSION=1.0.0
+CATEGORY=net-misc
+DESCRIPTION="Package 12231"
+HOMEPAGE="https://pkg012231.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012231.org/pkg012231-1.0.0.tar.gz -> pkg012231-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

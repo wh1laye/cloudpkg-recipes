@@ -1,0 +1,19 @@
+PACKAGE=pkg003160
+VERSION=1.0.0
+CATEGORY=app-shells
+DESCRIPTION="Package 3160"
+HOMEPAGE="https://pkg003160.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003160.org/pkg003160-1.0.0.tar.gz -> pkg003160-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

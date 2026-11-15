@@ -1,0 +1,19 @@
+PACKAGE=pkg015041
+VERSION=1.0.0
+CATEGORY=sci-libs
+DESCRIPTION="Package 15041"
+HOMEPAGE="https://pkg015041.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015041.org/pkg015041-1.0.0.tar.gz -> pkg015041-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

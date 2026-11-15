@@ -1,0 +1,19 @@
+PACKAGE=pkg002221
+VERSION=1.0.0
+CATEGORY=app-leechcraft
+DESCRIPTION="Package 2221"
+HOMEPAGE="https://pkg002221.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002221.org/pkg002221-1.0.0.tar.gz -> pkg002221-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

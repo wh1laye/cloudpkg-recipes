@@ -1,0 +1,19 @@
+PACKAGE=pkg011026
+VERSION=1.0.0
+CATEGORY=net-file
+DESCRIPTION="Package 11026"
+HOMEPAGE="https://pkg011026.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011026.org/pkg011026-1.0.0.tar.gz -> pkg011026-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

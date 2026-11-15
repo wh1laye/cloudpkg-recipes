@@ -1,0 +1,19 @@
+PACKAGE=pkg002854
+VERSION=1.0.0
+CATEGORY=app-scanner
+DESCRIPTION="Package 2854"
+HOMEPAGE="https://pkg002854.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002854.org/pkg002854-1.0.0.tar.gz -> pkg002854-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

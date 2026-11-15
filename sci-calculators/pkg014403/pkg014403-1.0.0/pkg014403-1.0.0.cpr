@@ -1,0 +1,19 @@
+PACKAGE=pkg014403
+VERSION=1.0.0
+CATEGORY=sci-calculators
+DESCRIPTION="Package 14403"
+HOMEPAGE="https://pkg014403.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014403.org/pkg014403-1.0.0.tar.gz -> pkg014403-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

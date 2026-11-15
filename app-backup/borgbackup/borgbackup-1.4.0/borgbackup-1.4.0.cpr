@@ -1,0 +1,24 @@
+PACKAGE=borgbackup
+VERSION=1.4.0
+CATEGORY=app-backup
+DESCRIPTION="Deduplicating backup program"
+HOMEPAGE="https://www.borgbackup.org/"
+LICENSE="BSD-3"
+SRC_URI="https://github.com/borgbackup/borg/releases/download/1.4.0/borgbackup-1.4.0.tar.gz -> borgbackup-1.4.0.tar.gz"
+DEPEND="dev-lang/python"
+RDEPEND="dev-lang/python"
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+src_compile() {
+    make -j\(nproc\) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo "borgbackup installed successfully"
+}

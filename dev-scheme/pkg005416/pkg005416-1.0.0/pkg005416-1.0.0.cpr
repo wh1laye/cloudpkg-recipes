@@ -1,0 +1,19 @@
+PACKAGE=pkg005416
+VERSION=1.0.0
+CATEGORY=dev-scheme
+DESCRIPTION="Package 5416"
+HOMEPAGE="https://pkg005416.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005416.org/pkg005416-1.0.0.tar.gz -> pkg005416-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

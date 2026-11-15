@@ -1,0 +1,19 @@
+PACKAGE=pkg015161
+VERSION=1.0.0
+CATEGORY=sci-mathematics
+DESCRIPTION="Package 15161"
+HOMEPAGE="https://pkg015161.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015161.org/pkg015161-1.0.0.tar.gz -> pkg015161-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

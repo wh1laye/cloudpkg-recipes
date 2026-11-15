@@ -1,0 +1,19 @@
+PACKAGE=pkg000565
+VERSION=1.0.0
+CATEGORY=app-benchmark
+DESCRIPTION="Package 565"
+HOMEPAGE="https://pkg000565.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000565.org/pkg000565-1.0.0.tar.gz -> pkg000565-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

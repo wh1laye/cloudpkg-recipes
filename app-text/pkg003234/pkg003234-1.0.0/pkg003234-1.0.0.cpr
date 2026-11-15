@@ -1,0 +1,19 @@
+PACKAGE=pkg003234
+VERSION=1.0.0
+CATEGORY=app-text
+DESCRIPTION="Package 3234"
+HOMEPAGE="https://pkg003234.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003234.org/pkg003234-1.0.0.tar.gz -> pkg003234-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

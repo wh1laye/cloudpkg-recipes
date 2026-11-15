@@ -1,0 +1,19 @@
+PACKAGE=pkg006503
+VERSION=1.0.0
+CATEGORY=games-board
+DESCRIPTION="Package 6503"
+HOMEPAGE="https://pkg006503.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg006503.org/pkg006503-1.0.0.tar.gz -> pkg006503-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

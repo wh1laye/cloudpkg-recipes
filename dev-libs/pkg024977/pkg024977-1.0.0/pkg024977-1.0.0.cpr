@@ -1,0 +1,19 @@
+PACKAGE=pkg024977
+VERSION=1.0.0
+CATEGORY=dev-libs
+DESCRIPTION="pkg024977 package"
+HOMEPAGE="https://pkg024977.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg024977.org/pkg024977-1.0.0.tar.gz -> pkg024977-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg008974
+VERSION=1.0.0
+CATEGORY=mail-client
+DESCRIPTION="Package 8974"
+HOMEPAGE="https://pkg008974.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg008974.org/pkg008974-1.0.0.tar.gz -> pkg008974-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=sci0418
+VERSION=1.0.0
+CATEGORY=sci-mathematics
+DESCRIPTION="Package 418"
+HOMEPAGE="https://example.com/sci0418"
+LICENSE="MIT"
+SRC_URI="https://example.com/sci0418/sci0418-1.0.0.tar.gz -> sci0418-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg001929
+VERSION=1.0.0
+CATEGORY=app-i18n
+DESCRIPTION="Package 1929"
+HOMEPAGE="https://pkg001929.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001929.org/pkg001929-1.0.0.tar.gz -> pkg001929-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

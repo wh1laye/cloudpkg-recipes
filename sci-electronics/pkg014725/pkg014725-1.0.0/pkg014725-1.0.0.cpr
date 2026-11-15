@@ -1,0 +1,19 @@
+PACKAGE=pkg014725
+VERSION=1.0.0
+CATEGORY=sci-electronics
+DESCRIPTION="Package 14725"
+HOMEPAGE="https://pkg014725.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014725.org/pkg014725-1.0.0.tar.gz -> pkg014725-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

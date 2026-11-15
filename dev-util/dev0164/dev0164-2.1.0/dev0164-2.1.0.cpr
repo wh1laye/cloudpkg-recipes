@@ -1,0 +1,19 @@
+PACKAGE=dev0164
+VERSION=2.1.0
+CATEGORY=dev-util
+DESCRIPTION="Package 164"
+HOMEPAGE="https://example.com/dev0164"
+LICENSE=""MIT""
+SRC_URI="https://example.com/dev0164/dev0164-2.1.0.tar.gz -> dev0164-2.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg002097
+VERSION=1.0.0
+CATEGORY=app-laptop
+DESCRIPTION="Package 2097"
+HOMEPAGE="https://pkg002097.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002097.org/pkg002097-1.0.0.tar.gz -> pkg002097-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

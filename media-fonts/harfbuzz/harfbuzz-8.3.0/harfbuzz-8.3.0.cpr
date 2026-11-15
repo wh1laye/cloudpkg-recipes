@@ -1,0 +1,24 @@
+PACKAGE=harfbuzz
+VERSION=8.3.0
+CATEGORY=media-fonts
+DESCRIPTION="OpenType text shaping engine"
+HOMEPAGE="https://harfbuzz.github.io/"
+LICENSE="MIT"
+SRC_URI="https://github.com/harfbuzz/harfbuzz/releases/download/8.3.0/harfbuzz-8.3.0.tar.gz -> harfbuzz-8.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+src_compile() {
+    make -j\(nproc\) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo "harfbuzz installed successfully"
+}

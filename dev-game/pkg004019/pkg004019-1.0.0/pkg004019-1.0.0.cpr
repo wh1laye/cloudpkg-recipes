@@ -1,0 +1,19 @@
+PACKAGE=pkg004019
+VERSION=1.0.0
+CATEGORY=dev-game
+DESCRIPTION="Package 4019"
+HOMEPAGE="https://pkg004019.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004019.org/pkg004019-1.0.0.tar.gz -> pkg004019-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

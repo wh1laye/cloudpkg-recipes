@@ -1,0 +1,19 @@
+PACKAGE=pkg012905
+VERSION=1.0.0
+CATEGORY=net-p2p
+DESCRIPTION="Package 12905"
+HOMEPAGE="https://pkg012905.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012905.org/pkg012905-1.0.0.tar.gz -> pkg012905-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

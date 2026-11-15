@@ -1,0 +1,19 @@
+PACKAGE=sci0448
+VERSION=1.0.0
+CATEGORY=sci-mathematics
+DESCRIPTION="Package 448"
+HOMEPAGE="https://example.com/sci0448"
+LICENSE="MIT"
+SRC_URI="https://example.com/sci0448/sci0448-1.0.0.tar.gz -> sci0448-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

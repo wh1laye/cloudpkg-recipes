@@ -1,0 +1,19 @@
+PACKAGE=pkg007805
+VERSION=1.0.0
+CATEGORY=games-simulation
+DESCRIPTION="Package 7805"
+HOMEPAGE="https://pkg007805.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007805.org/pkg007805-1.0.0.tar.gz -> pkg007805-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

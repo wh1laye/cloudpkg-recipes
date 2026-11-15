@@ -1,0 +1,19 @@
+PACKAGE=pkg0645
+VERSION=2.3.0
+CATEGORY=app-misc
+DESCRIPTION="Package 645"
+HOMEPAGE="https://example.com/pkg0645"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0645/pkg0645-2.3.0.tar.gz -> pkg0645-2.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

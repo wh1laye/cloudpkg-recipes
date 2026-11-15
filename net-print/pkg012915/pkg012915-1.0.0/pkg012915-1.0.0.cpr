@@ -1,0 +1,19 @@
+PACKAGE=pkg012915
+VERSION=1.0.0
+CATEGORY=net-print
+DESCRIPTION="Package 12915"
+HOMEPAGE="https://pkg012915.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012915.org/pkg012915-1.0.0.tar.gz -> pkg012915-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

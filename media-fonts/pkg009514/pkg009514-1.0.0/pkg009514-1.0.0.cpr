@@ -1,0 +1,19 @@
+PACKAGE=pkg009514
+VERSION=1.0.0
+CATEGORY=media-fonts
+DESCRIPTION="Package 9514"
+HOMEPAGE="https://pkg009514.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009514.org/pkg009514-1.0.0.tar.gz -> pkg009514-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

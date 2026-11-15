@@ -1,0 +1,19 @@
+PACKAGE=pkg0213
+VERSION=1.4.0
+CATEGORY=app-misc
+DESCRIPTION="Package 213"
+HOMEPAGE="https://example.com/pkg0213"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0213/pkg0213-1.4.0.tar.gz -> pkg0213-1.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

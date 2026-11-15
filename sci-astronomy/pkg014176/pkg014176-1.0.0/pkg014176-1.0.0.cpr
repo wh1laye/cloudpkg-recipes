@@ -1,0 +1,19 @@
+PACKAGE=pkg014176
+VERSION=1.0.0
+CATEGORY=sci-astronomy
+DESCRIPTION="Package 14176"
+HOMEPAGE="https://pkg014176.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014176.org/pkg014176-1.0.0.tar.gz -> pkg014176-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg001790
+VERSION=1.0.0
+CATEGORY=app-forensics
+DESCRIPTION="Package 1790"
+HOMEPAGE="https://pkg001790.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001790.org/pkg001790-1.0.0.tar.gz -> pkg001790-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

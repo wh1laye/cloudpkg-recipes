@@ -1,0 +1,19 @@
+PACKAGE=avfs
+VERSION=1.1.4
+CATEGORY=sys-fs
+DESCRIPTION="Virtual filesystem"
+HOMEPAGE="https://example.com/avfs"
+LICENSE="GPL-2"
+SRC_URI="https://example.com/avfs/avfs-1.1.4.tar.gz -> avfs-1.1.4.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

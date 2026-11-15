@@ -1,0 +1,24 @@
+PACKAGE=tshark
+VERSION=4.2.0
+CATEGORY=net-analyzer
+DESCRIPTION="Network protocol analyzer (CLI)"
+HOMEPAGE="https://www.wireshark.org/"
+LICENSE="GPL-2"
+SRC_URI="https://www.wireshark.org/download/src/all-versions/wireshark-4.2.0.tar.xz -> wireshark-4.2.0.tar.xz"
+DEPEND="dev-libs/glib dev-libs/libpcap"
+RDEPEND="dev-libs/glib dev-libs/libpcap"
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+src_compile() {
+    make -j\(nproc\) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo "tshark installed successfully"
+}

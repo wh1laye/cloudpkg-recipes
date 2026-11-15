@@ -1,0 +1,19 @@
+PACKAGE=pkg015913
+VERSION=1.0.0
+CATEGORY=sys-block
+DESCRIPTION="Package 15913"
+HOMEPAGE="https://pkg015913.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015913.org/pkg015913-1.0.0.tar.gz -> pkg015913-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

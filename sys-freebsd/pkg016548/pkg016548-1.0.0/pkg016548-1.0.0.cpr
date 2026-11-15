@@ -1,0 +1,19 @@
+PACKAGE=pkg016548
+VERSION=1.0.0
+CATEGORY=sys-freebsd
+DESCRIPTION="Package 16548"
+HOMEPAGE="https://pkg016548.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016548.org/pkg016548-1.0.0.tar.gz -> pkg016548-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

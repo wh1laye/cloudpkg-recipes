@@ -1,0 +1,19 @@
+PACKAGE=pkg009824
+VERSION=1.0.0
+CATEGORY=media-libs
+DESCRIPTION="Package 9824"
+HOMEPAGE="https://pkg009824.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009824.org/pkg009824-1.0.0.tar.gz -> pkg009824-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

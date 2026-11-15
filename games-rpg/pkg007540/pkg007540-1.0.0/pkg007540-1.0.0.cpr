@@ -1,0 +1,19 @@
+PACKAGE=pkg007540
+VERSION=1.0.0
+CATEGORY=games-rpg
+DESCRIPTION="Package 7540"
+HOMEPAGE="https://pkg007540.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007540.org/pkg007540-1.0.0.tar.gz -> pkg007540-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

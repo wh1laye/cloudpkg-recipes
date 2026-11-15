@@ -1,0 +1,19 @@
+PACKAGE=pkg012452
+VERSION=1.0.0
+CATEGORY=net-nds
+DESCRIPTION="Package 12452"
+HOMEPAGE="https://pkg012452.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012452.org/pkg012452-1.0.0.tar.gz -> pkg012452-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

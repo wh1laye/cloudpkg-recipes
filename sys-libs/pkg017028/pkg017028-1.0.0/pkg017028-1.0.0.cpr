@@ -1,0 +1,19 @@
+PACKAGE=pkg017028
+VERSION=1.0.0
+CATEGORY=sys-libs
+DESCRIPTION="Package 17028"
+HOMEPAGE="https://pkg017028.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017028.org/pkg017028-1.0.0.tar.gz -> pkg017028-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

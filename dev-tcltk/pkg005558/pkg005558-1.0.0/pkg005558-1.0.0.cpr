@@ -1,0 +1,19 @@
+PACKAGE=pkg005558
+VERSION=1.0.0
+CATEGORY=dev-tcltk
+DESCRIPTION="Package 5558"
+HOMEPAGE="https://pkg005558.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005558.org/pkg005558-1.0.0.tar.gz -> pkg005558-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg011746
+VERSION=1.0.0
+CATEGORY=net-irc
+DESCRIPTION="Package 11746"
+HOMEPAGE="https://pkg011746.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011746.org/pkg011746-1.0.0.tar.gz -> pkg011746-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

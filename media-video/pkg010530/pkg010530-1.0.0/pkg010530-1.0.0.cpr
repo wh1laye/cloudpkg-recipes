@@ -1,0 +1,19 @@
+PACKAGE=pkg010530
+VERSION=1.0.0
+CATEGORY=media-video
+DESCRIPTION="Package 10530"
+HOMEPAGE="https://pkg010530.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010530.org/pkg010530-1.0.0.tar.gz -> pkg010530-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg013403
+VERSION=1.0.0
+CATEGORY=net-voip
+DESCRIPTION="Package 13403"
+HOMEPAGE="https://pkg013403.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013403.org/pkg013403-1.0.0.tar.gz -> pkg013403-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

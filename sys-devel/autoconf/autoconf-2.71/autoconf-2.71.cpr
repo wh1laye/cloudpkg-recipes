@@ -1,0 +1,19 @@
+PACKAGE=autoconf
+VERSION=2.71
+CATEGORY=sys-devel
+DESCRIPTION="GNU autoconf"
+HOMEPAGE="https://autoconf.org/"
+LICENSE="GPL-3"
+SRC_URI="https://downloads.autoconf.org/autoconf-2.71.tar.gz -> autoconf-2.71.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

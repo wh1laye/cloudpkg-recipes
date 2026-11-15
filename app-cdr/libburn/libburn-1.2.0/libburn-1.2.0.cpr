@@ -1,0 +1,19 @@
+PACKAGE=libburn
+VERSION=1.2.0
+CATEGORY=app-cdr
+DESCRIPTION="Library for reading, mastering and writing optical discs"
+HOMEPAGE="https://example.com/libburn"
+LICENSE=""GPL-2""
+SRC_URI="https://example.com/libburn/libburn-1.2.0.tar.gz -> libburn-1.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

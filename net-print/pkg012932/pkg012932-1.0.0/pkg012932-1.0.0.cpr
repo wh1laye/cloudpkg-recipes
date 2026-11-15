@@ -1,0 +1,19 @@
+PACKAGE=pkg012932
+VERSION=1.0.0
+CATEGORY=net-print
+DESCRIPTION="Package 12932"
+HOMEPAGE="https://pkg012932.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012932.org/pkg012932-1.0.0.tar.gz -> pkg012932-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

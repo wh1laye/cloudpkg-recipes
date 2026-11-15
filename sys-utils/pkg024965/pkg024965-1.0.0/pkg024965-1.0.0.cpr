@@ -1,0 +1,19 @@
+PACKAGE=pkg024965
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="pkg024965 package"
+HOMEPAGE="https://pkg024965.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg024965.org/pkg024965-1.0.0.tar.gz -> pkg024965-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

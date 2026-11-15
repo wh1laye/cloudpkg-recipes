@@ -1,0 +1,19 @@
+PACKAGE=pkg012188
+VERSION=1.0.0
+CATEGORY=net-misc
+DESCRIPTION="Package 12188"
+HOMEPAGE="https://pkg012188.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012188.org/pkg012188-1.0.0.tar.gz -> pkg012188-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg011973
+VERSION=1.0.0
+CATEGORY=net-libs
+DESCRIPTION="Package 11973"
+HOMEPAGE="https://pkg011973.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011973.org/pkg011973-1.0.0.tar.gz -> pkg011973-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=allegro
+VERSION=5.2.8
+CATEGORY=media-libs
+DESCRIPTION="Game programming library"
+HOMEPAGE="https://example.com/allegro"
+LICENSE="ZLIB"
+SRC_URI="https://example.com/allegro/allegro-5.2.8.tar.gz -> allegro-5.2.8.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

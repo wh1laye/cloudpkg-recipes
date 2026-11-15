@@ -1,0 +1,19 @@
+PACKAGE=pkg0529
+VERSION=1.1.0
+CATEGORY=app-misc
+DESCRIPTION="Package 529"
+HOMEPAGE="https://example.com/pkg0529"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0529/pkg0529-1.1.0.tar.gz -> pkg0529-1.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

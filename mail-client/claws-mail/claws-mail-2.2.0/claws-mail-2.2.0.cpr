@@ -1,0 +1,19 @@
+PACKAGE=claws-mail
+VERSION=2.2.0
+CATEGORY=mail-client
+DESCRIPTION="Lightweight GTK-based email client"
+HOMEPAGE="https://example.com/claws-mail"
+LICENSE=""GPL-3""
+SRC_URI="https://example.com/claws-mail/claws-mail-2.2.0.tar.gz -> claws-mail-2.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

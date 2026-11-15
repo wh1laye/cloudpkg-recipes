@@ -1,0 +1,19 @@
+PACKAGE=pkg013837
+VERSION=1.0.0
+CATEGORY=office-flow
+DESCRIPTION="Package 13837"
+HOMEPAGE="https://pkg013837.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013837.org/pkg013837-1.0.0.tar.gz -> pkg013837-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

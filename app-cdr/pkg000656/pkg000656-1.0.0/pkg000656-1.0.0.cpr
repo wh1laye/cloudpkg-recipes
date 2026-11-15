@@ -1,0 +1,19 @@
+PACKAGE=pkg000656
+VERSION=1.0.0
+CATEGORY=app-cdr
+DESCRIPTION="Package 656"
+HOMEPAGE="https://pkg000656.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000656.org/pkg000656-1.0.0.tar.gz -> pkg000656-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

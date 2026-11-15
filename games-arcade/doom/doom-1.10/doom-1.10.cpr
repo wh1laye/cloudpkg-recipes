@@ -1,0 +1,24 @@
+PACKAGE=doom
+VERSION=1.10
+CATEGORY=games-arcade
+DESCRIPTION="The classic DOOM game"
+HOMEPAGE="https://www.doomworld.com/"
+LICENSE="GPL-2"
+SRC_URI="https://sourceforge.net/projects/prboom/files/prboom/2.5.0/prboom-2.5.0.tar.gz -> doom-1.10.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+src_compile() {
+    make -j\(nproc\) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo "doom installed successfully"
+}

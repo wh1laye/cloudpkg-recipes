@@ -1,0 +1,19 @@
+PACKAGE=pkg017106
+VERSION=1.0.0
+CATEGORY=sys-libs
+DESCRIPTION="Package 17106"
+HOMEPAGE="https://pkg017106.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017106.org/pkg017106-1.0.0.tar.gz -> pkg017106-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

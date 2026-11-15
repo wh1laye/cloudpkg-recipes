@@ -1,0 +1,19 @@
+PACKAGE=pkg003405
+VERSION=1.0.0
+CATEGORY=app-vim
+DESCRIPTION="Package 3405"
+HOMEPAGE="https://pkg003405.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003405.org/pkg003405-1.0.0.tar.gz -> pkg003405-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

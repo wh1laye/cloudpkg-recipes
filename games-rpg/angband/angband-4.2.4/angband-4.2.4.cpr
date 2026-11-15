@@ -1,0 +1,19 @@
+PACKAGE=angband
+VERSION=4.2.4
+CATEGORY=games-rpg
+DESCRIPTION="Dungeon exploration game"
+HOMEPAGE="https://example.com/angband"
+LICENSE="GPL-2"
+SRC_URI="https://example.com/angband/angband-4.2.4.tar.gz -> angband-4.2.4.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

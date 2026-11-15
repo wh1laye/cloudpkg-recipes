@@ -1,0 +1,19 @@
+PACKAGE=pkg014745
+VERSION=1.0.0
+CATEGORY=sci-electronics
+DESCRIPTION="Package 14745"
+HOMEPAGE="https://pkg014745.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014745.org/pkg014745-1.0.0.tar.gz -> pkg014745-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

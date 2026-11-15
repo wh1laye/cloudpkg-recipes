@@ -1,0 +1,19 @@
+PACKAGE=pkg000966
+VERSION=1.0.0
+CATEGORY=app-dicts
+DESCRIPTION="Package 966"
+HOMEPAGE="https://pkg000966.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000966.org/pkg000966-1.0.0.tar.gz -> pkg000966-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

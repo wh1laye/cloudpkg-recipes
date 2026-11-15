@@ -1,0 +1,25 @@
+PACKAGE=bmon
+VERSION=4.0.6
+CATEGORY=sys-apps
+DESCRIPTION="Portable bandwidth monitor and rate estimator"
+HOMEPAGE="https://github.com/tgraf/bmon"
+LICENSE="MIT"
+SRC_URI="https://github.com/tgraf/bmon/archive/refs/tags/v${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
+DEPEND="sys-libs/ncurses dev-libs/confuse"
+RDEPEND="${DEPEND}"
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --with-ncurses \
+        --with-confuse
+}
+src_compile() {
+    make -j$(nproc) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="${D}" install || die "Installation failed"
+    dodoc README.md CHANGELOG
+}

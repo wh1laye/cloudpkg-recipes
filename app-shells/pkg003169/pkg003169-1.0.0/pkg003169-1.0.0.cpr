@@ -1,0 +1,19 @@
+PACKAGE=pkg003169
+VERSION=1.0.0
+CATEGORY=app-shells
+DESCRIPTION="Package 3169"
+HOMEPAGE="https://pkg003169.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003169.org/pkg003169-1.0.0.tar.gz -> pkg003169-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

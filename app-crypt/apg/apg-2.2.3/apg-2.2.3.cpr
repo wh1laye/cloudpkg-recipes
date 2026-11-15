@@ -1,0 +1,19 @@
+PACKAGE=apg
+VERSION=2.2.3
+CATEGORY=app-crypt
+DESCRIPTION="Automated Password Generator"
+HOMEPAGE="https://example.com/apg"
+LICENSE="BSD-3"
+SRC_URI="https://example.com/apg/apg-2.2.3.tar.gz -> apg-2.2.3.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

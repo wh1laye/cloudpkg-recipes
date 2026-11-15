@@ -1,0 +1,19 @@
+PACKAGE=pkg017543
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="Package 17543"
+HOMEPAGE="https://pkg017543.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017543.org/pkg017543-1.0.0.tar.gz -> pkg017543-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

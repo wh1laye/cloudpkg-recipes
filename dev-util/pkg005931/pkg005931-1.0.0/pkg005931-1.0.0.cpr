@@ -1,0 +1,19 @@
+PACKAGE=pkg005931
+VERSION=1.0.0
+CATEGORY=dev-util
+DESCRIPTION="Package 5931"
+HOMEPAGE="https://pkg005931.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005931.org/pkg005931-1.0.0.tar.gz -> pkg005931-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

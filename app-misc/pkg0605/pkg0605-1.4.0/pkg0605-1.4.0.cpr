@@ -1,0 +1,19 @@
+PACKAGE=pkg0605
+VERSION=1.4.0
+CATEGORY=app-misc
+DESCRIPTION="Package 605"
+HOMEPAGE="https://example.com/pkg0605"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0605/pkg0605-1.4.0.tar.gz -> pkg0605-1.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

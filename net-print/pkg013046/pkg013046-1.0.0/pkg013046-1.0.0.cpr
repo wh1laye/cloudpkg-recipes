@@ -1,0 +1,19 @@
+PACKAGE=pkg013046
+VERSION=1.0.0
+CATEGORY=net-print
+DESCRIPTION="Package 13046"
+HOMEPAGE="https://pkg013046.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013046.org/pkg013046-1.0.0.tar.gz -> pkg013046-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

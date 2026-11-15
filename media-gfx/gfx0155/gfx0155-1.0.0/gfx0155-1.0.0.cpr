@@ -1,0 +1,19 @@
+PACKAGE=gfx0155
+VERSION=1.0.0
+CATEGORY=media-gfx
+DESCRIPTION="Package 155"
+HOMEPAGE="https://example.com/gfx0155"
+LICENSE="MIT"
+SRC_URI="https://example.com/gfx0155/gfx0155-1.0.0.tar.gz -> gfx0155-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg013390
+VERSION=1.0.0
+CATEGORY=net-voip
+DESCRIPTION="Package 13390"
+HOMEPAGE="https://pkg013390.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013390.org/pkg013390-1.0.0.tar.gz -> pkg013390-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

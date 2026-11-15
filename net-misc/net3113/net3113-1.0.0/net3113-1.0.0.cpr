@@ -1,0 +1,19 @@
+PACKAGE=net3113
+VERSION=1.0.0
+CATEGORY=net-misc
+DESCRIPTION="Package 113"
+HOMEPAGE="https://example.com/net3113"
+LICENSE="MIT"
+SRC_URI="https://example.com/net3113/net3113-1.0.0.tar.gz -> net3113-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg013743
+VERSION=1.0.0
+CATEGORY=net-wireless
+DESCRIPTION="Package 13743"
+HOMEPAGE="https://pkg013743.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013743.org/pkg013743-1.0.0.tar.gz -> pkg013743-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

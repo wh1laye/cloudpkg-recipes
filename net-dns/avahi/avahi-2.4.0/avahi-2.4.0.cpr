@@ -1,0 +1,19 @@
+PACKAGE=avahi
+VERSION=2.4.0
+CATEGORY=net-dns
+DESCRIPTION="Service discovery framework"
+HOMEPAGE="https://example.com/avahi"
+LICENSE=""LGPL-2.1""
+SRC_URI="https://example.com/avahi/avahi-2.4.0.tar.gz -> avahi-2.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

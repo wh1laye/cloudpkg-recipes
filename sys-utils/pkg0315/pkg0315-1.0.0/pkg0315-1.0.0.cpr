@@ -1,0 +1,17 @@
+PACKAGE=pkg0315
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="Package 315"
+HOMEPAGE="https://example.com/pkg0315"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0315/pkg0315-1.0.0.tar.gz -> pkg0315-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || die
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg016633
+VERSION=1.0.0
+CATEGORY=sys-freebsd
+DESCRIPTION="Package 16633"
+HOMEPAGE="https://pkg016633.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016633.org/pkg016633-1.0.0.tar.gz -> pkg016633-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

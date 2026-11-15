@@ -1,0 +1,19 @@
+PACKAGE=pkg015548
+VERSION=1.0.0
+CATEGORY=sys-apps
+DESCRIPTION="Package 15548"
+HOMEPAGE="https://pkg015548.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015548.org/pkg015548-1.0.0.tar.gz -> pkg015548-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

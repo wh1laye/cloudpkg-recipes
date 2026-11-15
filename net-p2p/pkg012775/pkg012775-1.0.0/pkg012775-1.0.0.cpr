@@ -1,0 +1,19 @@
+PACKAGE=pkg012775
+VERSION=1.0.0
+CATEGORY=net-p2p
+DESCRIPTION="Package 12775"
+HOMEPAGE="https://pkg012775.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012775.org/pkg012775-1.0.0.tar.gz -> pkg012775-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

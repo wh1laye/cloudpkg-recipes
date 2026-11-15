@@ -1,0 +1,19 @@
+PACKAGE=snd0426
+VERSION=1.2.0
+CATEGORY=media-sound
+DESCRIPTION="Package 426"
+HOMEPAGE="https://example.com/snd0426"
+LICENSE=""MIT""
+SRC_URI="https://example.com/snd0426/snd0426-1.2.0.tar.gz -> snd0426-1.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

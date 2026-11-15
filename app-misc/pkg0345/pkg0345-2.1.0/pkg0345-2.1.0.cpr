@@ -1,0 +1,19 @@
+PACKAGE=pkg0345
+VERSION=2.1.0
+CATEGORY=app-misc
+DESCRIPTION="Package 345"
+HOMEPAGE="https://example.com/pkg0345"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0345/pkg0345-2.1.0.tar.gz -> pkg0345-2.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg001249
+VERSION=1.0.0
+CATEGORY=app-editors
+DESCRIPTION="Package 1249"
+HOMEPAGE="https://pkg001249.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001249.org/pkg001249-1.0.0.tar.gz -> pkg001249-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

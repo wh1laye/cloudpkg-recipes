@@ -1,0 +1,19 @@
+PACKAGE=apcupsd
+VERSION=1.3.0
+CATEGORY=sys-power
+DESCRIPTION="APC UPS daemon"
+HOMEPAGE="https://example.com/apcupsd"
+LICENSE=""GPL-2""
+SRC_URI="https://example.com/apcupsd/apcupsd-1.3.0.tar.gz -> apcupsd-1.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

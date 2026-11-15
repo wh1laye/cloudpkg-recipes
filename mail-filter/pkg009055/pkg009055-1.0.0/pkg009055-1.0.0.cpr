@@ -1,0 +1,19 @@
+PACKAGE=pkg009055
+VERSION=1.0.0
+CATEGORY=mail-filter
+DESCRIPTION="Package 9055"
+HOMEPAGE="https://pkg009055.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009055.org/pkg009055-1.0.0.tar.gz -> pkg009055-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

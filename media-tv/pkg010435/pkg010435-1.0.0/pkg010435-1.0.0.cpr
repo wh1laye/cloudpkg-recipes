@@ -1,0 +1,19 @@
+PACKAGE=pkg010435
+VERSION=1.0.0
+CATEGORY=media-tv
+DESCRIPTION="Package 10435"
+HOMEPAGE="https://pkg010435.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010435.org/pkg010435-1.0.0.tar.gz -> pkg010435-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

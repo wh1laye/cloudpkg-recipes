@@ -1,0 +1,19 @@
+PACKAGE=pkg016354
+VERSION=1.0.0
+CATEGORY=sys-devel
+DESCRIPTION="Package 16354"
+HOMEPAGE="https://pkg016354.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016354.org/pkg016354-1.0.0.tar.gz -> pkg016354-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

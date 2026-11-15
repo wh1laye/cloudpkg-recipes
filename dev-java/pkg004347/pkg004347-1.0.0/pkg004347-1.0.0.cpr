@@ -1,0 +1,19 @@
+PACKAGE=pkg004347
+VERSION=1.0.0
+CATEGORY=dev-java
+DESCRIPTION="Package 4347"
+HOMEPAGE="https://pkg004347.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004347.org/pkg004347-1.0.0.tar.gz -> pkg004347-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

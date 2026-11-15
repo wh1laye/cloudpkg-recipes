@@ -1,0 +1,19 @@
+PACKAGE=pkg002138
+VERSION=1.0.0
+CATEGORY=app-laptop
+DESCRIPTION="Package 2138"
+HOMEPAGE="https://pkg002138.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002138.org/pkg002138-1.0.0.tar.gz -> pkg002138-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

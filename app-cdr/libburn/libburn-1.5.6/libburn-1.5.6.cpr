@@ -1,0 +1,24 @@
+PACKAGE=libburn
+VERSION=1.5.6
+CATEGORY=app-cdr
+DESCRIPTION="Library for reading, mastering and writing optical discs"
+HOMEPAGE="https://libburnia-project.org/"
+LICENSE="GPL-2"
+SRC_URI="https://files.libburnia-project.org/releases/libburn-1.5.6.tar.gz -> libburn-1.5.6.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+src_compile() {
+    make -j\(nproc\) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo "libburn installed successfully"
+}

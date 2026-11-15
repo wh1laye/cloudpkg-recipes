@@ -1,0 +1,19 @@
+PACKAGE=pkg013955
+VERSION=1.0.0
+CATEGORY=office-spreadsheet
+DESCRIPTION="Package 13955"
+HOMEPAGE="https://pkg013955.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013955.org/pkg013955-1.0.0.tar.gz -> pkg013955-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

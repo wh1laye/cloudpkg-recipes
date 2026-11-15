@@ -1,0 +1,19 @@
+PACKAGE=pkg016138
+VERSION=1.0.0
+CATEGORY=sys-cluster
+DESCRIPTION="Package 16138"
+HOMEPAGE="https://pkg016138.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016138.org/pkg016138-1.0.0.tar.gz -> pkg016138-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

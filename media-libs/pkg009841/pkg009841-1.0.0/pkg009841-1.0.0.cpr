@@ -1,0 +1,19 @@
+PACKAGE=pkg009841
+VERSION=1.0.0
+CATEGORY=media-libs
+DESCRIPTION="Package 9841"
+HOMEPAGE="https://pkg009841.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009841.org/pkg009841-1.0.0.tar.gz -> pkg009841-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

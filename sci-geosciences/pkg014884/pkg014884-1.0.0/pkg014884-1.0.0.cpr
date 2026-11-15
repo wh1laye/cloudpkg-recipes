@@ -1,0 +1,19 @@
+PACKAGE=pkg014884
+VERSION=1.0.0
+CATEGORY=sci-geosciences
+DESCRIPTION="Package 14884"
+HOMEPAGE="https://pkg014884.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014884.org/pkg014884-1.0.0.tar.gz -> pkg014884-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

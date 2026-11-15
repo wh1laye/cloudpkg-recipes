@@ -1,0 +1,19 @@
+PACKAGE=pkg007389
+VERSION=1.0.0
+CATEGORY=games-puzzle
+DESCRIPTION="Package 7389"
+HOMEPAGE="https://pkg007389.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007389.org/pkg007389-1.0.0.tar.gz -> pkg007389-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

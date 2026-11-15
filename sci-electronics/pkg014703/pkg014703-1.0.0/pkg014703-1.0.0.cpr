@@ -1,0 +1,19 @@
+PACKAGE=pkg014703
+VERSION=1.0.0
+CATEGORY=sci-electronics
+DESCRIPTION="Package 14703"
+HOMEPAGE="https://pkg014703.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014703.org/pkg014703-1.0.0.tar.gz -> pkg014703-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

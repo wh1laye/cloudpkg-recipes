@@ -1,0 +1,19 @@
+PACKAGE=make
+VERSION=4.4.1
+CATEGORY=sys-devel
+DESCRIPTION="GNU make"
+HOMEPAGE="https://make.org/"
+LICENSE="GPL-3"
+SRC_URI="https://downloads.make.org/make-4.4.1.tar.gz -> make-4.4.1.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg000971
+VERSION=1.0.0
+CATEGORY=app-dicts
+DESCRIPTION="Package 971"
+HOMEPAGE="https://pkg000971.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000971.org/pkg000971-1.0.0.tar.gz -> pkg000971-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

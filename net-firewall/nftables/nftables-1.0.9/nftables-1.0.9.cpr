@@ -1,0 +1,27 @@
+PACKAGE=nftables
+VERSION=1.0.9
+CATEGORY=net-firewall
+DESCRIPTION="Netfilter tables userspace utilities"
+HOMEPAGE="https://netfilter.org/projects/nftables/"
+LICENSE="GPL-2"
+SRC_URI="https://www.netfilter.org/projects/nftables/files/nftables-1.0.9.tar.gz -> nftables-1.0.9.tar.gz"
+DEPEND="dev-libs/libnftnl dev-libs/libmnl"
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j$(nproc) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="${D}" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo " installed successfully"
+}

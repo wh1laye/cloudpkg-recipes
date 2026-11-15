@@ -1,0 +1,19 @@
+PACKAGE=pkg006769
+VERSION=1.0.0
+CATEGORY=games-console
+DESCRIPTION="Package 6769"
+HOMEPAGE="https://pkg006769.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg006769.org/pkg006769-1.0.0.tar.gz -> pkg006769-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=gcc
+VERSION=13.2.1
+CATEGORY=sys-devel
+DESCRIPTION="GNU compiler collection"
+HOMEPAGE="https://gcc.org/"
+LICENSE="GPL-3"
+SRC_URI="https://downloads.gcc.org/gcc-13.2.1.tar.gz -> gcc-13.2.1.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

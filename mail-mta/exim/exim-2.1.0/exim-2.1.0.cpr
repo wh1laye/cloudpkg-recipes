@@ -1,0 +1,19 @@
+PACKAGE=exim
+VERSION=2.1.0
+CATEGORY=mail-mta
+DESCRIPTION="Exim mail transfer agent"
+HOMEPAGE="https://example.com/exim"
+LICENSE=""GPL-2""
+SRC_URI="https://example.com/exim/exim-2.1.0.tar.gz -> exim-2.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

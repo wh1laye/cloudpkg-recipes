@@ -1,0 +1,19 @@
+PACKAGE=aria2
+VERSION=1.37.0
+CATEGORY=net-misc
+DESCRIPTION="Multi-protocol download manager"
+HOMEPAGE="https://example.com/aria2"
+LICENSE="GPL-2"
+SRC_URI="https://example.com/aria2/aria2-1.37.0.tar.gz -> aria2-1.37.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

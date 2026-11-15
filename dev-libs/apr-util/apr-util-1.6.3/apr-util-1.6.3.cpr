@@ -1,0 +1,19 @@
+PACKAGE=apr-util
+VERSION=1.6.3
+CATEGORY=dev-libs
+DESCRIPTION="Apache Portable Runtime Utilities"
+HOMEPAGE="https://example.com/apr-util"
+LICENSE="Apache-2.0"
+SRC_URI="https://example.com/apr-util/apr-util-1.6.3.tar.gz -> apr-util-1.6.3.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

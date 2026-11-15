@@ -1,0 +1,19 @@
+PACKAGE=pkg011146
+VERSION=1.0.0
+CATEGORY=net-file
+DESCRIPTION="Package 11146"
+HOMEPAGE="https://pkg011146.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011146.org/pkg011146-1.0.0.tar.gz -> pkg011146-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

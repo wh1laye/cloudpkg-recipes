@@ -1,0 +1,19 @@
+PACKAGE=pkg016686
+VERSION=1.0.0
+CATEGORY=sys-fs
+DESCRIPTION="Package 16686"
+HOMEPAGE="https://pkg016686.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016686.org/pkg016686-1.0.0.tar.gz -> pkg016686-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

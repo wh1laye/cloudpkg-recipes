@@ -1,0 +1,19 @@
+PACKAGE=pkg004039
+VERSION=1.0.0
+CATEGORY=dev-game
+DESCRIPTION="Package 4039"
+HOMEPAGE="https://pkg004039.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004039.org/pkg004039-1.0.0.tar.gz -> pkg004039-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

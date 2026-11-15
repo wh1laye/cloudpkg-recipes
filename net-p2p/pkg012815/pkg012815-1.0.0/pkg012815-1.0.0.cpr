@@ -1,0 +1,19 @@
+PACKAGE=pkg012815
+VERSION=1.0.0
+CATEGORY=net-p2p
+DESCRIPTION="Package 12815"
+HOMEPAGE="https://pkg012815.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012815.org/pkg012815-1.0.0.tar.gz -> pkg012815-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg008028
+VERSION=1.0.0
+CATEGORY=gnome-base
+DESCRIPTION="Package 8028"
+HOMEPAGE="https://pkg008028.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg008028.org/pkg008028-1.0.0.tar.gz -> pkg008028-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

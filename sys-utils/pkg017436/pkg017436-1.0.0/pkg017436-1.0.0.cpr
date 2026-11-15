@@ -1,0 +1,19 @@
+PACKAGE=pkg017436
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="Package 17436"
+HOMEPAGE="https://pkg017436.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017436.org/pkg017436-1.0.0.tar.gz -> pkg017436-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg003104
+VERSION=1.0.0
+CATEGORY=app-shells
+DESCRIPTION="Package 3104"
+HOMEPAGE="https://pkg003104.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003104.org/pkg003104-1.0.0.tar.gz -> pkg003104-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

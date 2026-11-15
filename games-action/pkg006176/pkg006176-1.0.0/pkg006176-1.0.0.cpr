@@ -1,0 +1,19 @@
+PACKAGE=pkg006176
+VERSION=1.0.0
+CATEGORY=games-action
+DESCRIPTION="Package 6176"
+HOMEPAGE="https://pkg006176.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg006176.org/pkg006176-1.0.0.tar.gz -> pkg006176-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

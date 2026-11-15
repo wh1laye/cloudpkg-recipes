@@ -1,0 +1,19 @@
+PACKAGE=pkg007728
+VERSION=1.0.0
+CATEGORY=games-simulation
+DESCRIPTION="Package 7728"
+HOMEPAGE="https://pkg007728.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007728.org/pkg007728-1.0.0.tar.gz -> pkg007728-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

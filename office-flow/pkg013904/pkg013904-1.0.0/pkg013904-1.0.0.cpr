@@ -1,0 +1,19 @@
+PACKAGE=pkg013904
+VERSION=1.0.0
+CATEGORY=office-flow
+DESCRIPTION="Package 13904"
+HOMEPAGE="https://pkg013904.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013904.org/pkg013904-1.0.0.tar.gz -> pkg013904-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

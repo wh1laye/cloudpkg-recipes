@@ -1,0 +1,19 @@
+PACKAGE=pkg000828
+VERSION=1.0.0
+CATEGORY=app-crypt
+DESCRIPTION="Package 828"
+HOMEPAGE="https://pkg000828.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000828.org/pkg000828-1.0.0.tar.gz -> pkg000828-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

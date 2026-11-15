@@ -1,0 +1,19 @@
+PACKAGE=pkg007102
+VERSION=1.0.0
+CATEGORY=games-fps
+DESCRIPTION="Package 7102"
+HOMEPAGE="https://pkg007102.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007102.org/pkg007102-1.0.0.tar.gz -> pkg007102-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

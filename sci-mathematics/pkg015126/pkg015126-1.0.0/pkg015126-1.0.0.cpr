@@ -1,0 +1,19 @@
+PACKAGE=pkg015126
+VERSION=1.0.0
+CATEGORY=sci-mathematics
+DESCRIPTION="Package 15126"
+HOMEPAGE="https://pkg015126.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015126.org/pkg015126-1.0.0.tar.gz -> pkg015126-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

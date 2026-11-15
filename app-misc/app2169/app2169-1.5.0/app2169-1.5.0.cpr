@@ -1,0 +1,19 @@
+PACKAGE=app2169
+VERSION=1.5.0
+CATEGORY=app-misc
+DESCRIPTION="Package 169"
+HOMEPAGE="https://example.com/app2169"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app2169/app2169-1.5.0.tar.gz -> app2169-1.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

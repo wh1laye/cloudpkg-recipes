@@ -1,0 +1,19 @@
+PACKAGE=pkg000322
+VERSION=1.0.0
+CATEGORY=app-backup
+DESCRIPTION="Package 322"
+HOMEPAGE="https://pkg000322.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000322.org/pkg000322-1.0.0.tar.gz -> pkg000322-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

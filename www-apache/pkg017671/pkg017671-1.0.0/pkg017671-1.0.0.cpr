@@ -1,0 +1,19 @@
+PACKAGE=pkg017671
+VERSION=1.0.0
+CATEGORY=www-apache
+DESCRIPTION="Package 17671"
+HOMEPAGE="https://pkg017671.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017671.org/pkg017671-1.0.0.tar.gz -> pkg017671-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

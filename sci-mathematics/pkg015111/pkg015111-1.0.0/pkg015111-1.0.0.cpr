@@ -1,0 +1,19 @@
+PACKAGE=pkg015111
+VERSION=1.0.0
+CATEGORY=sci-mathematics
+DESCRIPTION="Package 15111"
+HOMEPAGE="https://pkg015111.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015111.org/pkg015111-1.0.0.tar.gz -> pkg015111-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

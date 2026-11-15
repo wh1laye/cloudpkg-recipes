@@ -1,0 +1,19 @@
+PACKAGE=pkg007478
+VERSION=1.0.0
+CATEGORY=games-rpg
+DESCRIPTION="Package 7478"
+HOMEPAGE="https://pkg007478.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007478.org/pkg007478-1.0.0.tar.gz -> pkg007478-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

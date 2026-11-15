@@ -1,0 +1,19 @@
+PACKAGE=pkg005319
+VERSION=1.0.0
+CATEGORY=dev-ruby
+DESCRIPTION="Package 5319"
+HOMEPAGE="https://pkg005319.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005319.org/pkg005319-1.0.0.tar.gz -> pkg005319-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

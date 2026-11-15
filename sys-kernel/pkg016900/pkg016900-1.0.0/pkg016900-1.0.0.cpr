@@ -1,0 +1,19 @@
+PACKAGE=pkg016900
+VERSION=1.0.0
+CATEGORY=sys-kernel
+DESCRIPTION="Package 16900"
+HOMEPAGE="https://pkg016900.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016900.org/pkg016900-1.0.0.tar.gz -> pkg016900-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

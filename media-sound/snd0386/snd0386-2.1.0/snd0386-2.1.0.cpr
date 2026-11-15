@@ -1,0 +1,19 @@
+PACKAGE=snd0386
+VERSION=2.1.0
+CATEGORY=media-sound
+DESCRIPTION="Package 386"
+HOMEPAGE="https://example.com/snd0386"
+LICENSE=""MIT""
+SRC_URI="https://example.com/snd0386/snd0386-2.1.0.tar.gz -> snd0386-2.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

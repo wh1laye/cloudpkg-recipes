@@ -1,0 +1,19 @@
+PACKAGE=pkg004042
+VERSION=1.0.0
+CATEGORY=dev-game
+DESCRIPTION="Package 4042"
+HOMEPAGE="https://pkg004042.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004042.org/pkg004042-1.0.0.tar.gz -> pkg004042-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg015506
+VERSION=1.0.0
+CATEGORY=sci-visualization
+DESCRIPTION="Package 15506"
+HOMEPAGE="https://pkg015506.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015506.org/pkg015506-1.0.0.tar.gz -> pkg015506-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

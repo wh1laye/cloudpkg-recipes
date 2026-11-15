@@ -1,0 +1,19 @@
+PACKAGE=pkg013628
+VERSION=1.0.0
+CATEGORY=net-vpn
+DESCRIPTION="Package 13628"
+HOMEPAGE="https://pkg013628.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013628.org/pkg013628-1.0.0.tar.gz -> pkg013628-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

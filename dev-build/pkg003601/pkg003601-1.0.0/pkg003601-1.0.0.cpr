@@ -1,0 +1,19 @@
+PACKAGE=pkg003601
+VERSION=1.0.0
+CATEGORY=dev-build
+DESCRIPTION="Package 3601"
+HOMEPAGE="https://pkg003601.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003601.org/pkg003601-1.0.0.tar.gz -> pkg003601-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

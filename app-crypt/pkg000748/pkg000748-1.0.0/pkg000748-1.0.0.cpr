@@ -1,0 +1,19 @@
+PACKAGE=pkg000748
+VERSION=1.0.0
+CATEGORY=app-crypt
+DESCRIPTION="Package 748"
+HOMEPAGE="https://pkg000748.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000748.org/pkg000748-1.0.0.tar.gz -> pkg000748-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg012417
+VERSION=1.0.0
+CATEGORY=net-nds
+DESCRIPTION="Package 12417"
+HOMEPAGE="https://pkg012417.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012417.org/pkg012417-1.0.0.tar.gz -> pkg012417-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

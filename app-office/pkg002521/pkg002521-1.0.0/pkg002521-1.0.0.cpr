@@ -1,0 +1,19 @@
+PACKAGE=pkg002521
+VERSION=1.0.0
+CATEGORY=app-office
+DESCRIPTION="Package 2521"
+HOMEPAGE="https://pkg002521.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002521.org/pkg002521-1.0.0.tar.gz -> pkg002521-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

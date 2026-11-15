@@ -1,0 +1,19 @@
+PACKAGE=pkg017264
+VERSION=1.0.0
+CATEGORY=sys-process
+DESCRIPTION="Package 17264"
+HOMEPAGE="https://pkg017264.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017264.org/pkg017264-1.0.0.tar.gz -> pkg017264-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

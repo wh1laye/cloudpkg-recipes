@@ -1,0 +1,19 @@
+PACKAGE=pkg014241
+VERSION=1.0.0
+CATEGORY=sci-biology
+DESCRIPTION="Package 14241"
+HOMEPAGE="https://pkg014241.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014241.org/pkg014241-1.0.0.tar.gz -> pkg014241-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

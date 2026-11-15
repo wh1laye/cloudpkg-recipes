@@ -1,0 +1,19 @@
+PACKAGE=file
+VERSION=5.45
+CATEGORY=sys-apps
+DESCRIPTION="File type identification"
+HOMEPAGE="https://file.org/"
+LICENSE="BSD-3"
+SRC_URI="https://downloads.file.org/file-5.45.tar.gz -> file-5.45.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

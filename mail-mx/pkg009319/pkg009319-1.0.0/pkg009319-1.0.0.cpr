@@ -1,0 +1,19 @@
+PACKAGE=pkg009319
+VERSION=1.0.0
+CATEGORY=mail-mx
+DESCRIPTION="Package 9319"
+HOMEPAGE="https://pkg009319.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009319.org/pkg009319-1.0.0.tar.gz -> pkg009319-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

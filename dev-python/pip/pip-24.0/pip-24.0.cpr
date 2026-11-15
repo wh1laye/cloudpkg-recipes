@@ -1,0 +1,21 @@
+PACKAGE=pip
+VERSION=24.0
+CATEGORY=dev-python
+DESCRIPTION="Python package installer"
+HOMEPAGE="https://pip.pypa.io/"
+LICENSE="MIT"
+SRC_URI="https://github.com/pypa/pip/archive/refs/tags/${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
+DEPEND="dev-lang/python"
+RDEPEND="${DEPEND}"
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    python3 setup.py build || die "Build failed"
+}
+src_install() {
+    python3 setup.py install --root="${D}" --prefix=/usr || die "Install failed"
+    dodoc README.rst LICENSE.txt
+}
+pkg_postinst() {
+    einfo "pip installed"
+}

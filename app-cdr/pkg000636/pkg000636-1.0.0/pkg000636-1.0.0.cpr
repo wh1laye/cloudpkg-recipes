@@ -1,0 +1,19 @@
+PACKAGE=pkg000636
+VERSION=1.0.0
+CATEGORY=app-cdr
+DESCRIPTION="Package 636"
+HOMEPAGE="https://pkg000636.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000636.org/pkg000636-1.0.0.tar.gz -> pkg000636-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg009651
+VERSION=1.0.0
+CATEGORY=media-gfx
+DESCRIPTION="Package 9651"
+HOMEPAGE="https://pkg009651.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009651.org/pkg009651-1.0.0.tar.gz -> pkg009651-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

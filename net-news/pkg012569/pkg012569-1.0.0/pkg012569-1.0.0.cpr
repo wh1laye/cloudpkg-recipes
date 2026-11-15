@@ -1,0 +1,19 @@
+PACKAGE=pkg012569
+VERSION=1.0.0
+CATEGORY=net-news
+DESCRIPTION="Package 12569"
+HOMEPAGE="https://pkg012569.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012569.org/pkg012569-1.0.0.tar.gz -> pkg012569-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

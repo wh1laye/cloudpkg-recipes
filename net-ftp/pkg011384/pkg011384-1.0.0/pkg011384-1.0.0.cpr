@@ -1,0 +1,19 @@
+PACKAGE=pkg011384
+VERSION=1.0.0
+CATEGORY=net-ftp
+DESCRIPTION="Package 11384"
+HOMEPAGE="https://pkg011384.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011384.org/pkg011384-1.0.0.tar.gz -> pkg011384-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

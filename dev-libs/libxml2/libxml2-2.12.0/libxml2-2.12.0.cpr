@@ -1,0 +1,28 @@
+PACKAGE=libxml2
+VERSION=2.12.0
+CATEGORY=dev-libs
+DESCRIPTION="XML parser library"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libxml2"
+LICENSE="MIT"
+SRC_URI="https://download.gnome.org/sources/libxml2/2.12/libxml2-2.12.0.tar.xz -> libxml2-2.12.0.tar.xz"
+DEPEND="sys-libs/zlib dev-libs/libiconv"
+RDEPEND="
+SLOT=2
+KEYWORDS="amd64"
+BUILD_FLAGS="--with-zlib --with-iconv"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j$(nproc) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="${D}" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo " installed successfully"
+}

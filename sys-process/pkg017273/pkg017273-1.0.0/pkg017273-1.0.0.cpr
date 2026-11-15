@@ -1,0 +1,19 @@
+PACKAGE=pkg017273
+VERSION=1.0.0
+CATEGORY=sys-process
+DESCRIPTION="Package 17273"
+HOMEPAGE="https://pkg017273.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017273.org/pkg017273-1.0.0.tar.gz -> pkg017273-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

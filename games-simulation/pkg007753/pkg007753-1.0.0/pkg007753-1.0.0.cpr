@@ -1,0 +1,19 @@
+PACKAGE=pkg007753
+VERSION=1.0.0
+CATEGORY=games-simulation
+DESCRIPTION="Package 7753"
+HOMEPAGE="https://pkg007753.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007753.org/pkg007753-1.0.0.tar.gz -> pkg007753-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

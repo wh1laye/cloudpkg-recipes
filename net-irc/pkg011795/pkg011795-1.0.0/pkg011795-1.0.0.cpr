@@ -1,0 +1,19 @@
+PACKAGE=pkg011795
+VERSION=1.0.0
+CATEGORY=net-irc
+DESCRIPTION="Package 11795"
+HOMEPAGE="https://pkg011795.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011795.org/pkg011795-1.0.0.tar.gz -> pkg011795-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

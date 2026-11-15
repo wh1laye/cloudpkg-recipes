@@ -1,0 +1,19 @@
+PACKAGE=pkg012816
+VERSION=1.0.0
+CATEGORY=net-p2p
+DESCRIPTION="Package 12816"
+HOMEPAGE="https://pkg012816.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012816.org/pkg012816-1.0.0.tar.gz -> pkg012816-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

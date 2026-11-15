@@ -1,0 +1,19 @@
+PACKAGE=pkg002842
+VERSION=1.0.0
+CATEGORY=app-scanner
+DESCRIPTION="Package 2842"
+HOMEPAGE="https://pkg002842.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002842.org/pkg002842-1.0.0.tar.gz -> pkg002842-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

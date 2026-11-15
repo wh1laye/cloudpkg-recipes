@@ -1,0 +1,43 @@
+PACKAGE=shadow
+VERSION=4.14
+CATEGORY=sys-auth
+DESCRIPTION="Password and user management utilities"
+HOMEPAGE="https://shadow.pw/"
+LICENSE="BSD-3 GPL-3"
+SRC_URI="https://github.com/shadow-maint/shadow/releases/download/${VERSION}/shadow-${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
+DEPEND="sys-libs/pam sys-libs/acl sys-libs/attr"
+RDEPEND="${DEPEND}"
+SLOT=0
+KEYWORDS="amd64"
+BUILD_FLAGS="--enable-shadowgrp --enable-man --with-libpam"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --sbindir=/usr/sbin \
+        --bindir=/usr/bin \
+        --libdir=/usr/lib \
+        --enable-shared \
+        ${BUILD_FLAGS}
+}
+src_compile() {
+    make -j$(nproc) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="${D}" install || die "Installation failed"
+    insinto /etc/default
+    doins etc/default/useradd
+    doins etc/default/passwd
+    insinto /etc/pam.d
+    doins etc/pam.d/chpasswd
+    doins etc/pam.d/chsh
+    doins etc/pam.d/common-account
+    doins etc/pam.d/common-auth
+    doins etc/pam.d/common-password
+    doins etc/pam.d/common-session
+    dodoc README.md NEWS
+}
+pkg_postinst() {
+    einfo "shadow utilities installed"
+    einfo "Configure /etc/login.defs and /etc/default/* as needed"
+}

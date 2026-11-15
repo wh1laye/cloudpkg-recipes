@@ -1,0 +1,19 @@
+PACKAGE=apt-cacher-ng
+VERSION=3.4
+CATEGORY=net-proxy
+DESCRIPTION="Caching proxy for Debian/Ubuntu"
+HOMEPAGE="https://example.com/apt-cacher-ng"
+LICENSE="GPL-2"
+SRC_URI="https://example.com/apt-cacher-ng/apt-cacher-ng-3.4.tar.gz -> apt-cacher-ng-3.4.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

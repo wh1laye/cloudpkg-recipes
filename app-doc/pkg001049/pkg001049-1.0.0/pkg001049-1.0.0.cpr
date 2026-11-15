@@ -1,0 +1,19 @@
+PACKAGE=pkg001049
+VERSION=1.0.0
+CATEGORY=app-doc
+DESCRIPTION="Package 1049"
+HOMEPAGE="https://pkg001049.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001049.org/pkg001049-1.0.0.tar.gz -> pkg001049-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

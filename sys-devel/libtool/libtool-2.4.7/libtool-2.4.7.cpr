@@ -1,0 +1,19 @@
+PACKAGE=libtool
+VERSION=2.4.7
+CATEGORY=sys-devel
+DESCRIPTION="GNU libtool"
+HOMEPAGE="https://libtool.org/"
+LICENSE="GPL-2"
+SRC_URI="https://downloads.libtool.org/libtool-2.4.7.tar.gz -> libtool-2.4.7.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

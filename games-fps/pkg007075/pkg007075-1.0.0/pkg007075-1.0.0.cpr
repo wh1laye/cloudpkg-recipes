@@ -1,0 +1,19 @@
+PACKAGE=pkg007075
+VERSION=1.0.0
+CATEGORY=games-fps
+DESCRIPTION="Package 7075"
+HOMEPAGE="https://pkg007075.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007075.org/pkg007075-1.0.0.tar.gz -> pkg007075-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

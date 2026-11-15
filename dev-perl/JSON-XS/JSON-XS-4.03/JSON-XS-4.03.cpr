@@ -1,0 +1,24 @@
+PACKAGE=JSON-XS
+VERSION=4.03
+CATEGORY=dev-perl
+DESCRIPTION="JSON serialiser/deserialiser"
+HOMEPAGE="https://metacpan.org/pod/JSON::XS"
+LICENSE="Artistic GPL-1"
+SRC_URI="https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/JSON-XS-4.03.tar.gz -> JSON-XS-4.03.tar.gz"
+DEPEND="dev-lang/perl"
+RDEPEND="dev-lang/perl"
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+src_compile() {
+    make -j\(nproc\) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo "JSON-XS installed successfully"
+}

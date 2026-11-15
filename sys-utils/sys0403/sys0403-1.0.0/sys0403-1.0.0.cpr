@@ -1,0 +1,19 @@
+PACKAGE=sys0403
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="Package 403"
+HOMEPAGE="https://example.com/sys0403"
+LICENSE="MIT"
+SRC_URI="https://example.com/sys0403/sys0403-1.0.0.tar.gz -> sys0403-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

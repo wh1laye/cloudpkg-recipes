@@ -1,0 +1,24 @@
+PACKAGE=links
+VERSION=2.29
+CATEGORY=www-client
+DESCRIPTION="Text-based web browser"
+HOMEPAGE="http://links.twibright.com/"
+LICENSE="GPL-2"
+SRC_URI="http://links.twibright.com/download/links-2.29.tar.gz -> links-2.29.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+src_compile() {
+    make -j\(nproc\) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo "links installed successfully"
+}

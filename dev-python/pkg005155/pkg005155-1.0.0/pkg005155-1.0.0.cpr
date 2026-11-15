@@ -1,0 +1,19 @@
+PACKAGE=pkg005155
+VERSION=1.0.0
+CATEGORY=dev-python
+DESCRIPTION="Package 5155"
+HOMEPAGE="https://pkg005155.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005155.org/pkg005155-1.0.0.tar.gz -> pkg005155-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

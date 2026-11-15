@@ -1,0 +1,19 @@
+PACKAGE=pkg008023
+VERSION=1.0.0
+CATEGORY=gnome-base
+DESCRIPTION="Package 8023"
+HOMEPAGE="https://pkg008023.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg008023.org/pkg008023-1.0.0.tar.gz -> pkg008023-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

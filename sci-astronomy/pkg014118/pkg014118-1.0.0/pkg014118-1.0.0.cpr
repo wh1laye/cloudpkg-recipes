@@ -1,0 +1,19 @@
+PACKAGE=pkg014118
+VERSION=1.0.0
+CATEGORY=sci-astronomy
+DESCRIPTION="Package 14118"
+HOMEPAGE="https://pkg014118.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014118.org/pkg014118-1.0.0.tar.gz -> pkg014118-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

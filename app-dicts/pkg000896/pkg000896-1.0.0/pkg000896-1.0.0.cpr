@@ -1,0 +1,19 @@
+PACKAGE=pkg000896
+VERSION=1.0.0
+CATEGORY=app-dicts
+DESCRIPTION="Package 896"
+HOMEPAGE="https://pkg000896.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000896.org/pkg000896-1.0.0.tar.gz -> pkg000896-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

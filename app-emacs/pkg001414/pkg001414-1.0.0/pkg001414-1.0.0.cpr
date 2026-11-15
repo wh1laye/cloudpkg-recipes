@@ -1,0 +1,19 @@
+PACKAGE=pkg001414
+VERSION=1.0.0
+CATEGORY=app-emacs
+DESCRIPTION="Package 1414"
+HOMEPAGE="https://pkg001414.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001414.org/pkg001414-1.0.0.tar.gz -> pkg001414-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

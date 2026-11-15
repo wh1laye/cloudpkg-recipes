@@ -1,0 +1,19 @@
+PACKAGE=game0119
+VERSION=1.0.0
+CATEGORY=games-arcade
+DESCRIPTION="Package 119"
+HOMEPAGE="https://example.com/game0119"
+LICENSE="MIT"
+SRC_URI="https://example.com/game0119/game0119-1.0.0.tar.gz -> game0119-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

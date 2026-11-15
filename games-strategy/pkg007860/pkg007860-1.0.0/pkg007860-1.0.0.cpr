@@ -1,0 +1,19 @@
+PACKAGE=pkg007860
+VERSION=1.0.0
+CATEGORY=games-strategy
+DESCRIPTION="Package 7860"
+HOMEPAGE="https://pkg007860.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007860.org/pkg007860-1.0.0.tar.gz -> pkg007860-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

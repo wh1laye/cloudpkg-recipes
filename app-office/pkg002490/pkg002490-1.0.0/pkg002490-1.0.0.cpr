@@ -1,0 +1,19 @@
+PACKAGE=pkg002490
+VERSION=1.0.0
+CATEGORY=app-office
+DESCRIPTION="Package 2490"
+HOMEPAGE="https://pkg002490.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002490.org/pkg002490-1.0.0.tar.gz -> pkg002490-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

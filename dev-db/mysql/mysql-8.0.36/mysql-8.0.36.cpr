@@ -1,0 +1,24 @@
+PACKAGE=mysql
+VERSION=8.0.36
+CATEGORY=dev-db
+DESCRIPTION="MySQL database server"
+HOMEPAGE="https://www.mysql.com/"
+LICENSE="GPL-2"
+SRC_URI="https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-8.0.36.tar.gz -> mysql-8.0.36.tar.gz"
+DEPEND="sys-libs/zlib dev-libs/openssl"
+RDEPEND="sys-libs/zlib dev-libs/openssl"
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+src_compile() {
+    make -j\(nproc\) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo "mysql installed successfully"
+}

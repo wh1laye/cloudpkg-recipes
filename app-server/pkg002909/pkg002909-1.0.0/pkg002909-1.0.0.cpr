@@ -1,0 +1,19 @@
+PACKAGE=pkg002909
+VERSION=1.0.0
+CATEGORY=app-server
+DESCRIPTION="Package 2909"
+HOMEPAGE="https://pkg002909.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002909.org/pkg002909-1.0.0.tar.gz -> pkg002909-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg014959
+VERSION=1.0.0
+CATEGORY=sci-libs
+DESCRIPTION="Package 14959"
+HOMEPAGE="https://pkg014959.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014959.org/pkg014959-1.0.0.tar.gz -> pkg014959-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

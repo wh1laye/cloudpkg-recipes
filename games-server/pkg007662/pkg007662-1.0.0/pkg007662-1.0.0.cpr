@@ -1,0 +1,19 @@
+PACKAGE=pkg007662
+VERSION=1.0.0
+CATEGORY=games-server
+DESCRIPTION="Package 7662"
+HOMEPAGE="https://pkg007662.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007662.org/pkg007662-1.0.0.tar.gz -> pkg007662-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

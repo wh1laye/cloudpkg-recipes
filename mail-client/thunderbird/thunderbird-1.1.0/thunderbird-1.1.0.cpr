@@ -1,0 +1,19 @@
+PACKAGE=thunderbird
+VERSION=1.1.0
+CATEGORY=mail-client
+DESCRIPTION="Mozilla Thunderbird mail client"
+HOMEPAGE="https://example.com/thunderbird"
+LICENSE=""MPL-2.0""
+SRC_URI="https://example.com/thunderbird/thunderbird-1.1.0.tar.gz -> thunderbird-1.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

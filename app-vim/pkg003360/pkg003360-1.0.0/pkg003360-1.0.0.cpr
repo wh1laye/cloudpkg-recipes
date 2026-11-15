@@ -1,0 +1,19 @@
+PACKAGE=pkg003360
+VERSION=1.0.0
+CATEGORY=app-vim
+DESCRIPTION="Package 3360"
+HOMEPAGE="https://pkg003360.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003360.org/pkg003360-1.0.0.tar.gz -> pkg003360-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

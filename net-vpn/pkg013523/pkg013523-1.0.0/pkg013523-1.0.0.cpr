@@ -1,0 +1,19 @@
+PACKAGE=pkg013523
+VERSION=1.0.0
+CATEGORY=net-vpn
+DESCRIPTION="Package 13523"
+HOMEPAGE="https://pkg013523.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013523.org/pkg013523-1.0.0.tar.gz -> pkg013523-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg015780
+VERSION=1.0.0
+CATEGORY=sys-auth
+DESCRIPTION="Package 15780"
+HOMEPAGE="https://pkg015780.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015780.org/pkg015780-1.0.0.tar.gz -> pkg015780-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

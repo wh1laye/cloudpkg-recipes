@@ -1,0 +1,19 @@
+PACKAGE=pkg012956
+VERSION=1.0.0
+CATEGORY=net-print
+DESCRIPTION="Package 12956"
+HOMEPAGE="https://pkg012956.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012956.org/pkg012956-1.0.0.tar.gz -> pkg012956-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

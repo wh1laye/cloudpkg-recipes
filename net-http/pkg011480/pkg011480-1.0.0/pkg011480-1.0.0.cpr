@@ -1,0 +1,19 @@
+PACKAGE=pkg011480
+VERSION=1.0.0
+CATEGORY=net-http
+DESCRIPTION="Package 11480"
+HOMEPAGE="https://pkg011480.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011480.org/pkg011480-1.0.0.tar.gz -> pkg011480-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

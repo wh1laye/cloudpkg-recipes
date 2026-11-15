@@ -1,0 +1,17 @@
+PACKAGE=pkg0428
+VERSION=1.0.0
+CATEGORY=dev-libs
+DESCRIPTION="Package 428"
+HOMEPAGE="https://example.com/pkg0428"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0428/pkg0428-1.0.0.tar.gz -> pkg0428-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || die
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg011270
+VERSION=1.0.0
+CATEGORY=net-firewall
+DESCRIPTION="Package 11270"
+HOMEPAGE="https://pkg011270.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011270.org/pkg011270-1.0.0.tar.gz -> pkg011270-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

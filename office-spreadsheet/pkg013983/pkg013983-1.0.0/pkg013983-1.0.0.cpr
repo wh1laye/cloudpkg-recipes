@@ -1,0 +1,19 @@
+PACKAGE=pkg013983
+VERSION=1.0.0
+CATEGORY=office-spreadsheet
+DESCRIPTION="Package 13983"
+HOMEPAGE="https://pkg013983.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013983.org/pkg013983-1.0.0.tar.gz -> pkg013983-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

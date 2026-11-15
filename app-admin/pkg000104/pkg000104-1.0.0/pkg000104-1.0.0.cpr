@@ -1,0 +1,19 @@
+PACKAGE=pkg000104
+VERSION=1.0.0
+CATEGORY=app-admin
+DESCRIPTION="Package 104"
+HOMEPAGE="https://pkg000104.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000104.org/pkg000104-1.0.0.tar.gz -> pkg000104-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

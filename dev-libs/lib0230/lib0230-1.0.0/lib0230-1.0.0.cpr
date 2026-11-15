@@ -1,0 +1,19 @@
+PACKAGE=lib0230
+VERSION=1.0.0
+CATEGORY=dev-libs
+DESCRIPTION="Package 230"
+HOMEPAGE="https://example.com/lib0230"
+LICENSE="MIT"
+SRC_URI="https://example.com/lib0230/lib0230-1.0.0.tar.gz -> lib0230-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

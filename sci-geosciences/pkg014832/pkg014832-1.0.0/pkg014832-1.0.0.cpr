@@ -1,0 +1,19 @@
+PACKAGE=pkg014832
+VERSION=1.0.0
+CATEGORY=sci-geosciences
+DESCRIPTION="Package 14832"
+HOMEPAGE="https://pkg014832.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014832.org/pkg014832-1.0.0.tar.gz -> pkg014832-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg0433
+VERSION=2.3.0
+CATEGORY=app-misc
+DESCRIPTION="Package 433"
+HOMEPAGE="https://example.com/pkg0433"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0433/pkg0433-2.3.0.tar.gz -> pkg0433-2.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

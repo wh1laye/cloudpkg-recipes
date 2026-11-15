@@ -1,0 +1,21 @@
+PACKAGE=indent
+VERSION=2.2.13
+CATEGORY=dev-util
+DESCRIPTION="C code formatter"
+HOMEPAGE="https://www.gnu.org/software/indent/"
+LICENSE="GPL-3"
+SRC_URI="https://ftp.gnu.org/gnu/indent/indent-2.2.13.tar.gz -> indent-2.2.13.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+src_compile() {
+    make -j\(nproc\) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}

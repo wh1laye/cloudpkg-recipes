@@ -1,0 +1,27 @@
+PACKAGE=micro
+VERSION=2.0.10
+CATEGORY=app-editors
+DESCRIPTION="Modern terminal-based text editor"
+HOMEPAGE="https://micro-editor.github.io/"
+LICENSE="MIT"
+SRC_URI="https://github.com/zyedidia/micro/releases/download/v2.0.10/micro-2.0.10-src.tar.gz -> micro-2.0.10-src.tar.gz"
+DEPEND=""
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j$(nproc) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="${D}" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo " installed successfully"
+}

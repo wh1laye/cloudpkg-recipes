@@ -1,0 +1,19 @@
+PACKAGE=pkg0565
+VERSION=2.4.0
+CATEGORY=app-misc
+DESCRIPTION="Package 565"
+HOMEPAGE="https://example.com/pkg0565"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0565/pkg0565-2.4.0.tar.gz -> pkg0565-2.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

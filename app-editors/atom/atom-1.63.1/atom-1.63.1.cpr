@@ -1,0 +1,19 @@
+PACKAGE=atom
+VERSION=1.63.1
+CATEGORY=app-editors
+DESCRIPTION="GitHub's text editor"
+HOMEPAGE="https://example.com/atom"
+LICENSE="MIT"
+SRC_URI="https://example.com/atom/atom-1.63.1.tar.gz -> atom-1.63.1.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

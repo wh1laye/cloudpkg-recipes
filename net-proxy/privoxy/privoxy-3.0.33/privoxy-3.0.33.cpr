@@ -1,0 +1,27 @@
+PACKAGE=privoxy
+VERSION=3.0.33
+CATEGORY=net-proxy
+DESCRIPTION="Privacy-enhancing proxy"
+HOMEPAGE="https://www.privoxy.org/"
+LICENSE="GPL-2"
+SRC_URI="https://downloads.sourceforge.net/project/ijbswa/Sources/3.0.33%20%28stable%29/privoxy-3.0.33-stable-src.tar.gz -> privoxy-3.0.33.tar.gz"
+DEPEND=""
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j$(nproc) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="${D}" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo " installed successfully"
+}

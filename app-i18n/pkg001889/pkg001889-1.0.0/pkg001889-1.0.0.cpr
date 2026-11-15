@@ -1,0 +1,19 @@
+PACKAGE=pkg001889
+VERSION=1.0.0
+CATEGORY=app-i18n
+DESCRIPTION="Package 1889"
+HOMEPAGE="https://pkg001889.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001889.org/pkg001889-1.0.0.tar.gz -> pkg001889-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

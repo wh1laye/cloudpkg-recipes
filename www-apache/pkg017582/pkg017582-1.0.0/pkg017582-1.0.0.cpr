@@ -1,0 +1,19 @@
+PACKAGE=pkg017582
+VERSION=1.0.0
+CATEGORY=www-apache
+DESCRIPTION="Package 17582"
+HOMEPAGE="https://pkg017582.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017582.org/pkg017582-1.0.0.tar.gz -> pkg017582-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

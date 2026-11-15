@@ -1,0 +1,19 @@
+PACKAGE=pkg012383
+VERSION=1.0.0
+CATEGORY=net-nds
+DESCRIPTION="Package 12383"
+HOMEPAGE="https://pkg012383.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012383.org/pkg012383-1.0.0.tar.gz -> pkg012383-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

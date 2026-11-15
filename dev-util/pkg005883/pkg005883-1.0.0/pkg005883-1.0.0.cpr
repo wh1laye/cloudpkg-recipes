@@ -1,0 +1,19 @@
+PACKAGE=pkg005883
+VERSION=1.0.0
+CATEGORY=dev-util
+DESCRIPTION="Package 5883"
+HOMEPAGE="https://pkg005883.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005883.org/pkg005883-1.0.0.tar.gz -> pkg005883-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

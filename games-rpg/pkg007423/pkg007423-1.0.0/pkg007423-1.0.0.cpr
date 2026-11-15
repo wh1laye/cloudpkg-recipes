@@ -1,0 +1,19 @@
+PACKAGE=pkg007423
+VERSION=1.0.0
+CATEGORY=games-rpg
+DESCRIPTION="Package 7423"
+HOMEPAGE="https://pkg007423.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007423.org/pkg007423-1.0.0.tar.gz -> pkg007423-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

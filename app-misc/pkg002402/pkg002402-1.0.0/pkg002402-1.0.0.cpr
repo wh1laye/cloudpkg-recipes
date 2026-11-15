@@ -1,0 +1,19 @@
+PACKAGE=pkg002402
+VERSION=1.0.0
+CATEGORY=app-misc
+DESCRIPTION="Package 2402"
+HOMEPAGE="https://pkg002402.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002402.org/pkg002402-1.0.0.tar.gz -> pkg002402-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

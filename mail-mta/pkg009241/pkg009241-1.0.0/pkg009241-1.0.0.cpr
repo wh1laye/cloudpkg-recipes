@@ -1,0 +1,19 @@
+PACKAGE=pkg009241
+VERSION=1.0.0
+CATEGORY=mail-mta
+DESCRIPTION="Package 9241"
+HOMEPAGE="https://pkg009241.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009241.org/pkg009241-1.0.0.tar.gz -> pkg009241-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

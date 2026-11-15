@@ -1,0 +1,19 @@
+PACKAGE=pkg014677
+VERSION=1.0.0
+CATEGORY=sci-electronics
+DESCRIPTION="Package 14677"
+HOMEPAGE="https://pkg014677.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014677.org/pkg014677-1.0.0.tar.gz -> pkg014677-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

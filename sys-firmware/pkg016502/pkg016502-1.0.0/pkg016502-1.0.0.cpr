@@ -1,0 +1,19 @@
+PACKAGE=pkg016502
+VERSION=1.0.0
+CATEGORY=sys-firmware
+DESCRIPTION="Package 16502"
+HOMEPAGE="https://pkg016502.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016502.org/pkg016502-1.0.0.tar.gz -> pkg016502-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

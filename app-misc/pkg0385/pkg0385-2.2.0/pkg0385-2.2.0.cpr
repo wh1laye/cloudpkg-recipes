@@ -1,0 +1,19 @@
+PACKAGE=pkg0385
+VERSION=2.2.0
+CATEGORY=app-misc
+DESCRIPTION="Package 385"
+HOMEPAGE="https://example.com/pkg0385"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0385/pkg0385-2.2.0.tar.gz -> pkg0385-2.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

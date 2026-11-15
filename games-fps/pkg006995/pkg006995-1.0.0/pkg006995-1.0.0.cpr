@@ -1,0 +1,19 @@
+PACKAGE=pkg006995
+VERSION=1.0.0
+CATEGORY=games-fps
+DESCRIPTION="Package 6995"
+HOMEPAGE="https://pkg006995.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg006995.org/pkg006995-1.0.0.tar.gz -> pkg006995-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

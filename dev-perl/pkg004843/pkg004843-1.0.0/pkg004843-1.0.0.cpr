@@ -1,0 +1,19 @@
+PACKAGE=pkg004843
+VERSION=1.0.0
+CATEGORY=dev-perl
+DESCRIPTION="Package 4843"
+HOMEPAGE="https://pkg004843.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004843.org/pkg004843-1.0.0.tar.gz -> pkg004843-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

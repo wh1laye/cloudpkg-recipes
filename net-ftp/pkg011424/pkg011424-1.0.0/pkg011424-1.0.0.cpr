@@ -1,0 +1,19 @@
+PACKAGE=pkg011424
+VERSION=1.0.0
+CATEGORY=net-ftp
+DESCRIPTION="Package 11424"
+HOMEPAGE="https://pkg011424.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011424.org/pkg011424-1.0.0.tar.gz -> pkg011424-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

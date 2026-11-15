@@ -1,0 +1,19 @@
+PACKAGE=pkg007294
+VERSION=1.0.0
+CATEGORY=games-puzzle
+DESCRIPTION="Package 7294"
+HOMEPAGE="https://pkg007294.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007294.org/pkg007294-1.0.0.tar.gz -> pkg007294-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

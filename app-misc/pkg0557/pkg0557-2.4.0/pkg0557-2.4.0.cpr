@@ -1,0 +1,19 @@
+PACKAGE=pkg0557
+VERSION=2.4.0
+CATEGORY=app-misc
+DESCRIPTION="Package 557"
+HOMEPAGE="https://example.com/pkg0557"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0557/pkg0557-2.4.0.tar.gz -> pkg0557-2.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

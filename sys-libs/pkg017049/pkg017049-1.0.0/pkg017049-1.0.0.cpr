@@ -1,0 +1,19 @@
+PACKAGE=pkg017049
+VERSION=1.0.0
+CATEGORY=sys-libs
+DESCRIPTION="Package 17049"
+HOMEPAGE="https://pkg017049.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017049.org/pkg017049-1.0.0.tar.gz -> pkg017049-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

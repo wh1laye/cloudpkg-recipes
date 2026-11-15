@@ -1,0 +1,19 @@
+PACKAGE=snd0436
+VERSION=1.2.0
+CATEGORY=media-sound
+DESCRIPTION="Package 436"
+HOMEPAGE="https://example.com/snd0436"
+LICENSE=""MIT""
+SRC_URI="https://example.com/snd0436/snd0436-1.2.0.tar.gz -> snd0436-1.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=arpon
+VERSION=3.0.12
+CATEGORY=net-firewall
+DESCRIPTION="ARP handler"
+HOMEPAGE="https://example.com/arpon"
+LICENSE="GPL-3"
+SRC_URI="https://example.com/arpon/arpon-3.0.12.tar.gz -> arpon-3.0.12.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

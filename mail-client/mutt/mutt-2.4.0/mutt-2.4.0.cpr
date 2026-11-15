@@ -1,0 +1,19 @@
+PACKAGE=mutt
+VERSION=2.4.0
+CATEGORY=mail-client
+DESCRIPTION="Text-based mail client"
+HOMEPAGE="https://example.com/mutt"
+LICENSE=""GPL-2""
+SRC_URI="https://example.com/mutt/mutt-2.4.0.tar.gz -> mutt-2.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

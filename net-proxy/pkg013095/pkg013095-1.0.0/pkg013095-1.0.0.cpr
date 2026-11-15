@@ -1,0 +1,19 @@
+PACKAGE=pkg013095
+VERSION=1.0.0
+CATEGORY=net-proxy
+DESCRIPTION="Package 13095"
+HOMEPAGE="https://pkg013095.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013095.org/pkg013095-1.0.0.tar.gz -> pkg013095-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

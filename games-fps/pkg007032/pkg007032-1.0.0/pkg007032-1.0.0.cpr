@@ -1,0 +1,19 @@
+PACKAGE=pkg007032
+VERSION=1.0.0
+CATEGORY=games-fps
+DESCRIPTION="Package 7032"
+HOMEPAGE="https://pkg007032.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007032.org/pkg007032-1.0.0.tar.gz -> pkg007032-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

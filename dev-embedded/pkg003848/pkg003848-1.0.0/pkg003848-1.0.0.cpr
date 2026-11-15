@@ -1,0 +1,19 @@
+PACKAGE=pkg003848
+VERSION=1.0.0
+CATEGORY=dev-embedded
+DESCRIPTION="Package 3848"
+HOMEPAGE="https://pkg003848.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg003848.org/pkg003848-1.0.0.tar.gz -> pkg003848-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

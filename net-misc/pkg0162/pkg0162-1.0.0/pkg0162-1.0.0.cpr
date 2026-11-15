@@ -1,0 +1,17 @@
+PACKAGE=pkg0162
+VERSION=1.0.0
+CATEGORY=net-misc
+DESCRIPTION="Package 162"
+HOMEPAGE="https://example.com/pkg0162"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0162/pkg0162-1.0.0.tar.gz -> pkg0162-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || die
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

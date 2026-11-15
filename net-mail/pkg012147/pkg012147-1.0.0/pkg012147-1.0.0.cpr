@@ -1,0 +1,19 @@
+PACKAGE=pkg012147
+VERSION=1.0.0
+CATEGORY=net-mail
+DESCRIPTION="Package 12147"
+HOMEPAGE="https://pkg012147.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012147.org/pkg012147-1.0.0.tar.gz -> pkg012147-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

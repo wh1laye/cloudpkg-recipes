@@ -1,0 +1,19 @@
+PACKAGE=pkg004350
+VERSION=1.0.0
+CATEGORY=dev-java
+DESCRIPTION="Package 4350"
+HOMEPAGE="https://pkg004350.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004350.org/pkg004350-1.0.0.tar.gz -> pkg004350-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

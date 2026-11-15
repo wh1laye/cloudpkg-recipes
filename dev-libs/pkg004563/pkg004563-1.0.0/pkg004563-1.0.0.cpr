@@ -1,0 +1,19 @@
+PACKAGE=pkg004563
+VERSION=1.0.0
+CATEGORY=dev-libs
+DESCRIPTION="Package 4563"
+HOMEPAGE="https://pkg004563.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004563.org/pkg004563-1.0.0.tar.gz -> pkg004563-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

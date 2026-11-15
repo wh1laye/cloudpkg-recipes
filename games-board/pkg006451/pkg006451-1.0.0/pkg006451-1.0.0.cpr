@@ -1,0 +1,19 @@
+PACKAGE=pkg006451
+VERSION=1.0.0
+CATEGORY=games-board
+DESCRIPTION="Package 6451"
+HOMEPAGE="https://pkg006451.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg006451.org/pkg006451-1.0.0.tar.gz -> pkg006451-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

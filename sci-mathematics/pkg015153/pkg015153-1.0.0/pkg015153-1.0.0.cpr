@@ -1,0 +1,19 @@
+PACKAGE=pkg015153
+VERSION=1.0.0
+CATEGORY=sci-mathematics
+DESCRIPTION="Package 15153"
+HOMEPAGE="https://pkg015153.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015153.org/pkg015153-1.0.0.tar.gz -> pkg015153-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

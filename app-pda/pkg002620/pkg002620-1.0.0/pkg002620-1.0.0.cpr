@@ -1,0 +1,19 @@
+PACKAGE=pkg002620
+VERSION=1.0.0
+CATEGORY=app-pda
+DESCRIPTION="Package 2620"
+HOMEPAGE="https://pkg002620.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002620.org/pkg002620-1.0.0.tar.gz -> pkg002620-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

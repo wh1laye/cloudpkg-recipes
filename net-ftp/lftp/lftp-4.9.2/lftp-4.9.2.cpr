@@ -1,0 +1,27 @@
+PACKAGE=lftp
+VERSION=4.9.2
+CATEGORY=net-ftp
+DESCRIPTION="Sophisticated command-line FTP/HTTP client"
+HOMEPAGE="https://lftp.yar.ru/"
+LICENSE="GPL-3"
+SRC_URI="https://lftp.yar.ru/ftp/lftp-4.9.2.tar.gz -> lftp-4.9.2.tar.gz"
+DEPEND="sys-libs/readline dev-libs/openssl sys-libs/expat"
+RDEPEND="
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j$(nproc) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="${D}" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo " installed successfully"
+}

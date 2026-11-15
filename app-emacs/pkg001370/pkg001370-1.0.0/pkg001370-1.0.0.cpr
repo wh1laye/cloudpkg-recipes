@@ -1,0 +1,19 @@
+PACKAGE=pkg001370
+VERSION=1.0.0
+CATEGORY=app-emacs
+DESCRIPTION="Package 1370"
+HOMEPAGE="https://pkg001370.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001370.org/pkg001370-1.0.0.tar.gz -> pkg001370-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

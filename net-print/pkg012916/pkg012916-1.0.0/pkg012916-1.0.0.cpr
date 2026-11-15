@@ -1,0 +1,19 @@
+PACKAGE=pkg012916
+VERSION=1.0.0
+CATEGORY=net-print
+DESCRIPTION="Package 12916"
+HOMEPAGE="https://pkg012916.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012916.org/pkg012916-1.0.0.tar.gz -> pkg012916-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

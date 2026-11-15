@@ -1,0 +1,19 @@
+PACKAGE=pkg014255
+VERSION=1.0.0
+CATEGORY=sci-biology
+DESCRIPTION="Package 14255"
+HOMEPAGE="https://pkg014255.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014255.org/pkg014255-1.0.0.tar.gz -> pkg014255-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg002197
+VERSION=1.0.0
+CATEGORY=app-leechcraft
+DESCRIPTION="Package 2197"
+HOMEPAGE="https://pkg002197.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002197.org/pkg002197-1.0.0.tar.gz -> pkg002197-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

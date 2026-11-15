@@ -1,0 +1,19 @@
+PACKAGE=pkg002553
+VERSION=1.0.0
+CATEGORY=app-office
+DESCRIPTION="Package 2553"
+HOMEPAGE="https://pkg002553.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg002553.org/pkg002553-1.0.0.tar.gz -> pkg002553-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg011003
+VERSION=1.0.0
+CATEGORY=net-dns
+DESCRIPTION="Package 11003"
+HOMEPAGE="https://pkg011003.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011003.org/pkg011003-1.0.0.tar.gz -> pkg011003-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

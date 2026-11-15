@@ -1,0 +1,19 @@
+PACKAGE=pkg013609
+VERSION=1.0.0
+CATEGORY=net-vpn
+DESCRIPTION="Package 13609"
+HOMEPAGE="https://pkg013609.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013609.org/pkg013609-1.0.0.tar.gz -> pkg013609-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

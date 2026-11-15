@@ -1,0 +1,19 @@
+PACKAGE=dev0474
+VERSION=1.4.0
+CATEGORY=dev-util
+DESCRIPTION="Package 474"
+HOMEPAGE="https://example.com/dev0474"
+LICENSE=""MIT""
+SRC_URI="https://example.com/dev0474/dev0474-1.4.0.tar.gz -> dev0474-1.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

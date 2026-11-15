@@ -1,0 +1,19 @@
+PACKAGE=pkg016361
+VERSION=1.0.0
+CATEGORY=sys-devel
+DESCRIPTION="Package 16361"
+HOMEPAGE="https://pkg016361.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016361.org/pkg016361-1.0.0.tar.gz -> pkg016361-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

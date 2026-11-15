@@ -1,0 +1,19 @@
+PACKAGE=pkg011019
+VERSION=1.0.0
+CATEGORY=net-dns
+DESCRIPTION="Package 11019"
+HOMEPAGE="https://pkg011019.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011019.org/pkg011019-1.0.0.tar.gz -> pkg011019-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

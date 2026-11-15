@@ -1,0 +1,19 @@
+PACKAGE=pkg010596
+VERSION=1.0.0
+CATEGORY=net-analyzer
+DESCRIPTION="Package 10596"
+HOMEPAGE="https://pkg010596.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010596.org/pkg010596-1.0.0.tar.gz -> pkg010596-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

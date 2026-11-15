@@ -1,0 +1,19 @@
+PACKAGE=pkg016464
+VERSION=1.0.0
+CATEGORY=sys-firmware
+DESCRIPTION="Package 16464"
+HOMEPAGE="https://pkg016464.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016464.org/pkg016464-1.0.0.tar.gz -> pkg016464-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

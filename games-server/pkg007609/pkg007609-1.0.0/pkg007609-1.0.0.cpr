@@ -1,0 +1,19 @@
+PACKAGE=pkg007609
+VERSION=1.0.0
+CATEGORY=games-server
+DESCRIPTION="Package 7609"
+HOMEPAGE="https://pkg007609.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007609.org/pkg007609-1.0.0.tar.gz -> pkg007609-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

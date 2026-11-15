@@ -1,0 +1,19 @@
+PACKAGE=pkg001707
+VERSION=1.0.0
+CATEGORY=app-eselect
+DESCRIPTION="Package 1707"
+HOMEPAGE="https://pkg001707.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001707.org/pkg001707-1.0.0.tar.gz -> pkg001707-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg013874
+VERSION=1.0.0
+CATEGORY=office-flow
+DESCRIPTION="Package 13874"
+HOMEPAGE="https://pkg013874.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013874.org/pkg013874-1.0.0.tar.gz -> pkg013874-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

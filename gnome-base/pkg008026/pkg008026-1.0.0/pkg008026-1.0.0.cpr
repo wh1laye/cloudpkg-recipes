@@ -1,0 +1,19 @@
+PACKAGE=pkg008026
+VERSION=1.0.0
+CATEGORY=gnome-base
+DESCRIPTION="Package 8026"
+HOMEPAGE="https://pkg008026.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg008026.org/pkg008026-1.0.0.tar.gz -> pkg008026-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

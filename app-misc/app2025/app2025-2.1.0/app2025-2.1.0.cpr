@@ -1,0 +1,19 @@
+PACKAGE=app2025
+VERSION=2.1.0
+CATEGORY=app-misc
+DESCRIPTION="Package 25"
+HOMEPAGE="https://example.com/app2025"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app2025/app2025-2.1.0.tar.gz -> app2025-2.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg010176
+VERSION=1.0.0
+CATEGORY=media-sound
+DESCRIPTION="Package 10176"
+HOMEPAGE="https://pkg010176.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010176.org/pkg010176-1.0.0.tar.gz -> pkg010176-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

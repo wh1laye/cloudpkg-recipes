@@ -1,0 +1,19 @@
+PACKAGE=app0061
+VERSION=2.4.0
+CATEGORY=app-misc
+DESCRIPTION="Package 61"
+HOMEPAGE="https://example.com/app0061"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0061/app0061-2.4.0.tar.gz -> app0061-2.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

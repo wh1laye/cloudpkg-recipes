@@ -1,0 +1,19 @@
+PACKAGE=pkg015344
+VERSION=1.0.0
+CATEGORY=sci-physics
+DESCRIPTION="Package 15344"
+HOMEPAGE="https://pkg015344.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015344.org/pkg015344-1.0.0.tar.gz -> pkg015344-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

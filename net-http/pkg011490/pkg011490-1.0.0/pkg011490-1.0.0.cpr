@@ -1,0 +1,19 @@
+PACKAGE=pkg011490
+VERSION=1.0.0
+CATEGORY=net-http
+DESCRIPTION="Package 11490"
+HOMEPAGE="https://pkg011490.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011490.org/pkg011490-1.0.0.tar.gz -> pkg011490-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

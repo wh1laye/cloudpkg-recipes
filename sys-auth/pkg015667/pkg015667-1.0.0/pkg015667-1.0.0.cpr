@@ -1,0 +1,19 @@
+PACKAGE=pkg015667
+VERSION=1.0.0
+CATEGORY=sys-auth
+DESCRIPTION="Package 15667"
+HOMEPAGE="https://pkg015667.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015667.org/pkg015667-1.0.0.tar.gz -> pkg015667-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg004089
+VERSION=1.0.0
+CATEGORY=dev-haskell
+DESCRIPTION="Package 4089"
+HOMEPAGE="https://pkg004089.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004089.org/pkg004089-1.0.0.tar.gz -> pkg004089-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

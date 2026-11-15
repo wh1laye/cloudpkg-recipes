@@ -1,0 +1,19 @@
+PACKAGE=pkg012893
+VERSION=1.0.0
+CATEGORY=net-p2p
+DESCRIPTION="Package 12893"
+HOMEPAGE="https://pkg012893.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012893.org/pkg012893-1.0.0.tar.gz -> pkg012893-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

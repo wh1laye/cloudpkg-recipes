@@ -1,0 +1,19 @@
+PACKAGE=pkg010058
+VERSION=1.0.0
+CATEGORY=media-radio
+DESCRIPTION="Package 10058"
+HOMEPAGE="https://pkg010058.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010058.org/pkg010058-1.0.0.tar.gz -> pkg010058-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

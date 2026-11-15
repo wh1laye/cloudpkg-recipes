@@ -1,0 +1,19 @@
+PACKAGE=pkg017657
+VERSION=1.0.0
+CATEGORY=www-apache
+DESCRIPTION="Package 17657"
+HOMEPAGE="https://pkg017657.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017657.org/pkg017657-1.0.0.tar.gz -> pkg017657-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

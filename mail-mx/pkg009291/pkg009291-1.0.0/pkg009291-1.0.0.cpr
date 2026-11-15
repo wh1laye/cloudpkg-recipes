@@ -1,0 +1,19 @@
+PACKAGE=pkg009291
+VERSION=1.0.0
+CATEGORY=mail-mx
+DESCRIPTION="Package 9291"
+HOMEPAGE="https://pkg009291.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009291.org/pkg009291-1.0.0.tar.gz -> pkg009291-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

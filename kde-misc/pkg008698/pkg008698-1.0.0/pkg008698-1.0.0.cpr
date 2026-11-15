@@ -1,0 +1,19 @@
+PACKAGE=pkg008698
+VERSION=1.0.0
+CATEGORY=kde-misc
+DESCRIPTION="Package 8698"
+HOMEPAGE="https://pkg008698.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg008698.org/pkg008698-1.0.0.tar.gz -> pkg008698-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

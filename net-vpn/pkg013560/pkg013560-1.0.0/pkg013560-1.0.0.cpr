@@ -1,0 +1,19 @@
+PACKAGE=pkg013560
+VERSION=1.0.0
+CATEGORY=net-vpn
+DESCRIPTION="Package 13560"
+HOMEPAGE="https://pkg013560.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg013560.org/pkg013560-1.0.0.tar.gz -> pkg013560-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

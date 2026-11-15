@@ -1,0 +1,19 @@
+PACKAGE=pkg017418
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="Package 17418"
+HOMEPAGE="https://pkg017418.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017418.org/pkg017418-1.0.0.tar.gz -> pkg017418-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

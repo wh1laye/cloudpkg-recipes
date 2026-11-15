@@ -1,0 +1,19 @@
+PACKAGE=armadillo
+VERSION=12.6.5
+CATEGORY=sci-mathematics
+DESCRIPTION="C++ linear algebra library"
+HOMEPAGE="https://example.com/armadillo"
+LICENSE="Apache-2.0"
+SRC_URI="https://example.com/armadillo/armadillo-12.6.5.tar.gz -> armadillo-12.6.5.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

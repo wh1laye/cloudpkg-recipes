@@ -1,0 +1,19 @@
+PACKAGE=pkg015766
+VERSION=1.0.0
+CATEGORY=sys-auth
+DESCRIPTION="Package 15766"
+HOMEPAGE="https://pkg015766.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg015766.org/pkg015766-1.0.0.tar.gz -> pkg015766-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

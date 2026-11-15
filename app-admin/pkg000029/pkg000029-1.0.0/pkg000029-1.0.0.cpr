@@ -1,0 +1,19 @@
+PACKAGE=pkg000029
+VERSION=1.0.0
+CATEGORY=app-admin
+DESCRIPTION="Package 29"
+HOMEPAGE="https://pkg000029.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000029.org/pkg000029-1.0.0.tar.gz -> pkg000029-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

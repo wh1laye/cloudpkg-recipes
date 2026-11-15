@@ -1,0 +1,19 @@
+PACKAGE=pkg010905
+VERSION=1.0.0
+CATEGORY=net-dns
+DESCRIPTION="Package 10905"
+HOMEPAGE="https://pkg010905.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010905.org/pkg010905-1.0.0.tar.gz -> pkg010905-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

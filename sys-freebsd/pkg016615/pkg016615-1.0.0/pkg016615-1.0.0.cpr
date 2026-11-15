@@ -1,0 +1,19 @@
+PACKAGE=pkg016615
+VERSION=1.0.0
+CATEGORY=sys-freebsd
+DESCRIPTION="Package 16615"
+HOMEPAGE="https://pkg016615.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016615.org/pkg016615-1.0.0.tar.gz -> pkg016615-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg010216
+VERSION=1.0.0
+CATEGORY=media-sound
+DESCRIPTION="Package 10216"
+HOMEPAGE="https://pkg010216.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010216.org/pkg010216-1.0.0.tar.gz -> pkg010216-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg000466
+VERSION=1.0.0
+CATEGORY=app-benchmark
+DESCRIPTION="Package 466"
+HOMEPAGE="https://pkg000466.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000466.org/pkg000466-1.0.0.tar.gz -> pkg000466-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

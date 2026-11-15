@@ -1,0 +1,19 @@
+PACKAGE=pkg008309
+VERSION=1.0.0
+CATEGORY=kde-apps
+DESCRIPTION="Package 8309"
+HOMEPAGE="https://pkg008309.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg008309.org/pkg008309-1.0.0.tar.gz -> pkg008309-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

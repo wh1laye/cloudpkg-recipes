@@ -1,0 +1,19 @@
+PACKAGE=aom
+VERSION=3.8.0
+CATEGORY=media-libs
+DESCRIPTION="AV1 Video Codec Library"
+HOMEPAGE="https://example.com/aom"
+LICENSE="BSD-2"
+SRC_URI="https://example.com/aom/aom-3.8.0.tar.gz -> aom-3.8.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

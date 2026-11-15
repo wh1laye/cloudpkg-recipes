@@ -1,0 +1,19 @@
+PACKAGE=asciinema
+VERSION=2.1.0
+CATEGORY=app-misc
+DESCRIPTION="Terminal session recorder"
+HOMEPAGE="https://example.com/asciinema"
+LICENSE=""GPL-3""
+SRC_URI="https://example.com/asciinema/asciinema-2.1.0.tar.gz -> asciinema-2.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

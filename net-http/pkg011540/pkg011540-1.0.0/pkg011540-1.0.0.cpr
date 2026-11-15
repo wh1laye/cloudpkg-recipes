@@ -1,0 +1,19 @@
+PACKAGE=pkg011540
+VERSION=1.0.0
+CATEGORY=net-http
+DESCRIPTION="Package 11540"
+HOMEPAGE="https://pkg011540.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011540.org/pkg011540-1.0.0.tar.gz -> pkg011540-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

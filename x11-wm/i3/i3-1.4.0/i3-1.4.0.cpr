@@ -1,0 +1,19 @@
+PACKAGE=i3
+VERSION=1.4.0
+CATEGORY=x11-wm
+DESCRIPTION="Improved tiling window manager"
+HOMEPAGE="https://example.com/i3"
+LICENSE=""BSD-3""
+SRC_URI="https://example.com/i3/i3-1.4.0.tar.gz -> i3-1.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=pkg016048
+VERSION=1.0.0
+CATEGORY=sys-boot
+DESCRIPTION="Package 16048"
+HOMEPAGE="https://pkg016048.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg016048.org/pkg016048-1.0.0.tar.gz -> pkg016048-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

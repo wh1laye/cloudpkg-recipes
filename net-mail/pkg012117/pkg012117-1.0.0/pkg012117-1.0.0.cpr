@@ -1,0 +1,19 @@
+PACKAGE=pkg012117
+VERSION=1.0.0
+CATEGORY=net-mail
+DESCRIPTION="Package 12117"
+HOMEPAGE="https://pkg012117.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012117.org/pkg012117-1.0.0.tar.gz -> pkg012117-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

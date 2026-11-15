@@ -1,0 +1,19 @@
+PACKAGE=glibc
+VERSION=2.39
+CATEGORY=sys-devel
+DESCRIPTION="GNU C library"
+HOMEPAGE="https://glibc.org/"
+LICENSE="LGPL-2.1"
+SRC_URI="https://downloads.glibc.org/glibc-2.39.tar.gz -> glibc-2.39.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

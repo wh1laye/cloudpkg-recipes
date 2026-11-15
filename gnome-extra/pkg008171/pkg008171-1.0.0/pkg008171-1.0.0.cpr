@@ -1,0 +1,19 @@
+PACKAGE=pkg008171
+VERSION=1.0.0
+CATEGORY=gnome-extra
+DESCRIPTION="Package 8171"
+HOMEPAGE="https://pkg008171.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg008171.org/pkg008171-1.0.0.tar.gz -> pkg008171-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

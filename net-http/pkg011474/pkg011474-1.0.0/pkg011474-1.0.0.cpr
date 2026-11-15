@@ -1,0 +1,19 @@
+PACKAGE=pkg011474
+VERSION=1.0.0
+CATEGORY=net-http
+DESCRIPTION="Package 11474"
+HOMEPAGE="https://pkg011474.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011474.org/pkg011474-1.0.0.tar.gz -> pkg011474-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

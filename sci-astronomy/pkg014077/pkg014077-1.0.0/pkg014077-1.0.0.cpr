@@ -1,0 +1,19 @@
+PACKAGE=pkg014077
+VERSION=1.0.0
+CATEGORY=sci-astronomy
+DESCRIPTION="Package 14077"
+HOMEPAGE="https://pkg014077.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014077.org/pkg014077-1.0.0.tar.gz -> pkg014077-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

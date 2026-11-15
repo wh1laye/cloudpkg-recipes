@@ -1,0 +1,19 @@
+PACKAGE=pkg024838
+VERSION=1.0.0
+CATEGORY=app-misc
+DESCRIPTION="pkg024838 package"
+HOMEPAGE="https://pkg024838.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg024838.org/pkg024838-1.0.0.tar.gz -> pkg024838-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

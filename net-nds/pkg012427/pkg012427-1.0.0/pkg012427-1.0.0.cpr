@@ -1,0 +1,19 @@
+PACKAGE=pkg012427
+VERSION=1.0.0
+CATEGORY=net-nds
+DESCRIPTION="Package 12427"
+HOMEPAGE="https://pkg012427.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012427.org/pkg012427-1.0.0.tar.gz -> pkg012427-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

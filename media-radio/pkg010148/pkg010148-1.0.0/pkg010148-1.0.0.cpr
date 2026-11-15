@@ -1,0 +1,19 @@
+PACKAGE=pkg010148
+VERSION=1.0.0
+CATEGORY=media-radio
+DESCRIPTION="Package 10148"
+HOMEPAGE="https://pkg010148.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010148.org/pkg010148-1.0.0.tar.gz -> pkg010148-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

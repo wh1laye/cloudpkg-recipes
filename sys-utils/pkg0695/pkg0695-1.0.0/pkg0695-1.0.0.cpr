@@ -1,0 +1,17 @@
+PACKAGE=pkg0695
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="Package 695"
+HOMEPAGE="https://example.com/pkg0695"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0695/pkg0695-1.0.0.tar.gz -> pkg0695-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || die
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=app0356
+VERSION=1.4.0
+CATEGORY=app-misc
+DESCRIPTION="Package 356"
+HOMEPAGE="https://example.com/app0356"
+LICENSE=""MIT""
+SRC_URI="https://example.com/app0356/app0356-1.4.0.tar.gz -> app0356-1.4.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

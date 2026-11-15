@@ -1,0 +1,19 @@
+PACKAGE=pkg004307
+VERSION=1.0.0
+CATEGORY=dev-java
+DESCRIPTION="Package 4307"
+HOMEPAGE="https://pkg004307.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004307.org/pkg004307-1.0.0.tar.gz -> pkg004307-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

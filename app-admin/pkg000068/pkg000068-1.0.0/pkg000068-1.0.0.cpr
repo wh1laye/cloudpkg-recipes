@@ -1,0 +1,19 @@
+PACKAGE=pkg000068
+VERSION=1.0.0
+CATEGORY=app-admin
+DESCRIPTION="Package 68"
+HOMEPAGE="https://pkg000068.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000068.org/pkg000068-1.0.0.tar.gz -> pkg000068-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=sys0003
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="Package 3"
+HOMEPAGE="https://example.com/sys0003"
+LICENSE="MIT"
+SRC_URI="https://example.com/sys0003/sys0003-1.0.0.tar.gz -> sys0003-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

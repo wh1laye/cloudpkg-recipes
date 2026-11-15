@@ -1,0 +1,19 @@
+PACKAGE=pkg004424
+VERSION=1.0.0
+CATEGORY=dev-lang
+DESCRIPTION="Package 4424"
+HOMEPAGE="https://pkg004424.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004424.org/pkg004424-1.0.0.tar.gz -> pkg004424-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

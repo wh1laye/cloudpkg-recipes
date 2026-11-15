@@ -1,0 +1,19 @@
+PACKAGE=pkg0377
+VERSION=1.5.0
+CATEGORY=app-misc
+DESCRIPTION="Package 377"
+HOMEPAGE="https://example.com/pkg0377"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0377/pkg0377-1.5.0.tar.gz -> pkg0377-1.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

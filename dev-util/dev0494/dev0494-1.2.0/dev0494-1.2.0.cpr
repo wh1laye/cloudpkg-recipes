@@ -1,0 +1,19 @@
+PACKAGE=dev0494
+VERSION=1.2.0
+CATEGORY=dev-util
+DESCRIPTION="Package 494"
+HOMEPAGE="https://example.com/dev0494"
+LICENSE=""MIT""
+SRC_URI="https://example.com/dev0494/dev0494-1.2.0.tar.gz -> dev0494-1.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

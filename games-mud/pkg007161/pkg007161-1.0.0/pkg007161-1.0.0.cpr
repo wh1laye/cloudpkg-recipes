@@ -1,0 +1,19 @@
+PACKAGE=pkg007161
+VERSION=1.0.0
+CATEGORY=games-mud
+DESCRIPTION="Package 7161"
+HOMEPAGE="https://pkg007161.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007161.org/pkg007161-1.0.0.tar.gz -> pkg007161-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

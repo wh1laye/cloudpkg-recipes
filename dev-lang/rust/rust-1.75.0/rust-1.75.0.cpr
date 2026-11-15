@@ -1,0 +1,32 @@
+PACKAGE=rust
+VERSION=1.75.0
+CATEGORY=dev-lang
+DESCRIPTION="Rust programming language compiler"
+HOMEPAGE="https://www.rust-lang.org/"
+LICENSE="MIT Apache-2.0"
+SRC_URI="https://static.rust-lang.org/dist/rust-${VERSION}-src.tar.gz -> ${P}-${VERSION}-src.tar.gz"
+DEPEND="dev-libs/openssl dev-libs/libssh2 sys-libs/zlib"
+RDEPEND="${DEPEND}"
+SLOT=0
+KEYWORDS="amd64"
+RUST_CONFIG="--release-channel=stable --enable-llvm-link-shared --enable-extended"
+src_compile() {
+    ./x.py build ${RUST_CONFIG} || die "Compilation failed"
+}
+src_install() {
+    local rustdir="${D}/usr/local/rust"
+    mkdir -p "${rustdir}"
+    cp -r build/*/stage2/* "${rustdir}" || die "Install failed"
+    local bindir="${rustdir}/bin"
+    for tool in rustc cargo rustdoc rustup; do
+        dosym "${bindir}/${tool}" "/usr/bin/${tool}"
+    done
+    echo "RUSTUP_HOME=/usr/local/rust" > "${D}/etc/env.d/99rust"
+    echo "CARGO_HOME=/usr/local/rust" >> "${D}/etc/env.d/99rust"
+    dodoc README.md LICENSE-MIT LICENSE-APACHE
+}
+pkg_postinst() {
+    einfo "Rust ${VERSION} installed to /usr/local/rust"
+    einfo "Symlinks created in /usr/bin"
+    einfo "Run: rustup default stable"
+}

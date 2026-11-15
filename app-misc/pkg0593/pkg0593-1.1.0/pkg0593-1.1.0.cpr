@@ -1,0 +1,19 @@
+PACKAGE=pkg0593
+VERSION=1.1.0
+CATEGORY=app-misc
+DESCRIPTION="Package 593"
+HOMEPAGE="https://example.com/pkg0593"
+LICENSE=""MIT""
+SRC_URI="https://example.com/pkg0593/pkg0593-1.1.0.tar.gz -> pkg0593-1.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

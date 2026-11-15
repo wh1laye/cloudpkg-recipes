@@ -1,0 +1,19 @@
+PACKAGE=bind
+VERSION=2.3.0
+CATEGORY=net-dns
+DESCRIPTION="BIND DNS server"
+HOMEPAGE="https://example.com/bind"
+LICENSE=""MPL-2.0""
+SRC_URI="https://example.com/bind/bind-2.3.0.tar.gz -> bind-2.3.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

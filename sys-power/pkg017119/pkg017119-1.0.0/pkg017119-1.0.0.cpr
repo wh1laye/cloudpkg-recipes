@@ -1,0 +1,19 @@
+PACKAGE=pkg017119
+VERSION=1.0.0
+CATEGORY=sys-power
+DESCRIPTION="Package 17119"
+HOMEPAGE="https://pkg017119.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017119.org/pkg017119-1.0.0.tar.gz -> pkg017119-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

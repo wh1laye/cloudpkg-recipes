@@ -1,0 +1,19 @@
+PACKAGE=pkg017046
+VERSION=1.0.0
+CATEGORY=sys-libs
+DESCRIPTION="Package 17046"
+HOMEPAGE="https://pkg017046.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg017046.org/pkg017046-1.0.0.tar.gz -> pkg017046-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

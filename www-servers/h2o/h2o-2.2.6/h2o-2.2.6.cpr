@@ -1,0 +1,24 @@
+PACKAGE=h2o
+VERSION=2.2.6
+CATEGORY=www-servers
+DESCRIPTION="HTTP/2 server with a focus on performance"
+HOMEPAGE="https://h2o.examp1e.net/"
+LICENSE="MIT"
+SRC_URI="https://github.com/h2o/h2o/archive/refs/tags/v2.2.6.tar.gz -> h2o-2.2.6.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+src_compile() {
+    make -j\(nproc\) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo "h2o installed successfully"
+}

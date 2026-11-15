@@ -1,0 +1,19 @@
+PACKAGE=pkg009488
+VERSION=1.0.0
+CATEGORY=media-fonts
+DESCRIPTION="Package 9488"
+HOMEPAGE="https://pkg009488.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009488.org/pkg009488-1.0.0.tar.gz -> pkg009488-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,17 @@
+PACKAGE=pkg0544
+VERSION=1.0.0
+CATEGORY=dev-libs
+DESCRIPTION="Package 544"
+HOMEPAGE="https://example.com/pkg0544"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0544/pkg0544-1.0.0.tar.gz -> pkg0544-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || die
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

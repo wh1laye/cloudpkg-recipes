@@ -1,0 +1,19 @@
+PACKAGE=pkg007333
+VERSION=1.0.0
+CATEGORY=games-puzzle
+DESCRIPTION="Package 7333"
+HOMEPAGE="https://pkg007333.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg007333.org/pkg007333-1.0.0.tar.gz -> pkg007333-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

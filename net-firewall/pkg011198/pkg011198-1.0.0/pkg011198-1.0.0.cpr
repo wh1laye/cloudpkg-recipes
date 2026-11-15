@@ -1,0 +1,19 @@
+PACKAGE=pkg011198
+VERSION=1.0.0
+CATEGORY=net-firewall
+DESCRIPTION="Package 11198"
+HOMEPAGE="https://pkg011198.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg011198.org/pkg011198-1.0.0.tar.gz -> pkg011198-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

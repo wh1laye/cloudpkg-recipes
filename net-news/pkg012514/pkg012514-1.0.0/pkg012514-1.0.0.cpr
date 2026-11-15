@@ -1,0 +1,19 @@
+PACKAGE=pkg012514
+VERSION=1.0.0
+CATEGORY=net-news
+DESCRIPTION="Package 12514"
+HOMEPAGE="https://pkg012514.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg012514.org/pkg012514-1.0.0.tar.gz -> pkg012514-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

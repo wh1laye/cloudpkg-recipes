@@ -1,0 +1,19 @@
+PACKAGE=pkg008120
+VERSION=1.0.0
+CATEGORY=gnome-base
+DESCRIPTION="Package 8120"
+HOMEPAGE="https://pkg008120.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg008120.org/pkg008120-1.0.0.tar.gz -> pkg008120-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

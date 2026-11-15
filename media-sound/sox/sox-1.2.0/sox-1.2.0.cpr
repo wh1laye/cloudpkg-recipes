@@ -1,0 +1,19 @@
+PACKAGE=sox
+VERSION=1.2.0
+CATEGORY=media-sound
+DESCRIPTION="Sound eXchange - audio processing"
+HOMEPAGE="https://example.com/sox"
+LICENSE=""GPL-2""
+SRC_URI="https://example.com/sox/sox-1.2.0.tar.gz -> sox-1.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

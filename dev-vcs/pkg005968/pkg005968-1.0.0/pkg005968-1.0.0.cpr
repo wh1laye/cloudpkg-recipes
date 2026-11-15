@@ -1,0 +1,19 @@
+PACKAGE=pkg005968
+VERSION=1.0.0
+CATEGORY=dev-vcs
+DESCRIPTION="Package 5968"
+HOMEPAGE="https://pkg005968.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg005968.org/pkg005968-1.0.0.tar.gz -> pkg005968-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

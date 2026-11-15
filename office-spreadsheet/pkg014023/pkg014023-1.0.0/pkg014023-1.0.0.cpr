@@ -1,0 +1,19 @@
+PACKAGE=pkg014023
+VERSION=1.0.0
+CATEGORY=office-spreadsheet
+DESCRIPTION="Package 14023"
+HOMEPAGE="https://pkg014023.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg014023.org/pkg014023-1.0.0.tar.gz -> pkg014023-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,19 @@
+PACKAGE=snd0366
+VERSION=1.2.0
+CATEGORY=media-sound
+DESCRIPTION="Package 366"
+HOMEPAGE="https://example.com/snd0366"
+LICENSE=""MIT""
+SRC_URI="https://example.com/snd0366/snd0366-1.2.0.tar.gz -> snd0366-1.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

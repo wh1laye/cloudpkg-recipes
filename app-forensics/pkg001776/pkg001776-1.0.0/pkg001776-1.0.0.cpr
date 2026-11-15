@@ -1,0 +1,19 @@
+PACKAGE=pkg001776
+VERSION=1.0.0
+CATEGORY=app-forensics
+DESCRIPTION="Package 1776"
+HOMEPAGE="https://pkg001776.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg001776.org/pkg001776-1.0.0.tar.gz -> pkg001776-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

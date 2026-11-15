@@ -1,0 +1,19 @@
+PACKAGE=pkg000650
+VERSION=1.0.0
+CATEGORY=app-cdr
+DESCRIPTION="Package 650"
+HOMEPAGE="https://pkg000650.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000650.org/pkg000650-1.0.0.tar.gz -> pkg000650-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

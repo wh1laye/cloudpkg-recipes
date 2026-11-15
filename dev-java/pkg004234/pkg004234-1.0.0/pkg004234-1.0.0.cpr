@@ -1,0 +1,19 @@
+PACKAGE=pkg004234
+VERSION=1.0.0
+CATEGORY=dev-java
+DESCRIPTION="Package 4234"
+HOMEPAGE="https://pkg004234.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg004234.org/pkg004234-1.0.0.tar.gz -> pkg004234-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

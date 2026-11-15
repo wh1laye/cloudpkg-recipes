@@ -1,0 +1,19 @@
+PACKAGE=pkg009874
+VERSION=1.0.0
+CATEGORY=media-plugins
+DESCRIPTION="Package 9874"
+HOMEPAGE="https://pkg009874.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009874.org/pkg009874-1.0.0.tar.gz -> pkg009874-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

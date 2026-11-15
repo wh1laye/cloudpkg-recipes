@@ -1,0 +1,19 @@
+PACKAGE=pkg000701
+VERSION=1.0.0
+CATEGORY=app-cdr
+DESCRIPTION="Package 701"
+HOMEPAGE="https://pkg000701.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg000701.org/pkg000701-1.0.0.tar.gz -> pkg000701-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

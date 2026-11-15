@@ -1,0 +1,19 @@
+PACKAGE=pkg010295
+VERSION=1.0.0
+CATEGORY=media-sound
+DESCRIPTION="Package 10295"
+HOMEPAGE="https://pkg010295.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg010295.org/pkg010295-1.0.0.tar.gz -> pkg010295-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

@@ -1,0 +1,24 @@
+PACKAGE=lynx
+VERSION=2.9.2
+CATEGORY=www-client
+DESCRIPTION="Text-based web browser"
+HOMEPAGE="https://lynx.browser.org/"
+LICENSE="GPL-2"
+SRC_URI="https://invisible-mirror.net/archives/lynx/tarballs/lynx2.9.2.tar.gz -> lynx-2.9.2.tar.gz"
+DEPEND="sys-libs/ncurses"
+RDEPEND="sys-libs/ncurses"
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+src_compile() {
+    make -j\(nproc\) || die "Compilation failed"
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die "Installation failed"
+    dodoc README* CHANGELOG* LICENSE*
+}
+pkg_postinst() {
+    einfo "lynx installed successfully"
+}

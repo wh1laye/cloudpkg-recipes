@@ -1,0 +1,19 @@
+PACKAGE=pkg009230
+VERSION=1.0.0
+CATEGORY=mail-mta
+DESCRIPTION="Package 9230"
+HOMEPAGE="https://pkg009230.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009230.org/pkg009230-1.0.0.tar.gz -> pkg009230-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

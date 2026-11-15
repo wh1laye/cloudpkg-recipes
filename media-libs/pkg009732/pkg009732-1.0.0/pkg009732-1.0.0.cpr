@@ -1,0 +1,19 @@
+PACKAGE=pkg009732
+VERSION=1.0.0
+CATEGORY=media-libs
+DESCRIPTION="Package 9732"
+HOMEPAGE="https://pkg009732.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.pkg009732.org/pkg009732-1.0.0.tar.gz -> pkg009732-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+src_compile() {
+    make -j\(nproc\) || die
+}
+
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}

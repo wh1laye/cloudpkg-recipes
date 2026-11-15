@@ -1,0 +1,17 @@
+PACKAGE=pkg0395
+VERSION=1.0.0
+CATEGORY=sys-utils
+DESCRIPTION="Package 395"
+HOMEPAGE="https://example.com/pkg0395"
+LICENSE="MIT"
+SRC_URI="https://example.com/pkg0395/pkg0395-1.0.0.tar.gz -> pkg0395-1.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j\(nproc\) || die
+}
+src_install() {
+    make DESTDIR="\(D\)" install || die
+}
