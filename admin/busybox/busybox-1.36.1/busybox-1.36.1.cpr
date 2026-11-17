@@ -15,5 +15,5 @@ src_compile() {
 }
 
 src_install() {
-    make DESTDIR="${D}" install || exit 1
+    make CONFIG_PREFIX="${D}" install || exit 1
 }
