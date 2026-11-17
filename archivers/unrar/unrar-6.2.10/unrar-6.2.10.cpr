@@ -11,7 +11,7 @@ SLOT=0
 KEYWORDS="amd64"
 RESTRICT="strip"
 src_compile() {
-    make -j$(nproc) -f makefile.unix || exit 1
+    make -j"${JOBS:-$(nproc)}" -f makefile.unix || exit 1
 }
 src_install() {
     dobin unrar

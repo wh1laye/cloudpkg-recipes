@@ -17,7 +17,7 @@ src_configure() {
         --with-confuse
 }
 src_compile() {
-    make -j$(nproc) || exit 1
+    make -j"${JOBS:-$(nproc)}" || exit 1
 }
 src_install() {
     make DESTDIR="${D}" install || exit 1

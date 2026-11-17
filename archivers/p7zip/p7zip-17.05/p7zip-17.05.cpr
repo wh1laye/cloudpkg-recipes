@@ -10,7 +10,7 @@ RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 src_compile() {
-    cd CPP/7zip && make -j$(nproc) all3 || exit 1
+    cd CPP/7zip && make -j"${JOBS:-$(nproc)}" all3 || exit 1
     cd ../..
 }
 src_install() {
