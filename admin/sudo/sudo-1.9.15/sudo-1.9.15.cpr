@@ -5,11 +5,11 @@ DESCRIPTION="Execute commands with elevated privileges"
 HOMEPAGE="https://www.sudo.ws/"
 LICENSE="ISC"
 SRC_URI="https://www.sudo.ws/dist/sudo-1.9.15.tar.gz -> sudo-1.9.15.tar.gz"
-DEPEND="sys-libs/pam sys-libs/libaudit"
-RDEPEND="${DEPEND}"
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-BUILD_FLAGS="--with-pam --with-audit --with-logging=syslog --with-env-editor"
+BUILD_FLAGS="--without-pam --without-audit --with-logging=syslog --with-env-editor --disable-static"
 
 src_configure() {
     ./configure \
@@ -17,7 +17,6 @@ src_configure() {
         --libexecdir=/usr/lib/sudo \
         --with-rundir=/run/sudo \
         --with-vardir=/var/db/sudo \
-        --disable-static \
         ${BUILD_FLAGS}
 }
 
@@ -31,7 +30,6 @@ src_install() {
 }
 
 pkg_postinst() {
-    echo "sudo installed successfully"
-    echo "Configure /etc/sudoers before use"
-    echo "Default sudoers file installed - edit with visudo"
+    echo "sudo installed"
+    echo "edit /etc/sudoers with visudo"
 }
