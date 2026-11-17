@@ -4,31 +4,32 @@ CATEGORY=.
 DESCRIPTION="Execute commands with elevated privileges"
 HOMEPAGE="https://www.sudo.ws/"
 LICENSE="ISC"
-SRC_URI="https://www.sudo.ws/dist/sudo-${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
+SRC_URI="https://www.sudo.ws/dist/sudo-1.9.15.tar.gz -> sudo-1.9.15.tar.gz"
 DEPEND="sys-libs/pam sys-libs/libaudit"
 RDEPEND="${DEPEND}"
 SLOT=0
 KEYWORDS="amd64"
 BUILD_FLAGS="--with-pam --with-audit --with-logging=syslog --with-env-editor"
+
 src_configure() {
     ./configure \
         --prefix=/usr \
-        --libexecDESTDIR=/usr/lib/sudo \
-        --with-runDESTDIR=/run/sudo \
-        --with-varDESTDIR=/var/db/sudo \
+        --libexecdir=/usr/lib/sudo \
+        --with-rundir=/run/sudo \
+        --with-vardir=/var/db/sudo \
         --disable-static \
         ${BUILD_FLAGS}
 }
+
 src_compile() {
     make -j"${JOBS:-$(nproc)}" || exit 1
 }
+
 src_install() {
     make DESTDIR="${D}" install || exit 1
-    keepdir /etc/sudoers.d
-    /etc
-    cp sudoers sudoers
-    install -Dm644 README.LDAP README.PAM README.PLUGIN README.SUDOERS
+    install -d -m 750 "${D}/etc/sudoers.d"
 }
+
 pkg_postinst() {
     echo "sudo installed successfully"
     echo "Configure /etc/sudoers before use"
