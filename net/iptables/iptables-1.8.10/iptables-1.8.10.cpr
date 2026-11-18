@@ -1,0 +1,20 @@
+PACKAGE=iptables
+VERSION=1.8.10
+CATEGORY=.
+DESCRIPTION="IP tables firewall utilities"
+HOMEPAGE="https://www.netfilter.org/projects/iptables/"
+LICENSE="GPL-2"
+SRC_URI="https://www.netfilter.org/projects/iptables/files/iptables-1.8.10.tar.gz -> iptables-1.8.10.tar.gz"
+DEPEND="libs/glibc"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --enable-libipq
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}
