@@ -5,20 +5,20 @@ DESCRIPTION="Minimal try/catch with proper localization"
 HOMEPAGE="https://metacpan.org/pod/Try::Tiny"
 LICENSE="Artistic GPL-1"
 SRC_URI="https://cpan.metacpan.org/authors/id/E/ET/ETHER/Try-Tiny-0.31.tar.gz -> Try-Tiny-0.31.tar.gz"
-DEPEND="dev-lang/perl"
-RDEPEND="dev-lang/perl"
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
+
+
 src_configure() {
-    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+    perl Makefile.PL INSTALLDIRS=vendor
 }
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
+
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo "Try-Tiny installed successfully"
+    make DESTDIR="${D}" install
 }

@@ -9,7 +9,6 @@ DEPEND="dev-libs/openssl dev-libs/libffi sys-libs/zlib sys-libs/readline dev-lib
 RDEPEND="${DEPEND}"
 SLOT=3.12
 KEYWORDS="amd64"
-BUILD_FLAGS="--enable-optimizations --enable-shared --with-lto --with-system-expat --with-system-ffi --with-system-libmpdec"
 src_configure() {
     ./configure \
         --prefix=/usr \
@@ -40,9 +39,4 @@ src_install() {
     rm -f "${D}"/usr/lib/python${SLOT}/_sysconfigdata__linux_*
     rm -f "${D}"/usr/lib/python${SLOT}/config-${SLOT}*/Makefile
     install -Dm644 README.rst LICENSE
-}
-pkg_postinst() {
-    echo "Python ${VERSION} installed"
-    echo "Symlinks: python -> python3 -> python${VERSION%.*}"
-    echo "pip available: pip3"
 }

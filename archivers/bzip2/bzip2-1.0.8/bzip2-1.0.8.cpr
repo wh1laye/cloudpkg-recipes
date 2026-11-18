@@ -4,16 +4,22 @@ CATEGORY=.
 DESCRIPTION="Compression utility"
 HOMEPAGE="https://bzip2.org/"
 LICENSE="BSD-4"
-SRC_URI="https://downloads.bzip2.org/bzip2-1.0.8.tar.gz -> bzip2-1.0.8.tar.gz"
+SRC_URI="https://fossies.org/linux/misc/bzip2-1.0.8.tar.gz -> bzip2-1.0.8.tar.gz"
 DEPEND=""
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}" -f Makefile-libbz2_so && make -j"${JOBS:-1}"
 }
 
 src_install() {
-    make DESTDIR="${D}" install || exit 1
+    install -d "${D}/usr/bin" "${D}/usr/lib" "${D}/usr/include"
+        install -m755 bzip2 bunzip2 bzcat "${D}/usr/bin"
+        install -m755 libbz2.so.1.0.8 "${D}/usr/lib"
+        ln -s libbz2.so.1.0.8 "${D}/usr/lib/libbz2.so.1.0"
+        ln -s libbz2.so.1.0 "${D}/usr/lib/libbz2.so"
+        install -m644 bzlib.h "${D}/usr/include"
 }

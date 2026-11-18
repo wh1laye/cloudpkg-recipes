@@ -4,16 +4,21 @@ CATEGORY=.
 DESCRIPTION="Multi-call binary"
 HOMEPAGE="https://busybox.org/"
 LICENSE="GPL-2"
-SRC_URI="https://downloads.busybox.org/busybox-1.36.1.tar.gz -> busybox-1.36.1.tar.gz"
+SRC_URI="https://busybox.net/downloads/busybox-1.36.1.tar.bz2 -> busybox-1.36.1.tar.bz2"
 DEPEND=""
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 
+
+src_configure() {
+    make defconfig && sed -i "s/^CONFIG_TC=y/# CONFIG_TC is not set/" .config
+}
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
 
 src_install() {
-    make CONFIG_PREFIX="${D}" install || exit 1
+    make CONFIG_PREFIX="${D}" install
 }

@@ -5,24 +5,20 @@ DESCRIPTION="Vi IMproved text editor"
 HOMEPAGE="https://www.vim.org/"
 LICENSE="Vim"
 SRC_URI="https://github.com/vim/vim/archive/refs/tags/v9.1.0.tar.gz -> vim-9.1.0.tar.gz"
-DEPEND="sys-libs/ncurses dev-libs/libtermcap"
-RDEPEND="
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-BUILD_FLAGS="--with-features=huge"
+
+
 src_configure() {
-    ./configure \
-        --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --localstateDESTDIR=/var
+    ./configure --prefix=/usr --sysconfdir=/etc --with-features=huge --enable-multibyte --disable-gui --without-x
 }
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
+
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo " installed successfully"
+    make DESTDIR="${D}" install
 }

@@ -4,31 +4,21 @@ CATEGORY=.
 DESCRIPTION="Log file rotation utility"
 HOMEPAGE="https://github.com/logrotate/logrotate"
 LICENSE="MIT"
-SRC_URI="https://github.com/logrotate/logrotate/releases/download/${VERSION}/logrotate-${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
-DEPEND="sys-libs/popt sys-libs/acl"
-RDEPEND="${DEPEND}"
+SRC_URI="https://github.com/logrotate/logrotate/releases/download/3.21.0/logrotate-3.21.0.tar.gz -> logrotate-3.21.0.tar.gz"
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
+
+
 src_configure() {
-    ./configure \
-        --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --with-state-file-path=/var/lib/logrotate/status \
-        --enable-acl \
-        --enable-xz
+    ./configure --prefix=/usr --sysconfdir=/etc --with-state-file-path=/var/lib/logrotate/status
 }
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
+
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    /etc/logrotate.d
-    doins tests/logrotate.conf
-    keepdir /var/lib/logrotate
-    install -Dm644 README.md CHANGELOG.md
-}
-pkg_postinst() {
-    echo "logrotate installed"
-    echo "Configure /etc/logrotate.conf and /etc/logrotate.d/"
-    echo "Add to cron: daily /usr/sbin/logrotate /etc/logrotate.conf"
+    make DESTDIR="${D}" install
 }

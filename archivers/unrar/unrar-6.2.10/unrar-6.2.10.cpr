@@ -4,22 +4,17 @@ CATEGORY=.
 DESCRIPTION="Extract files from RAR archives"
 HOMEPAGE="https://www.rarlab.com/"
 LICENSE="UnRAR"
-SRC_URI="https://www.rarlab.com/rar/unrarsrc-${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
+SRC_URI="https://www.rarlab.com/rar/unrarsrc-6.2.10.tar.gz -> unrar-6.2.10.tar.gz"
 DEPEND=""
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-RESTRICT="strip"
+
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" -f makefile.unix || exit 1
+    make -j"${JOBS:-1}"
 }
+
 src_install() {
-    dobin unrar
-    /usr/share/man/man1
-    doins unrar.1
-    install -Dm644 license.txt readme.txt
-}
-pkg_postinst() {
-    echo "unrar installed"
-    echo "Usage: unrar x archive.rar"
+    install -Dm755 unrar "${D}/usr/bin/unrar"
 }

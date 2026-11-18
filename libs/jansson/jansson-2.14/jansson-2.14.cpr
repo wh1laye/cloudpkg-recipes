@@ -6,22 +6,19 @@ HOMEPAGE="https://jansson.readthedocs.io/"
 LICENSE="MIT"
 SRC_URI="https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.gz -> jansson-2.14.tar.gz"
 DEPEND=""
-RDEPEND="
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
+
+
 src_configure() {
-    ./configure \
-        --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --localstateDESTDIR=/var
+    cmake -S . -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DJANSSON_BUILD_DOCS=OFF -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 }
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    cmake --build build -j"${JOBS:-1}"
 }
+
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo " installed successfully"
+    DESTDIR="${D}" cmake --install build
 }

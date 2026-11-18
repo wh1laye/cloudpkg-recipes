@@ -4,21 +4,21 @@ CATEGORY=.
 DESCRIPTION="Fast and versatile file copying tool"
 HOMEPAGE="https://rsync.samba.org/"
 LICENSE="GPL-3"
-SRC_URI="https://download.samba.org/pub/rsync/src/rsync-3.2.7.tar.gz -> rsync-3.2.7.tar.gz"
-DEPEND="sys-libs/acl sys-libs/xxhash"
-RDEPEND="sys-libs/acl sys-libs/xxhash"
+SRC_URI="https://github.com/RsyncProject/rsync/archive/refs/tags/v3.2.7.tar.gz -> rsync-3.2.7.tar.gz"
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
+
+
 src_configure() {
-    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+    ./configure --prefix=/usr --sysconfdir=/etc
 }
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
+
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo "rsync installed successfully"
+    make DESTDIR="${D}" install
 }

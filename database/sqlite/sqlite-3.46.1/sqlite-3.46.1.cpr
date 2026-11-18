@@ -1,0 +1,24 @@
+PACKAGE=sqlite
+VERSION=3.46.1
+CATEGORY=.
+DESCRIPTION="SQL database engine in a C library"
+HOMEPAGE="https://www.sqlite.org/"
+LICENSE="Public-Domain"
+SRC_URI="https://deb.debian.org/debian/pool/main/s/sqlite3/sqlite3_3.46.1.orig.tar.xz -> sqlite-3.46.1.tar.xz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+
+
+src_configure() {
+    ./configure --prefix=/usr --disable-static
+}
+
+src_compile() {
+    make -j"${JOBS:-1}"
+}
+
+src_install() {
+    make DESTDIR="${D}" install
+}

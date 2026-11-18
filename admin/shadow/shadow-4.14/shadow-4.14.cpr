@@ -4,16 +4,21 @@ CATEGORY=.
 DESCRIPTION="Password management"
 HOMEPAGE="https://shadow.org/"
 LICENSE="BSD-3"
-SRC_URI="https://downloads.shadow.org/shadow-4.14.tar.gz -> shadow-4.14.tar.gz"
+SRC_URI="https://github.com/shadow-maint/shadow/releases/download/4.14.0/shadow-4.14.0.tar.gz -> shadow-4.14.0.tar.gz"
 DEPEND=""
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 
+
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc --disable-static --without-libcrack
+}
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
 
 src_install() {
-    make DESTDIR="${D}" install || exit 1
+    make DESTDIR="${D}" install
 }

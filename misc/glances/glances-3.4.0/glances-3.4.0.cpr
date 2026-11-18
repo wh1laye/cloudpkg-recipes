@@ -17,6 +17,3 @@ src_install() {
     dobin bin/glances
     install -Dm644 README.rst CHANGELOG.md
 }
-pkg_postinst() {
-    echo "Glances installed"
-}

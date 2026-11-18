@@ -4,24 +4,21 @@ CATEGORY=.
 DESCRIPTION="Library call tracer"
 HOMEPAGE="https://www.ltrace.org/"
 LICENSE="GPL-2"
-SRC_URI="https://www.ltrace.org/files/ltrace-0.7.3.tar.gz -> ltrace-0.7.3.tar.gz"
+SRC_URI="https://github.com/dkogan/ltrace/archive/refs/tags/0.7.3.tar.gz -> ltrace-0.7.3.tar.gz"
 DEPEND=""
-RDEPEND="
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
+
+
 src_configure() {
-    ./configure \
-        --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --localstateDESTDIR=/var
+    mkdir -p config/autoconf config/m4 && autoreconf -fi && ./configure --prefix=/usr --disable-werror
 }
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
+
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo " installed successfully"
+    make DESTDIR="${D}" install
 }

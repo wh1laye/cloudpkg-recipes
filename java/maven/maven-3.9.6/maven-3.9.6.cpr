@@ -4,21 +4,17 @@ CATEGORY=.
 DESCRIPTION="Java project management tool"
 HOMEPAGE="https://maven.apache.org/"
 LICENSE="Apache-2.0"
-SRC_URI="https://downloads.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz -> maven-3.9.6.tar.gz"
-DEPEND="dev-java/openjdk-bin"
-RDEPEND="dev-java/openjdk-bin"
+SRC_URI="https://archive.apache.org/dist/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz -> maven-3.9.6.tar.gz"
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-src_configure() {
-    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
-}
+
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    true
 }
+
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo "maven installed successfully"
+    install -d "${D}/opt" "${D}/usr/bin" && cp -a . "${D}/opt/apache-maven-3.9.6" && ln -s /opt/apache-maven-3.9.6/bin/mvn "${D}/usr/bin/mvn"
 }

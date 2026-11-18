@@ -5,20 +5,16 @@ DESCRIPTION="Dependency Manager for PHP"
 HOMEPAGE="https://getcomposer.org/"
 LICENSE="MIT"
 SRC_URI="https://getcomposer.org/download/2.6.5/composer.phar -> composer-2.6.5.phar"
-DEPEND="dev-lang/php"
-RDEPEND="dev-lang/php"
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-src_configure() {
-    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
-}
+
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    true
 }
+
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo "composer installed successfully"
+    install -Dm755 composer-2.6.5.phar "${D}/usr/bin/composer"
 }

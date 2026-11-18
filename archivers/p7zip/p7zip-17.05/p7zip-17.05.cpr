@@ -20,7 +20,3 @@ src_install() {
     doins man/7z.1 man/7za.1 man/7zr.1
     install -Dm644 README DOC/License.txt
 }
-pkg_postinst() {
-    echo "p7zip installed"
-    echo "Available commands: 7z, 7za, 7zr"
-}

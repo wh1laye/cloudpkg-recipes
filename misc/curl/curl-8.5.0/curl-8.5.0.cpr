@@ -5,24 +5,20 @@ DESCRIPTION="URL retrieval utility and library"
 HOMEPAGE="https://curl.se/"
 LICENSE="MIT"
 SRC_URI="https://curl.se/download/curl-8.5.0.tar.gz -> curl-8.5.0.tar.gz"
-DEPEND="sys-libs/openssl sys-libs/zlib"
-RDEPEND="
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-BUILD_FLAGS="--with-openssl --with-zlib"
+
+
 src_configure() {
-    ./configure \
-        --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --localstateDESTDIR=/var
+    ./configure --prefix=/usr --with-openssl --with-zlib --disable-static
 }
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
+
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo " installed successfully"
+    make DESTDIR="${D}" install
 }

@@ -25,8 +25,3 @@ src_install() {
     echo "CARGO_HOME=/usr/local/rust" >> "${D}/etc/env.d/99rust"
     install -Dm644 README.md LICENSE-MIT LICENSE-APACHE
 }
-pkg_postinst() {
-    echo "Rust ${VERSION} installed to /usr/local/rust"
-    echo "Symlinks created in /usr/bin"
-    echo "Run: rustup default stable"
-}

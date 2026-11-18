@@ -4,18 +4,17 @@ CATEGORY=.
 DESCRIPTION="Python package build and distribution tool"
 HOMEPAGE="https://pypi.org/project/setuptools/"
 LICENSE="MIT"
-SRC_URI="https://github.com/pypa/setuptools/archive/refs/tags/v${VERSION}.tar.gz -> ${P}-${VERSION}.tar.gz"
-DEPEND="dev-lang/python"
-RDEPEND="${DEPEND}"
+SRC_URI="https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-69.0.0.tar.gz -> setuptools-69.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
+
+
 src_compile() {
-    python3 setup.py build || exit 1
+    python3 setup.py build
 }
+
 src_install() {
-    python3 setup.py install --root="${D}" --prefix=/usr || exit 1
-    install -Dm644 README.md CHANGELOG.rst
-}
-pkg_postinst() {
-    echo "setuptools installed"
+    python3 setup.py install --root="${D}" --prefix=/usr --single-version-externally-managed --record=/dev/null
 }

@@ -5,24 +5,20 @@ DESCRIPTION="Network utility to retrieve files from the WWW"
 HOMEPAGE="https://www.gnu.org/software/wget/"
 LICENSE="GPL-3"
 SRC_URI="https://ftp.gnu.org/gnu/wget/wget-1.24.5.tar.gz -> wget-1.24.5.tar.gz"
-DEPEND="sys-libs/openssl sys-libs/zlib"
-RDEPEND="
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-BUILD_FLAGS="--with-ssl=openssl"
+
+
 src_configure() {
-    ./configure \
-        --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --localstateDESTDIR=/var
+    ./configure --prefix=/usr --sysconfdir=/etc --with-ssl=openssl
 }
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
+
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo " installed successfully"
+    make DESTDIR="${D}" install
 }

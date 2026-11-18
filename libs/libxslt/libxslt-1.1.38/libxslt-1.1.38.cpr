@@ -4,24 +4,21 @@ CATEGORY=.
 DESCRIPTION="XSLT library"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libxslt"
 LICENSE="MIT"
-SRC_URI="https://download.gnome.org/sources/libxslt/1.1.38/libxslt-1.1.38.tar.xz -> libxslt-1.1.38.tar.xz"
-DEPEND="dev-libs/libxml2"
-RDEPEND="
+SRC_URI="https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.38.tar.xz -> libxslt-1.1.38.tar.xz"
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
+
+
 src_configure() {
-    ./configure \
-        --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --localstateDESTDIR=/var
+    ./configure --prefix=/usr --without-python --disable-static
 }
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
+
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo " installed successfully"
+    make DESTDIR="${D}" install
 }

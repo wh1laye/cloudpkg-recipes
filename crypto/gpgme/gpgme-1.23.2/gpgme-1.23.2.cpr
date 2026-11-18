@@ -4,18 +4,21 @@ CATEGORY=.
 DESCRIPTION="GnuPG Made Easy library"
 HOMEPAGE="https://www.gnupg.org/"
 LICENSE="LGPL-2.1"
-SRC_URI="https://www.gnupg.org/download/GNUPG/gpgme/gpgme-1.23.2.tar.bz2 -> gpgme-1.23.2.tar.bz2"
-DEPEND="dev-libs/libgpg-error"
-RDEPEND="dev-libs/libgpg-error"
+SRC_URI="https://gnupg.org/ftp/gcrypt/gpgme/gpgme-1.23.2.tar.bz2 -> gpgme-1.23.2.tar.bz2"
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
+
+
 src_configure() {
-    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+    ./configure --prefix=/usr --disable-static --disable-gpgconf-test --disable-gpg-test --disable-gpgsm-test --disable-g13-test
 }
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
+
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
+    make DESTDIR="${D}" install
 }

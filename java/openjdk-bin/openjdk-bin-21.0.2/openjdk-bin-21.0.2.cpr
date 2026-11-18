@@ -4,21 +4,21 @@ CATEGORY=.
 DESCRIPTION="OpenJDK binary distribution"
 HOMEPAGE="https://openjdk.org/"
 LICENSE="GPL-2"
-SRC_URI="https://download.java.net/java/GA/jdk21/877d6127e982470ba2a7faa31cc93d04/36/GPL/openjdk-21.0.2_linux-x64_bin.tar.gz -> openjdk-bin-21.0.2.tar.gz"
+SRC_URI="https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.2%2B13/OpenJDK21U-jdk_x64_linux_hotspot_21.0.2_13.tar.gz -> openjdk-bin-21.0.2.tar.gz"
 DEPEND=""
 RDEPEND=""
-SLOT=21
+SLOT=0
 KEYWORDS="amd64"
-src_configure() {
-    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
-}
+
+
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    true
 }
+
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo "openjdk-bin installed successfully"
+    install -d "${D}/usr/lib/jvm" "${D}/usr/bin"
+        cp -a . "${D}/usr/lib/jvm/openjdk-21.0.2"
+        for b in java javac jar javadoc jcmd jconsole jdb jps jshell keytool; do
+            [ -x "${D}/usr/lib/jvm/openjdk-21.0.2/bin/$b" ] && ln -s /usr/lib/jvm/openjdk-21.0.2/bin/$b "${D}/usr/bin/$b"
+        done
 }
