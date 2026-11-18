@@ -1,0 +1,21 @@
+PACKAGE=glibc
+VERSION=2.38
+CATEGORY=.
+DESCRIPTION="GNU C Library"
+HOMEPAGE="https://www.gnu.org/software/libc/"
+LICENSE="LGPL-2.1"
+SRC_URI="https://ftp.gnu.org/gnu/glibc/glibc-2.38.tar.gz -> glibc-2.38.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    mkdir -p build && cd build
+    ../configure --prefix=/usr --disable-werror --enable-kernel=4.15
+}
+src_compile() {
+    cd build && make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    cd build && make DESTDIR="${D}" install || exit 1
+}

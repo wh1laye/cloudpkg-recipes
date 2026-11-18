@@ -1,0 +1,20 @@
+PACKAGE=dhcpcd
+VERSION=10.0.6
+CATEGORY=.
+DESCRIPTION="DHCP client daemon"
+HOMEPAGE="https://roy.marples.name/projects/dhcpcd/"
+LICENSE="BSD-2"
+SRC_URI="https://github.com/NetworkConfiguration/dhcpcd/releases/download/v10.0.6/dhcpcd-10.0.6.tar.gz -> dhcpcd-10.0.6.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc/dhcpcd
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

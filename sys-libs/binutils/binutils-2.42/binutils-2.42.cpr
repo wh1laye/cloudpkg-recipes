@@ -1,0 +1,20 @@
+PACKAGE=binutils
+VERSION=2.42
+CATEGORY=.
+DESCRIPTION="GNU Binary Utilities"
+HOMEPAGE="https://www.gnu.org/software/binutils/"
+LICENSE="GPL-3"
+SRC_URI="https://ftp.gnu.org/gnu/binutils/binutils-2.42.tar.gz -> binutils-2.42.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --with-sysroot=/ --enable-64-bit-bfd
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}
