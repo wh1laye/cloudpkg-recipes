@@ -1,0 +1,20 @@
+PACKAGE=grep
+VERSION=3.11
+CATEGORY=.
+DESCRIPTION="GNU grep - pattern matching utility"
+HOMEPAGE="https://www.gnu.org/software/grep/"
+LICENSE="GPL-3"
+SRC_URI="https://ftp.gnu.org/gnu/grep/grep-3.11.tar.gz -> grep-3.11.tar.gz"
+DEPEND="libs/pcre2"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -6,15 +6,14 @@ HOMEPAGE="https://www.gnu.org/software/gdb/"
 LICENSE="GPL-3"
 SRC_URI="https://ftp.gnu.org/gnu/gdb/gdb-14.2.tar.xz -> gdb-14.2.tar.xz"
 DEPEND="sys-libs/ncurses dev-libs/expat"
-RDEPEND="
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-BUILD_FLAGS="--with-python=python3"
 src_configure() {
     ./configure \
         --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --localstateDESTDIR=/var
+        --sysconfdir=/etc \
+        --localstatedir=/var
 }
 src_compile() {
     make -j"${JOBS:-$(nproc)}" || exit 1
@@ -22,7 +21,4 @@ src_compile() {
 src_install() {
     make DESTDIR="${D}" install || exit 1
     install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo " installed successfully"
 }

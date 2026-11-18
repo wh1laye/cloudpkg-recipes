@@ -9,12 +9,11 @@ DEPEND="dev-libs/libestr dev-libs/liblogging sys-libs/zlib"
 RDEPEND="${DEPEND}"
 SLOT=0
 KEYWORDS="amd64"
-BUILD_FLAGS="--enable-imfile --enable-imtcp --enable-imudp --enable-mmsnmptrapd --enable-mmjsonparse"
 src_configure() {
     ./configure \
         --prefix=/usr \
-        --sysconfDESTDIR=/etc/rsyslog \
-        --localstateDESTDIR=/var \
+        --sysconfdir=/etc/rsyslog \
+        --localstatedir=/var \
         --disable-static \
         ${BUILD_FLAGS}
 }
@@ -29,9 +28,4 @@ src_install() {
     /usr/lib/systemd/system
     cp tools/rsyslog.service rsyslog.service
     install -Dm644 README.md CHANGELOG
-}
-pkg_postinst() {
-    echo "rsyslog installed"
-    echo "Configure /etc/rsyslog/rsyslog.conf"
-    echo "Enable with: rc-update add rsyslog default"
 }

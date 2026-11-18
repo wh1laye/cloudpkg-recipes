@@ -4,18 +4,17 @@ CATEGORY=.
 DESCRIPTION="GNU pager"
 HOMEPAGE="https://www.greenwoodsoftware.com/less/"
 LICENSE="GPL-3"
-SRC_URI="https://www.greenwoodsoftware.com/less/less-643.tar.gz -> less-643.tar.gz"
-DEPEND="sys-libs/ncurses"
-RDEPEND="sys-libs/ncurses"
+SRC_URI="https://ftp.gnu.org/gnu/less/less-643.tar.gz -> less-643.tar.gz"
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 src_configure() {
-    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+    ./configure --prefix=/usr
 }
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
+    make DESTDIR="${D}" install
 }

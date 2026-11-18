@@ -5,20 +5,16 @@ DESCRIPTION="PostgreSQL database server"
 HOMEPAGE="https://www.postgresql.org/"
 LICENSE="PostgreSQL"
 SRC_URI="https://ftp.postgresql.org/pub/source/v16.2/postgresql-16.2.tar.gz -> postgresql-16.2.tar.gz"
-DEPEND="sys-libs/zlib dev-libs/openssl"
-RDEPEND="sys-libs/zlib dev-libs/openssl"
-SLOT=16
+DEPEND=""
+RDEPEND=""
+SLOT=0
 KEYWORDS="amd64"
 src_configure() {
-    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var/lib/postgresql --enable-thread-safety --without-icu
 }
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo "postgresql installed successfully"
+    make DESTDIR="${D}" install
 }

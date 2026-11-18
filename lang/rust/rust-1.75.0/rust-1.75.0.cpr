@@ -10,6 +10,9 @@ RDEPEND="${DEPEND}"
 SLOT=0
 KEYWORDS="amd64"
 RUST_CONFIG="--release-channel=stable --enable-llvm-link-shared --enable-extended"
+src_configure() {
+    true
+}
 src_compile() {
     ./x.py build ${RUST_CONFIG} || exit 1
 }
@@ -24,9 +27,4 @@ src_install() {
     echo "RUSTUP_HOME=/usr/local/rust" > "${D}/etc/env.d/99rust"
     echo "CARGO_HOME=/usr/local/rust" >> "${D}/etc/env.d/99rust"
     install -Dm644 README.md LICENSE-MIT LICENSE-APACHE
-}
-pkg_postinst() {
-    echo "Rust ${VERSION} installed to /usr/local/rust"
-    echo "Symlinks created in /usr/bin"
-    echo "Run: rustup default stable"
 }

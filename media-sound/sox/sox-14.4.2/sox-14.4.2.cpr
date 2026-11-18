@@ -4,25 +4,17 @@ CATEGORY=.
 DESCRIPTION="Sound eXchange - audio processing"
 HOMEPAGE="https://sourceforge.net/p/sox/"
 LICENSE="GPL-2"
-SRC_URI="https://downloads.sourceforge.net/project/sox/sox/14.4.2/sox-14.4.2.tar.gz -> sox-14.4.2.tar.gz"
-DEPEND="dev-libs/libsndfile dev-libs/libmad"
-RDEPEND="
+SRC_URI="https://sourceforge.net/projects/sox/files/sox/14.4.2/sox-14.4.2.tar.gz/download -> sox-14.4.2.tar.gz"
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-BUILD_FLAGS="--with-mad --with-sndfile"
 src_configure() {
-    ./configure \
-        --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --localstateDESTDIR=/var
+    ./configure --prefix=/usr --disable-static
 }
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo " installed successfully"
+    make DESTDIR="${D}" install
 }

@@ -4,18 +4,17 @@ CATEGORY=.
 DESCRIPTION="Paging program"
 HOMEPAGE="https://www.jedsoft.org/most/"
 LICENSE="GPL-2"
-SRC_URI="https://www.jedsoft.org/snapshots/most-5.2.0.tar.gz -> most-5.2.0.tar.gz"
-DEPEND="sys-libs/ncurses"
-RDEPEND="sys-libs/ncurses"
+SRC_URI="https://www.jedsoft.org/releases/most/most-5.2.0.tar.gz -> most-5.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 src_configure() {
-    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+    ./configure --prefix=/usr
 }
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
+    make DESTDIR="${D}" install
 }

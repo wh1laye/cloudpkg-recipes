@@ -5,24 +5,16 @@ DESCRIPTION="XML parser library"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libxml2"
 LICENSE="MIT"
 SRC_URI="https://download.gnome.org/sources/libxml2/2.12/libxml2-2.12.0.tar.xz -> libxml2-2.12.0.tar.xz"
-DEPEND="sys-libs/zlib dev-libs/libiconv"
-RDEPEND="
-SLOT=2
+DEPEND=""
+RDEPEND=""
+SLOT=0
 KEYWORDS="amd64"
-BUILD_FLAGS="--with-zlib --with-iconv"
 src_configure() {
-    ./configure \
-        --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --localstateDESTDIR=/var
+    ./configure --prefix=/usr --sysconfdir=/etc --without-python --disable-static
 }
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}"
 }
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo " installed successfully"
+    make DESTDIR="${D}" install
 }

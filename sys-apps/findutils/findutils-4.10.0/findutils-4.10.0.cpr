@@ -1,0 +1,20 @@
+PACKAGE=findutils
+VERSION=4.10.0
+CATEGORY=.
+DESCRIPTION="GNU find utilities"
+HOMEPAGE="https://www.gnu.org/software/findutils/"
+LICENSE="GPL-3"
+SRC_URI="https://ftp.gnu.org/gnu/findutils/findutils-4.10.0.tar.gz -> findutils-4.10.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --localstatedir=/var/lib/locate
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,19 +1,20 @@
 PACKAGE=automake
 VERSION=1.16.5
 CATEGORY=.
-DESCRIPTION="GNU automake"
-HOMEPAGE="https://example.com/automake"
-LICENSE="GPL-2"
-SRC_URI="https://example.com/automake/automake-1.16.5.tar.gz -> automake-1.16.5.tar.gz"
-DEPEND=""
+DESCRIPTION="GNU Automake - automatic Makefile generator"
+HOMEPAGE="https://www.gnu.org/software/automake/"
+LICENSE="GPL-3"
+SRC_URI="https://ftp.gnu.org/gnu/automake/automake-1.16.5.tar.gz -> automake-1.16.5.tar.gz"
+DEPEND="devel/autoconf devel/perl"
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-
+src_configure() {
+    ./configure --prefix=/usr
+}
 src_compile() {
     make -j"${JOBS:-$(nproc)}" || exit 1
 }
-
 src_install() {
     make DESTDIR="${D}" install || exit 1
 }

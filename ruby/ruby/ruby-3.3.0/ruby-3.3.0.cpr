@@ -9,7 +9,6 @@ DEPEND="sys-libs/zlib sys-libs/readline dev-libs/openssl dev-libs/libyaml"
 RDEPEND="${DEPEND}"
 SLOT=3.3
 KEYWORDS="amd64"
-BUILD_FLAGS="--enable-shared --disable-install-doc --with-openssl-DESTDIR=/usr"
 src_configure() {
     ./configure \
         --prefix=/usr \
@@ -28,8 +27,4 @@ src_install() {
     make DESTDIR="${D}" install || exit 1
     dosym ruby${VERSION%.*} /usr/bin/ruby
     install -Dm644 README.md COPYING
-}
-pkg_postinst() {
-    echo "Ruby ${VERSION} installed"
-    echo "Symlink: ruby -> ruby${VERSION%.*}"
 }

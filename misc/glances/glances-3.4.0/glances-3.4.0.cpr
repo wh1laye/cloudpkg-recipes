@@ -9,6 +9,9 @@ DEPEND="dev-python/setuptools dev-python/psutil dev-python/requests"
 RDEPEND="${DEPEND}"
 SLOT=0
 KEYWORDS="amd64"
+src_configure() {
+    true
+}
 src_compile() {
     python3 setup.py build || exit 1
 }
@@ -16,7 +19,4 @@ src_install() {
     python3 setup.py install --root="${D}" --prefix=/usr || exit 1
     dobin bin/glances
     install -Dm644 README.rst CHANGELOG.md
-}
-pkg_postinst() {
-    echo "Glances installed"
 }

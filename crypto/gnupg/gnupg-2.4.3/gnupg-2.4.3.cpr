@@ -6,14 +6,14 @@ HOMEPAGE="https://www.gnupg.org/"
 LICENSE="GPL-3"
 SRC_URI="https://www.gnupg.org/download/GNUPG/gpg-2.4.3.tar.bz2 -> gnupg-2.4.3.tar.bz2"
 DEPEND="dev-libs/libgpg-error dev-libs/libgcrypt dev-libs/libassuan"
-RDEPEND="
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 src_configure() {
     ./configure \
         --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --localstateDESTDIR=/var
+        --sysconfdir=/etc \
+        --localstatedir=/var
 }
 src_compile() {
     make -j"${JOBS:-$(nproc)}" || exit 1
@@ -21,7 +21,4 @@ src_compile() {
 src_install() {
     make DESTDIR="${D}" install || exit 1
     install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo " installed successfully"
 }

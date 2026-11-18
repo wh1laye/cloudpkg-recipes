@@ -4,16 +4,17 @@ CATEGORY=.
 DESCRIPTION="Tar archiver"
 HOMEPAGE="https://tar.org/"
 LICENSE="GPL-3"
-SRC_URI="https://downloads.tar.org/tar-1.35.tar.gz -> tar-1.35.tar.gz"
+SRC_URI="https://ftp.gnu.org/gnu/tar/tar-1.35.tar.gz -> tar-1.35.tar.gz"
 DEPEND=""
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-
-src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+src_configure() {
+    FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=/usr --disable-acl --without-posix-acls
 }
-
+src_compile() {
+    make -j"${JOBS:-1}"
+}
 src_install() {
-    make DESTDIR="${D}" install || exit 1
+    make DESTDIR="${D}" install
 }

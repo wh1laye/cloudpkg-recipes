@@ -10,7 +10,7 @@ RDEPEND="sys-libs/zlib dev-libs/openssl"
 SLOT=0
 KEYWORDS="amd64"
 src_configure() {
-    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 }
 src_compile() {
     make -j"${JOBS:-$(nproc)}" || exit 1
@@ -18,7 +18,4 @@ src_compile() {
 src_install() {
     make DESTDIR="${D}" install || exit 1
     install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo "mariadb installed successfully"
 }

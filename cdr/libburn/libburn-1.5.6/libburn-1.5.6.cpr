@@ -4,21 +4,17 @@ CATEGORY=.
 DESCRIPTION="Library for reading, mastering and writing optical discs"
 HOMEPAGE="https://libburnia-project.org/"
 LICENSE="GPL-2"
-SRC_URI="https://files.libburnia-project.org/releases/libburn-1.5.6.tar.gz -> libburn-1.5.6.tar.gz"
+SRC_URI="https://deb.debian.org/debian/pool/main/libb/libburn/libburn_1.5.6.orig.tar.gz -> libburn-1.5.6.tar.gz"
 DEPEND=""
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 src_configure() {
-    ./configure --prefix=/usr --sysconfDESTDIR=/etc --localstateDESTDIR=/var
+    ./configure --prefix=/usr --disable-static
 }
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    make -j"${JOBS:-1}" libburn/libburn.la
 }
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo "libburn installed successfully"
+    make DESTDIR="${D}" install-libLTLIBRARIES install-libincludeHEADERS install-nodist_pkgconfigDATA
 }

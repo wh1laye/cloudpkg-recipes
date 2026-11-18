@@ -12,7 +12,7 @@ KEYWORDS="amd64"
 src_configure() {
     ./configure \
         --prefix=/usr \
-        --sysconfDESTDIR=/etc \
+        --sysconfdir=/etc \
         --with-ncurses \
         --with-confuse
 }
@@ -22,7 +22,4 @@ src_compile() {
 src_install() {
     make DESTDIR="${D}" install || exit 1
     install -Dm644 README.md CHANGELOG
-}
-pkg_postinst() {
-    echo "bmon installed"
 }

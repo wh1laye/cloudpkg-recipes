@@ -4,16 +4,17 @@ CATEGORY=.
 DESCRIPTION="XZ compression"
 HOMEPAGE="https://xz.org/"
 LICENSE="LGPL-2.1"
-SRC_URI="https://downloads.xz.org/xz-5.4.5.tar.gz -> xz-5.4.5.tar.gz"
+SRC_URI="https://github.com/tukaani-project/xz/releases/download/v5.4.5/xz-5.4.5.tar.gz -> xz-5.4.5.tar.gz"
 DEPEND=""
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-
-src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+src_configure() {
+    ./configure --prefix=/usr
 }
-
+src_compile() {
+    make -j"${JOBS:-1}"
+}
 src_install() {
-    make DESTDIR="${D}" install || exit 1
+    make DESTDIR="${D}" install
 }

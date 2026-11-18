@@ -6,14 +6,14 @@ HOMEPAGE="https://mesonbuild.com/"
 LICENSE="Apache-2.0"
 SRC_URI="https://github.com/mesonbuild/meson/releases/download/1.3.0/meson-1.3.0.tar.gz -> meson-1.3.0.tar.gz"
 DEPEND="dev-lang/python"
-RDEPEND="
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 src_configure() {
     ./configure \
         --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --localstateDESTDIR=/var
+        --sysconfdir=/etc \
+        --localstatedir=/var
 }
 src_compile() {
     make -j"${JOBS:-$(nproc)}" || exit 1
@@ -21,7 +21,4 @@ src_compile() {
 src_install() {
     make DESTDIR="${D}" install || exit 1
     install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo " installed successfully"
 }

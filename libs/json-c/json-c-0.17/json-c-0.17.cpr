@@ -4,24 +4,17 @@ CATEGORY=.
 DESCRIPTION="JSON manipulation library"
 HOMEPAGE="https://github.com/json-c/json-c"
 LICENSE="MIT"
-SRC_URI="https://github.com/json-c/json-c/archive/refs/tags/json-c-0.17-20230511.tar.gz -> json-c-0.17.tar.gz"
+SRC_URI="https://s3.amazonaws.com/json-c_releases/releases/json-c-0.17.tar.gz -> json-c-0.17.tar.gz"
 DEPEND=""
-RDEPEND="
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 src_configure() {
-    ./configure \
-        --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --localstateDESTDIR=/var
+    cmake -S . -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 }
 src_compile() {
-    make -j"${JOBS:-$(nproc)}" || exit 1
+    cmake --build build -j"${JOBS:-1}"
 }
 src_install() {
-    make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo " installed successfully"
+    DESTDIR="${D}" cmake --install build
 }

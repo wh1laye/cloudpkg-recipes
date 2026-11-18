@@ -6,14 +6,14 @@ HOMEPAGE="https://micro-editor.github.io/"
 LICENSE="MIT"
 SRC_URI="https://github.com/zyedidia/micro/releases/download/v2.0.10/micro-2.0.10-src.tar.gz -> micro-2.0.10-src.tar.gz"
 DEPEND=""
-RDEPEND="
+RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 src_configure() {
     ./configure \
         --prefix=/usr \
-        --sysconfDESTDIR=/etc \
-        --localstateDESTDIR=/var
+        --sysconfdir=/etc \
+        --localstatedir=/var
 }
 src_compile() {
     make -j"${JOBS:-$(nproc)}" || exit 1
@@ -21,7 +21,4 @@ src_compile() {
 src_install() {
     make DESTDIR="${D}" install || exit 1
     install -Dm644 README* CHANGELOG* LICENSE*
-}
-pkg_postinst() {
-    echo " installed successfully"
 }
