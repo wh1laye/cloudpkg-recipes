@@ -10,6 +10,9 @@ RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 GO_BUILD_MODE="default"
+src_configure() {
+    true
+}
 src_compile() {
     cd src
     ./make.bash ${BUILD_FLAGS} || exit 1

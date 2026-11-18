@@ -10,6 +10,9 @@ RDEPEND="${DEPEND}"
 SLOT=0
 KEYWORDS="amd64"
 RUST_CONFIG="--release-channel=stable --enable-llvm-link-shared --enable-extended"
+src_configure() {
+    true
+}
 src_compile() {
     ./x.py build ${RUST_CONFIG} || exit 1
 }

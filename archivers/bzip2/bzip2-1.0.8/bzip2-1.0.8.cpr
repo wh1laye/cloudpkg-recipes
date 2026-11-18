@@ -9,12 +9,12 @@ DEPEND=""
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-
-
+src_configure() {
+    true
+}
 src_compile() {
     make -j"${JOBS:-1}" -f Makefile-libbz2_so && make -j"${JOBS:-1}"
 }
-
 src_install() {
     install -d "${D}/usr/bin" "${D}/usr/lib" "${D}/usr/include"
         install -m755 bzip2 bunzip2 bzcat "${D}/usr/bin"

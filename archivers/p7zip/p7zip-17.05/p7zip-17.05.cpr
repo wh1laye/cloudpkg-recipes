@@ -9,6 +9,9 @@ DEPEND="dev-lang/yasm"
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
+src_configure() {
+    true
+}
 src_compile() {
     cd CPP/7zip && make -j"${JOBS:-$(nproc)}" all3 || exit 1
     cd ../..

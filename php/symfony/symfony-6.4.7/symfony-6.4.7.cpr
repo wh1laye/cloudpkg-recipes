@@ -9,12 +9,12 @@ DEPEND=""
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-
-
+src_configure() {
+    true
+}
 src_compile() {
     true
 }
-
 src_install() {
     install -d "${D}/usr/share/php/symfony" && cp -a . "${D}/usr/share/php/symfony/"
 }

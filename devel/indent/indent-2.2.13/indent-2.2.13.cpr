@@ -9,16 +9,12 @@ DEPEND=""
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-
-
 src_configure() {
     ./configure --prefix=/usr
 }
-
 src_compile() {
     make -j"${JOBS:-1}"
 }
-
 src_install() {
     make DESTDIR="${D}" install
 }

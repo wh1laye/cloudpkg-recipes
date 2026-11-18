@@ -22,4 +22,3 @@ src_install() {
     make DESTDIR="${D}" install || exit 1
     install -Dm644 README* CHANGELOG* LICENSE*
 }
-

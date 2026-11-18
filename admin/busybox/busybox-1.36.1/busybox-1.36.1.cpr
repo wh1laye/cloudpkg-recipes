@@ -9,16 +9,12 @@ DEPEND=""
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-
-
 src_configure() {
     make defconfig && sed -i "s/^CONFIG_TC=y/# CONFIG_TC is not set/" .config
 }
-
 src_compile() {
     make -j"${JOBS:-1}"
 }
-
 src_install() {
     make CONFIG_PREFIX="${D}" install
 }

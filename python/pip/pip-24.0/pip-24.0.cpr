@@ -9,12 +9,12 @@ DEPEND=""
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
-
-
+src_configure() {
+    true
+}
 src_compile() {
     python3 setup.py build
 }
-
 src_install() {
     python3 setup.py install --root="${D}" --prefix=/usr --single-version-externally-managed --record=/dev/null
 }
