@@ -1,0 +1,21 @@
+PACKAGE=rust
+VERSION=1.75.0
+CATEGORY=.
+DESCRIPTION="Rust programming language"
+HOMEPAGE="https://www.rust-lang.org/"
+LICENSE="MIT"
+SRC_URI="https://static.rust-lang.org/dist/rust-1.75.0-src.tar.gz -> rust-1.75.0-src.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    true
+}
+src_compile() {
+    ./configure --prefix=/usr --disable-docs
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

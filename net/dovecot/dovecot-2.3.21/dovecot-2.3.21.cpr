@@ -1,0 +1,20 @@
+PACKAGE=dovecot
+VERSION=2.3.21
+CATEGORY=.
+DESCRIPTION="Dovecot IMAP and POP3 server"
+HOMEPAGE="https://www.dovecot.org/"
+LICENSE="MIT"
+SRC_URI="https://dovecot.org/releases/2.3/dovecot-2.3.21.tar.gz -> dovecot-2.3.21.tar.gz"
+DEPEND="libs/openssl libs/bzip2 libs/zlib"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --sysconfdir=/etc/dovecot --with-ssl=openssl
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

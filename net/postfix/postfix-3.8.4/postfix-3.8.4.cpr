@@ -1,0 +1,20 @@
+PACKAGE=postfix
+VERSION=3.8.4
+CATEGORY=.
+DESCRIPTION="Postfix mail transfer agent"
+HOMEPAGE="http://www.postfix.org/"
+LICENSE="IPL-1.0"
+SRC_URI="https://cdn.azul.com/postfix/official/postfix-3.8.4.tar.gz -> postfix-3.8.4.tar.gz"
+DEPEND="libs/openssl libs/db"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    make makefiles CCARGS="-DUSE_TLS -DUSE_SASL_AUTH -DUSE_CYRUS_SASL -I/usr/include/sasl" AUXLIBS="-lssl -lcrypto -lsasl2 -ldb"
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

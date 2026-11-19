@@ -1,0 +1,20 @@
+PACKAGE=bzip2
+VERSION=1.0.8
+CATEGORY=.
+DESCRIPTION="High-quality block-sorting file compressor"
+HOMEPAGE="https://sourceware.org/bzip2/"
+LICENSE="BSD-2"
+SRC_URI="https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz -> bzip2-1.0.8.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    true
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make PREFIX="${D}/usr" install || exit 1
+}

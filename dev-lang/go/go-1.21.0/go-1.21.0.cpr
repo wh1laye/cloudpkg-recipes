@@ -1,0 +1,20 @@
+PACKAGE=go
+VERSION=1.21.0
+CATEGORY=.
+DESCRIPTION="Go programming language"
+HOMEPAGE="https://golang.org/"
+LICENSE="BSD-3"
+SRC_URI="https://go.dev/dl/go1.21.0.src.tar.gz -> go-1.21.0.src.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    true
+}
+src_compile() {
+    cd src && ./make.bash -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    cd src && DESTDIR="${D}" GOROOT="${D}/usr/lib/go" ./make.bash install || exit 1
+}

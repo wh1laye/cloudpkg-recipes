@@ -1,0 +1,20 @@
+PACKAGE=nginx
+VERSION=1.25.4
+CATEGORY=.
+DESCRIPTION="High-performance web server and reverse proxy"
+HOMEPAGE="https://nginx.org/"
+LICENSE="BSD-2"
+SRC_URI="https://nginx.org/download/nginx-1.25.4.tar.gz -> nginx-1.25.4.tar.gz"
+DEPEND="libs/zlib libs/pcre2 libs/openssl"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/run/nginx.pid --lock-path=/run/lock/nginx.lock --http-client-body-temp-path=/var/lib/nginx/body --http-proxy-temp-path=/var/lib/nginx/proxy --http-fastcgi-temp-path=/var/lib/nginx/fastcgi --with-http_ssl_module --with-http_v2_module
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

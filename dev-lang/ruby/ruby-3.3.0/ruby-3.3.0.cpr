@@ -1,0 +1,20 @@
+PACKAGE=ruby
+VERSION=3.3.0
+CATEGORY=.
+DESCRIPTION="Ruby programming language"
+HOMEPAGE="https://www.ruby-lang.org/"
+LICENSE="BSD-2"
+SRC_URI="https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.0.tar.gz -> ruby-3.3.0.tar.gz"
+DEPEND="sys-libs/zlib libs/openssl"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --disable-install-doc
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}
