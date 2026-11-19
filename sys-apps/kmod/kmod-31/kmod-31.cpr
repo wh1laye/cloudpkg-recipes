@@ -1,0 +1,20 @@
+PACKAGE=kmod
+VERSION=31
+CATEGORY=.
+DESCRIPTION="Kernel module utilities"
+HOMEPAGE="https"
+LICENSE="//git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git"
+SRC_URI="GPL-2 -> kmod-31.tar.gz"
+DEPEND="https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-31.tar.gz:sys-libs/zlib"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,20 @@
+PACKAGE=alsa-lib
+VERSION=1.2.11
+CATEGORY=.
+DESCRIPTION="ALSA library"
+HOMEPAGE="https://www.alsa-project.org/"
+LICENSE="LGPL-2.1"
+SRC_URI="https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.11.tar.gz -> alsa-lib-1.2.11.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

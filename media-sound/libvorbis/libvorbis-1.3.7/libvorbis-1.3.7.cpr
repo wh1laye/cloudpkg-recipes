@@ -1,0 +1,20 @@
+PACKAGE=libvorbis
+VERSION=1.3.7
+CATEGORY=.
+DESCRIPTION="Vorbis audio codec"
+HOMEPAGE="https://xiph.org/vorbis/"
+LICENSE="BSD-3"
+SRC_URI="https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.gz -> libvorbis-1.3.7.tar.gz"
+DEPEND="media-sound/libogg"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,20 @@
+PACKAGE=harfbuzz
+VERSION=8.5.0
+CATEGORY=.
+DESCRIPTION="Text shaping library"
+HOMEPAGE="https://harfbuzz.github.io/"
+LICENSE="MIT"
+SRC_URI="https://github.com/harfbuzz/harfbuzz/releases/download/8.5.0/harfbuzz-8.5.0.tar.gz -> harfbuzz-8.5.0.tar.gz"
+DEPEND="app-text/freetype libs/glib"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

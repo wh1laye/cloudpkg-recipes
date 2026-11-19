@@ -1,0 +1,20 @@
+PACKAGE=libsigsegv
+VERSION=2.14
+CATEGORY=.
+DESCRIPTION="Signal handler for page faults"
+HOMEPAGE="https://libsigsegv.sourceforge.net/"
+LICENSE="GPL-2"
+SRC_URI="https://ftp.gnu.org/gnu/libsigsegv/libsigsegv-2.14.tar.gz -> libsigsegv-2.14.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

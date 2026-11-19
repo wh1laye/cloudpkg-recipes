@@ -1,0 +1,20 @@
+PACKAGE=libao
+VERSION=1.2.2
+CATEGORY=.
+DESCRIPTION="Audio output library"
+HOMEPAGE="https://xiph.org/ao/"
+LICENSE="GPL-2"
+SRC_URI="https://downloads.xiph.org/releases/ao/libao-1.2.2.tar.gz -> libao-1.2.2.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

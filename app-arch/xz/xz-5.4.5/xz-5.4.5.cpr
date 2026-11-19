@@ -1,7 +1,7 @@
 PACKAGE=xz
 VERSION=5.4.5
 CATEGORY=.
-DESCRIPTION="XZ compression utilities"
+DESCRIPTION="XZ compression"
 HOMEPAGE="https://tukaani.org/xz/"
 LICENSE="LGPL-2.1"
 SRC_URI="https://tukaani.org/xz/xz-5.4.5.tar.gz -> xz-5.4.5.tar.gz"

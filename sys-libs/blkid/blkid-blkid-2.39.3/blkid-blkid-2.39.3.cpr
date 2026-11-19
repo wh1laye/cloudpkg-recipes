@@ -1,0 +1,20 @@
+PACKAGE=blkid
+VERSION=blkid-2.39.3
+CATEGORY=.
+DESCRIPTION="Block device ID library"
+HOMEPAGE="https"
+LICENSE="//git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
+SRC_URI="LGPL-2.1 -> blkid-blkid-2.39.3.tar.gz"
+DEPEND="https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.3.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

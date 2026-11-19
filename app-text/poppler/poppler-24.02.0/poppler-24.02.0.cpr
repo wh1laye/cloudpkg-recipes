@@ -1,0 +1,20 @@
+PACKAGE=poppler
+VERSION=24.02.0
+CATEGORY=.
+DESCRIPTION="PDF rendering library"
+HOMEPAGE="https://poppler.freedesktop.org/"
+LICENSE="GPL-2"
+SRC_URI="https://poppler.freedesktop.org/releases/poppler-24.02.0.tar.gz -> poppler-24.02.0.tar.gz"
+DEPEND="libs/cairo libs/fontconfig"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

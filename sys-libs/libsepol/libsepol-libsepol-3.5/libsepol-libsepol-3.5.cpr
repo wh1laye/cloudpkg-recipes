@@ -1,0 +1,20 @@
+PACKAGE=libsepol
+VERSION=libsepol-3.5
+CATEGORY=.
+DESCRIPTION="SELinux policy library"
+HOMEPAGE="https"
+LICENSE="//github.com/SELinuxProject/selinux"
+SRC_URI="LGPL-2.1 -> libsepol-libsepol-3.5.tar.gz"
+DEPEND="https://github.com/SELinuxProject/selinux/releases/download/3.5/libsepol-3.5.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

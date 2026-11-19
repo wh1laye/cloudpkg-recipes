@@ -1,0 +1,20 @@
+PACKAGE=psmisc
+VERSION=23.6
+CATEGORY=.
+DESCRIPTION="Process utilities"
+HOMEPAGE="https"
+LICENSE="//sourceforge.net/projects/psmisc/"
+SRC_URI="GPL-2 -> psmisc-23.6.tar.gz"
+DEPEND="https://sourceforge.net/projects/psmisc/files/psmisc/psmisc-23.6.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

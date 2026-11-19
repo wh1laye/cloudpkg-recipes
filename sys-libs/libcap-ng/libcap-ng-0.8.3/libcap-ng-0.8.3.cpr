@@ -1,0 +1,20 @@
+PACKAGE=libcap-ng
+VERSION=0.8.3
+CATEGORY=.
+DESCRIPTION="Capabilities library"
+HOMEPAGE="https://github.com/stevegrubb/libcap-ng"
+LICENSE="LGPL-2.1"
+SRC_URI="https://github.com/stevegrubb/libcap-ng/archive/refs/tags/v0.8.3.tar.gz -> libcap-ng-0.8.3.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

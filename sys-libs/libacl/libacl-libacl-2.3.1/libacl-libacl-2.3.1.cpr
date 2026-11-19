@@ -1,0 +1,20 @@
+PACKAGE=libacl
+VERSION=libacl-2.3.1
+CATEGORY=.
+DESCRIPTION="ACL library"
+HOMEPAGE="https"
+LICENSE="//savannah.nongnu.org/projects/acl"
+SRC_URI="LGPL-2.1 -> libacl-libacl-2.3.1.tar.gz"
+DEPEND="https://download.savannah.gnu.org/releases/acl/libacl-2.3.1.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

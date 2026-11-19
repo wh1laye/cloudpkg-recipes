@@ -1,0 +1,20 @@
+PACKAGE=libaudit
+VERSION=libaudit-3.1.2
+CATEGORY=.
+DESCRIPTION="Audit library"
+HOMEPAGE="https"
+LICENSE="//github.com/linux-audit/audit-userspace"
+SRC_URI="LGPL-2.1 -> libaudit-libaudit-3.1.2.tar.gz"
+DEPEND="https://github.com/linux-audit/audit-userspace/archive/refs/tags/v3.1.2.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,20 @@
+PACKAGE=libksba
+VERSION=1.6.4
+CATEGORY=.
+DESCRIPTION="X.509 library"
+HOMEPAGE="https://www.gnupg.org/software/libksba/"
+LICENSE="LGPL-3"
+SRC_URI="https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.6.4.tar.gz -> libksba-1.6.4.tar.gz"
+DEPEND="dev-libs/libgpg-error"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

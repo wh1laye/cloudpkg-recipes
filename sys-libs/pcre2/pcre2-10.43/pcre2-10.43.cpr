@@ -1,0 +1,20 @@
+PACKAGE=pcre2
+VERSION=10.43
+CATEGORY=.
+DESCRIPTION="Perl Compatible Regular Expressions Library v2"
+HOMEPAGE="https://www.pcre.org/"
+LICENSE="BSD-3"
+SRC_URI="https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.43/pcre2-10.43.tar.gz -> pcre2-10.43.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --enable-unicode --enable-jit
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

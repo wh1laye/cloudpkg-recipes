@@ -1,0 +1,20 @@
+PACKAGE=gnutls
+VERSION=3.8.3
+CATEGORY=.
+DESCRIPTION="GNU TLS library"
+HOMEPAGE="https://www.gnutls.org/"
+LICENSE="LGPL-2.1"
+SRC_URI="https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.3.tar.gz -> gnutls-3.8.3.tar.gz"
+DEPEND="libs/nettle libs/gmp"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr --disable-static
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

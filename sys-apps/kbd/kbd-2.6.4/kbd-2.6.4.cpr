@@ -1,0 +1,20 @@
+PACKAGE=kbd
+VERSION=2.6.4
+CATEGORY=.
+DESCRIPTION="Keyboard utilities"
+HOMEPAGE="https"
+LICENSE="//www.kbd-project.org/"
+SRC_URI="GPL-2 -> kbd-2.6.4.tar.gz"
+DEPEND="https://src.fedoraproject.org/repo/pkgs/kbd/kbd-2.6.4.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

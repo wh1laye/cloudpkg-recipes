@@ -1,0 +1,20 @@
+PACKAGE=gdk-pixbuf
+VERSION=2.42.10
+CATEGORY=.
+DESCRIPTION="Image loading library"
+HOMEPAGE="https://wiki.gnome.org/Projects/GdkPixbuf"
+LICENSE="LGPL-2.1"
+SRC_URI="https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.10.tar.gz -> gdk-pixbuf-2.42.10.tar.gz"
+DEPEND="app-text/glib media-libs/cairo"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

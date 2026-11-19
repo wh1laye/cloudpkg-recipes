@@ -1,0 +1,20 @@
+PACKAGE=libunistring
+VERSION=1.1
+CATEGORY=.
+DESCRIPTION="Unicode string library"
+HOMEPAGE="https://www.gnu.org/software/libunistring/"
+LICENSE="LGPL-3"
+SRC_URI="https://ftp.gnu.org/gnu/libunistring/libunistring-1.1.tar.gz -> libunistring-1.1.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

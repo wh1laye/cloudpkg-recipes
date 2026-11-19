@@ -1,0 +1,20 @@
+PACKAGE=freetype
+VERSION=2.13.2
+CATEGORY=.
+DESCRIPTION="Font rendering library"
+HOMEPAGE="https://www.freetype.org/"
+LICENSE="FTL"
+SRC_URI="https://download.savannah.gnu.org/releases/freetype/freetype-2.13.2.tar.gz -> freetype-2.13.2.tar.gz"
+DEPEND="libs/zlib"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

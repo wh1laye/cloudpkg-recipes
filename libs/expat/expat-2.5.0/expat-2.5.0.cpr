@@ -1,0 +1,20 @@
+PACKAGE=expat
+VERSION=2.5.0
+CATEGORY=.
+DESCRIPTION="XML parsing library"
+HOMEPAGE="https://libexpat.github.io/"
+LICENSE="MIT"
+SRC_URI="https://github.com/libexpat/libexpat/releases/download/R_2_5_0/expat-2.5.0.tar.gz -> expat-2.5.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

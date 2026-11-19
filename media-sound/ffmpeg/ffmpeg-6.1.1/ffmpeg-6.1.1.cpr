@@ -1,0 +1,20 @@
+PACKAGE=ffmpeg
+VERSION=6.1.1
+CATEGORY=.
+DESCRIPTION="Audio and video processing"
+HOMEPAGE="https://ffmpeg.org/"
+LICENSE="LGPL-2.1"
+SRC_URI="https://ffmpeg.org/releases/ffmpeg-6.1.1.tar.gz -> ffmpeg-6.1.1.tar.gz"
+DEPEND="libs/x264 libs/x265 libs/vpx"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

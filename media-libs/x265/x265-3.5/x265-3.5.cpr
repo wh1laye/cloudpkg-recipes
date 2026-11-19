@@ -1,0 +1,20 @@
+PACKAGE=x265
+VERSION=3.5
+CATEGORY=.
+DESCRIPTION="H.265 video encoder"
+HOMEPAGE="https://x265.org/"
+LICENSE="GPL-2"
+SRC_URI="https://bitbucket.org/multicoreware/x265_git/downloads/x265_3.5.tar.gz -> x265-3.5.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

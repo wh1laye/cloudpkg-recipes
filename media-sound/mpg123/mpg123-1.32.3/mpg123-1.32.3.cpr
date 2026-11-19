@@ -4,21 +4,17 @@ CATEGORY=.
 DESCRIPTION="MPEG audio player"
 HOMEPAGE="https://www.mpg123.de/"
 LICENSE="LGPL-2.1"
-SRC_URI="https://www.mpg123.de/downloads/mpg123-1.32.3.tar.bz2 -> mpg123-1.32.3.tar.bz2"
-DEPEND="dev-libs/libaudiofile"
+SRC_URI="https://www.mpg123.de/downloads/mpg123-1.32.3.tar.bz2 -> mpg123-1.32.3.tar.gz"
+DEPEND="libs/audiofile"
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 src_configure() {
-    ./configure \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --localstatedir=/var
+    ./configure --prefix=/usr
 }
 src_compile() {
     make -j"${JOBS:-$(nproc)}" || exit 1
 }
 src_install() {
     make DESTDIR="${D}" install || exit 1
-    install -Dm644 README* CHANGELOG* LICENSE*
 }

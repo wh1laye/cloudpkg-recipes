@@ -1,0 +1,20 @@
+PACKAGE=p11-kit
+VERSION=0.25.3
+CATEGORY=.
+DESCRIPTION="PKCS#11 library"
+HOMEPAGE="https://p11-glue.freedesktop.org/"
+LICENSE="BSD-3"
+SRC_URI="https://github.com/p11-glue/p11-kit/releases/download/0.25.3/p11-kit-0.25.3.tar.gz -> p11-kit-0.25.3.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

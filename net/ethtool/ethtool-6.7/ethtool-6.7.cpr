@@ -1,0 +1,20 @@
+PACKAGE=ethtool
+VERSION=6.7
+CATEGORY=.
+DESCRIPTION="Ethernet settings utility"
+HOMEPAGE="https"
+LICENSE="//www.kernel.org/pub/software/network/ethtool/"
+SRC_URI="GPL-2 -> ethtool-6.7.tar.gz"
+DEPEND="https://www.kernel.org/pub/software/network/ethtool/ethtool-6.7.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

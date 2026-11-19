@@ -1,0 +1,20 @@
+PACKAGE=meson
+VERSION=1.3.0
+CATEGORY=.
+DESCRIPTION="High-performance build system"
+HOMEPAGE="https"
+LICENSE="//mesonbuild.com/"
+SRC_URI="Apache-2.0 -> meson-1.3.0.tar.gz"
+DEPEND="https://github.com/mesonbuild/meson/releases/download/1.3.0/meson-1.3.0.tar.gz:dev-lang/python"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

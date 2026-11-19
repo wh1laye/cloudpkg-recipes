@@ -1,0 +1,20 @@
+PACKAGE=lmdb
+VERSION=0.9.31
+CATEGORY=.
+DESCRIPTION="Lightning Memory-Mapped Database"
+HOMEPAGE="https"
+LICENSE="//symas.com/lmdb/"
+SRC_URI="OpenLDAP -> lmdb-0.9.31.tar.gz"
+DEPEND="https://github.com/LMDB/lmdb/archive/refs/tags/LMDB_0.9.31.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

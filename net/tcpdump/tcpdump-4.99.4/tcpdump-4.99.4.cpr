@@ -1,0 +1,20 @@
+PACKAGE=tcpdump
+VERSION=4.99.4
+CATEGORY=.
+DESCRIPTION="Network packet analyzer"
+HOMEPAGE="https"
+LICENSE="//www.tcpdump.org/"
+SRC_URI="BSD-3 -> tcpdump-4.99.4.tar.gz"
+DEPEND="https://www.tcpdump.org/release/tcpdump-4.99.4.tar.gz:libs/libpcap"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

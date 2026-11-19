@@ -1,0 +1,20 @@
+PACKAGE=cmake
+VERSION=3.28.0
+CATEGORY=.
+DESCRIPTION="Cross-platform build system"
+HOMEPAGE="https"
+LICENSE="//cmake.org/"
+SRC_URI="BSD-3 -> cmake-3.28.0.tar.gz"
+DEPEND="https://github.com/Kitware/CMake/releases/download/v3.28.0/cmake-3.28.0.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

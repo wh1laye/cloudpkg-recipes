@@ -1,0 +1,20 @@
+PACKAGE=rocksdb
+VERSION=8.11.3
+CATEGORY=.
+DESCRIPTION="Embedded key-value store"
+HOMEPAGE="https"
+LICENSE="//rocksdb.org/"
+SRC_URI="Apache-2.0 -> rocksdb-8.11.3.tar.gz"
+DEPEND="https://github.com/facebook/rocksdb/archive/refs/tags/v8.11.3.tar.gz:libs/zlib libs/bzip2 libs/lz4"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

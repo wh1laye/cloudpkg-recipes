@@ -1,0 +1,20 @@
+PACKAGE=ntp
+VERSION=ntp-4.2.8p15
+CATEGORY=.
+DESCRIPTION="Network Time Protocol daemon"
+HOMEPAGE="https"
+LICENSE="//www.ntp.org/"
+SRC_URI="NTP -> ntp-ntp-4.2.8p15.tar.gz"
+DEPEND="https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p15.tar.gz:libs/openssl"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

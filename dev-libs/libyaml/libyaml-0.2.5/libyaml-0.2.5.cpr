@@ -1,0 +1,20 @@
+PACKAGE=libyaml
+VERSION=0.2.5
+CATEGORY=.
+DESCRIPTION="YAML parser library"
+HOMEPAGE="https"
+LICENSE="//pyyaml.org/"
+SRC_URI="MIT -> libyaml-0.2.5.tar.gz"
+DEPEND="https://pyyaml.org/download/libyaml/yaml-0.2.5.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

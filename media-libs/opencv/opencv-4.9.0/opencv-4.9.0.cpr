@@ -1,0 +1,20 @@
+PACKAGE=opencv
+VERSION=4.9.0
+CATEGORY=.
+DESCRIPTION="OpenCV computer vision"
+HOMEPAGE="https://opencv.org/"
+LICENSE="BSD-3"
+SRC_URI="https://github.com/opencv/opencv/archive/refs/tags/4.9.0.tar.gz -> opencv-4.9.0.tar.gz"
+DEPEND="media-libs/libpng media-libs/libjpeg-turbo"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,20 @@
+PACKAGE=flex
+VERSION=2.6.4
+CATEGORY=.
+DESCRIPTION="Lexical analyzer generator"
+HOMEPAGE="https"
+LICENSE="//www.gnu.org/software/flex/"
+SRC_URI="BSD-3 -> flex-2.6.4.tar.gz"
+DEPEND="https://ftp.gnu.org/gnu/flex/flex-2.6.4.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

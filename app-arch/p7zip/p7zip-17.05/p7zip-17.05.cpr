@@ -1,0 +1,20 @@
+PACKAGE=p7zip
+VERSION=17.05
+CATEGORY=.
+DESCRIPTION="7-Zip file archiver"
+HOMEPAGE="https://p7zip.sourceforge.net/"
+LICENSE="LGPL-2.1"
+SRC_URI="https://sourceforge.net/projects/p7zip/files/p7zip/17.05/p7zip_17.05_src_all.tar.gz -> p7zip-17.05.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,20 @@
+PACKAGE=libopus
+VERSION=1.4
+CATEGORY=.
+DESCRIPTION="Opus audio codec"
+HOMEPAGE="https://opus-codec.org/"
+LICENSE="BSD-3"
+SRC_URI="https://archive.mozilla.org/pub/opus/libopus-1.4.tar.gz -> libopus-1.4.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

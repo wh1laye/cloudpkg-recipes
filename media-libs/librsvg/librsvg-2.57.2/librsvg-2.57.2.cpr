@@ -1,0 +1,20 @@
+PACKAGE=librsvg
+VERSION=2.57.2
+CATEGORY=.
+DESCRIPTION="SVG library"
+HOMEPAGE="https://wiki.gnome.org/Projects/LibRsvg"
+LICENSE="LGPL-2.1"
+SRC_URI="https://download.gnome.org/sources/librsvg/2.57/librsvg-2.57.2.tar.gz -> librsvg-2.57.2.tar.gz"
+DEPEND="app-text/cairo libs/glib"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

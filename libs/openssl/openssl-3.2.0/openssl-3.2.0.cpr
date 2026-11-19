@@ -1,0 +1,20 @@
+PACKAGE=openssl
+VERSION=3.2.0
+CATEGORY=.
+DESCRIPTION="OpenSSL toolkit"
+HOMEPAGE="https://www.openssl.org/"
+LICENSE="Apache-2.0"
+SRC_URI="https://www.openssl.org/source/openssl-3.2.0.tar.gz -> openssl-3.2.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib64 shared zlib
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

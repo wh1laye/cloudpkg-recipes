@@ -1,0 +1,20 @@
+PACKAGE=shadow
+VERSION=4.14
+CATEGORY=.
+DESCRIPTION="Password and group management"
+HOMEPAGE="https"
+LICENSE="//github.com/shadow-maint/shadow"
+SRC_URI="BSD-3 -> shadow-4.14.tar.gz"
+DEPEND="https://github.com/shadow-maint/shadow/releases/download/v4.14/shadow-4.14.tar.gz:sys-libs/pam"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

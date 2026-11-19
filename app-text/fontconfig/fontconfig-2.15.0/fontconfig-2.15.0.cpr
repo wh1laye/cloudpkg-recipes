@@ -1,0 +1,20 @@
+PACKAGE=fontconfig
+VERSION=2.15.0
+CATEGORY=.
+DESCRIPTION="Font configuration library"
+HOMEPAGE="https://fontconfig.org/"
+LICENSE="MIT"
+SRC_URI="https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.15.0.tar.gz -> fontconfig-2.15.0.tar.gz"
+DEPEND="libs/expat libs/freetype"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

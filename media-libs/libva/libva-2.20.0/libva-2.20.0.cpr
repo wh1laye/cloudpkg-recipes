@@ -1,0 +1,20 @@
+PACKAGE=libva
+VERSION=2.20.0
+CATEGORY=.
+DESCRIPTION="Video Acceleration API"
+HOMEPAGE="https://01.org/linuxmedia/vaapi/"
+LICENSE="MIT"
+SRC_URI="https://github.com/intel/libva/releases/download/2.20.0/libva-2.20.0.tar.gz -> libva-2.20.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

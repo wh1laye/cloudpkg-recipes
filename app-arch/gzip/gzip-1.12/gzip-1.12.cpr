@@ -1,0 +1,20 @@
+PACKAGE=gzip
+VERSION=1.12
+CATEGORY=.
+DESCRIPTION="GNU compression"
+HOMEPAGE="https://gzip.org/"
+LICENSE="GPL-3"
+SRC_URI="https://ftp.gnu.org/gnu/gzip/gzip-1.12.tar.gz -> gzip-1.12.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

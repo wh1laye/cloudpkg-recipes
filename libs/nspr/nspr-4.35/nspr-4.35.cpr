@@ -1,0 +1,20 @@
+PACKAGE=nspr
+VERSION=4.35
+CATEGORY=.
+DESCRIPTION="Netscape Portable Runtime"
+HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR"
+LICENSE="MPL-2.0"
+SRC_URI="https://archive.mozilla.org/pub/nspr/releases/v4.35/src/nspr-4.35.tar.gz -> nspr-4.35.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    cd nspr && ./configure --prefix=/usr
+}
+src_compile() {
+    cd nspr && make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    cd nspr && make DESTDIR="${D}" install || exit 1
+}

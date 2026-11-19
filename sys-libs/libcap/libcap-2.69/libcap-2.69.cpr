@@ -1,0 +1,20 @@
+PACKAGE=libcap
+VERSION=2.69
+CATEGORY=.
+DESCRIPTION="POSIX 1003.1e capabilities library"
+HOMEPAGE="https://sites.google.com/site/fullycapable/"
+LICENSE="BSD-3"
+SRC_URI="https://kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.69.tar.gz -> libcap-2.69.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    make prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" prefix=/usr install || exit 1
+}

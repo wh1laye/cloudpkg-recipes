@@ -1,0 +1,20 @@
+PACKAGE=qtsvg
+VERSION=6.6.2
+CATEGORY=.
+DESCRIPTION="Qt SVG module"
+HOMEPAGE="https://www.qt.io/"
+LICENSE="LGPL-3"
+SRC_URI="https://download.qt.io/official_releases/qt/6.6/6.6.2/submodules/qtsvg-everywhere-src-6.6.2.tar.gz -> qtsvg-6.6.2.tar.gz"
+DEPEND="media-libs/qtbase"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

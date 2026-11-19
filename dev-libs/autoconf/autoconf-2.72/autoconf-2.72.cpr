@@ -1,0 +1,20 @@
+PACKAGE=autoconf
+VERSION=2.72
+CATEGORY=.
+DESCRIPTION="Automatic configure script builder"
+HOMEPAGE="https://www.gnu.org/software/autoconf/"
+LICENSE="GPL-3"
+SRC_URI="https://ftp.gnu.org/gnu/autoconf/autoconf-2.72.tar.gz -> autoconf-2.72.tar.gz"
+DEPEND="dev-libs/m4"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

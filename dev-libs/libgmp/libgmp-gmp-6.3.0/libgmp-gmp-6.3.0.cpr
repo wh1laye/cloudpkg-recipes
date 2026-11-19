@@ -1,0 +1,20 @@
+PACKAGE=libgmp
+VERSION=gmp-6.3.0
+CATEGORY=.
+DESCRIPTION="GNU Multiple Precision Arithmetic Library"
+HOMEPAGE="https"
+LICENSE="//gmplib.org/"
+SRC_URI="LGPL-3 -> libgmp-gmp-6.3.0.tar.gz"
+DEPEND="https://gmplib.org/download/gmp/gmp-6.3.0.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

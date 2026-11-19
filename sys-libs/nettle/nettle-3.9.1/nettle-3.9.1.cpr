@@ -1,0 +1,20 @@
+PACKAGE=nettle
+VERSION=3.9.1
+CATEGORY=.
+DESCRIPTION="Cryptographic library"
+HOMEPAGE="https://www.lysator.liu.se/~nisse/nettle/"
+LICENSE="LGPL-3"
+SRC_URI="https://www.lysator.liu.se/~nisse/archive/nettle-3.9.1.tar.gz -> nettle-3.9.1.tar.gz"
+DEPEND="sys-libs/gmp"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

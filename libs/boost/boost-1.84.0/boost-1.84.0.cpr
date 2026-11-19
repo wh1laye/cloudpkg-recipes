@@ -1,0 +1,20 @@
+PACKAGE=boost
+VERSION=1.84.0
+CATEGORY=.
+DESCRIPTION="Boost C++ Libraries"
+HOMEPAGE="https://www.boost.org/"
+LICENSE="BSL-1.0"
+SRC_URI="https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.tar.gz -> boost-1.84.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./bootstrap.sh --prefix=/usr
+}
+src_compile() {
+    ./b2 -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    ./b2 DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,20 @@
+PACKAGE=enchant
+VERSION=2.3.3
+CATEGORY=.
+DESCRIPTION="Spell checker wrapper"
+HOMEPAGE="https://abiword.github.io/enchant/"
+LICENSE="LGPL-2.1"
+SRC_URI="https://github.com/AbiWord/enchant/releases/download/v2.3.3/enchant-2.3.3.tar.gz -> enchant-2.3.3.tar.gz"
+DEPEND="app-text/hunspell"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

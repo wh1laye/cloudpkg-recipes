@@ -1,0 +1,20 @@
+PACKAGE=libdevmapper
+VERSION=libdevmapper-1.02.197
+CATEGORY=.
+DESCRIPTION="Device mapper library"
+HOMEPAGE="https"
+LICENSE="//git.kernel.org/pub/scm/linux/storage/multipath-tools/libdevmapper.git"
+SRC_URI="LGPL-2.1 -> libdevmapper-libdevmapper-1.02.197.tar.gz"
+DEPEND="https://www.kernel.org/pub/linux/storage/multipath-tools/libdevmapper-1.02.197.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

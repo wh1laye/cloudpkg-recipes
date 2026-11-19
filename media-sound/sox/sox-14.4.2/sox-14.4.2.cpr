@@ -1,20 +1,20 @@
 PACKAGE=sox
 VERSION=14.4.2
 CATEGORY=.
-DESCRIPTION="Sound eXchange - audio processing"
-HOMEPAGE="https://sourceforge.net/p/sox/"
+DESCRIPTION="Sound eXchange"
+HOMEPAGE="https://sourceforge.net/projects/sox/"
 LICENSE="GPL-2"
-SRC_URI="https://sourceforge.net/projects/sox/files/sox/14.4.2/sox-14.4.2.tar.gz/download -> sox-14.4.2.tar.gz"
-DEPEND=""
+SRC_URI="https://sourceforge.net/projects/sox/files/sox/14.4.2/sox-14.4.2.tar.gz -> sox-14.4.2.tar.gz"
+DEPEND="libs/gsm libs/ladspa"
 RDEPEND=""
 SLOT=0
 KEYWORDS="amd64"
 src_configure() {
-    ./configure --prefix=/usr --disable-static
+    ./configure --prefix=/usr
 }
 src_compile() {
-    make -j"${JOBS:-1}"
+    make -j"${JOBS:-$(nproc)}" || exit 1
 }
 src_install() {
-    make DESTDIR="${D}" install
+    make DESTDIR="${D}" install || exit 1
 }

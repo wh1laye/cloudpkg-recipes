@@ -1,0 +1,20 @@
+PACKAGE=libgc
+VERSION=8.0.6
+CATEGORY=.
+DESCRIPTION="Garbage collector library"
+HOMEPAGE="https://www.hboehm.info/gc/"
+LICENSE="BSD-3"
+SRC_URI="https://www.hboehm.info/gc/gc_source/gc-8.0.6.tar.gz -> libgc-8.0.6.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

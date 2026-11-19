@@ -1,0 +1,20 @@
+PACKAGE=x264
+VERSION=r3100
+CATEGORY=.
+DESCRIPTION="H.264 video encoder"
+HOMEPAGE="https://www.videolan.org/developers/x264.html"
+LICENSE="GPL-2"
+SRC_URI="https://code.videolan.org/videolan/x264/-/archive/r3100/x264-r3100.tar.gz -> x264-r3100.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,20 @@
+PACKAGE=net-tools
+VERSION=2.10
+CATEGORY=.
+DESCRIPTION="Network utilities"
+HOMEPAGE="https"
+LICENSE="//net-tools.sourceforge.io/"
+SRC_URI="GPL-2 -> net-tools-2.10.tar.gz"
+DEPEND="https://sourceforge.net/projects/net-tools/files/net-tools-2.10.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

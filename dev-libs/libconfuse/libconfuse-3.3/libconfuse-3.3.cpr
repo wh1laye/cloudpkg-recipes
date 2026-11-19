@@ -1,0 +1,20 @@
+PACKAGE=libconfuse
+VERSION=3.3
+CATEGORY=.
+DESCRIPTION="Configuration file parser"
+HOMEPAGE="https"
+LICENSE="//github.com/martinh/libconfuse"
+SRC_URI="LGPL-2.1 -> libconfuse-3.3.tar.gz"
+DEPEND="https://github.com/martinh/libconfuse/releases/download/v3.3/libconfuse-3.3.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

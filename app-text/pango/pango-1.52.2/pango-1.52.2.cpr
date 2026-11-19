@@ -1,0 +1,20 @@
+PACKAGE=pango
+VERSION=1.52.2
+CATEGORY=.
+DESCRIPTION="Text layout library"
+HOMEPAGE="https://pango.gnome.org/"
+LICENSE="LGPL-2.1"
+SRC_URI="https://download.gnome.org/sources/pango/1.52/pango-1.52.2.tar.gz -> pango-1.52.2.tar.gz"
+DEPEND="libs/glib app-text/cairo"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

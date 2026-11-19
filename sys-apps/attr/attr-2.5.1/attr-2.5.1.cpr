@@ -1,0 +1,20 @@
+PACKAGE=attr
+VERSION=2.5.1
+CATEGORY=.
+DESCRIPTION="Extended attributes library"
+HOMEPAGE="https"
+LICENSE="//savannah.nongnu.org/projects/attr"
+SRC_URI="LGPL-2.1 -> attr-2.5.1.tar.gz"
+DEPEND="https://download.savannah.gnu.org/releases/attr/attr-2.5.1.tar.gz:"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

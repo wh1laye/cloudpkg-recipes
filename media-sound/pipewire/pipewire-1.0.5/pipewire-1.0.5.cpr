@@ -1,0 +1,20 @@
+PACKAGE=pipewire
+VERSION=1.0.5
+CATEGORY=.
+DESCRIPTION="Audio and video server"
+HOMEPAGE="https://pipewire.org/"
+LICENSE="MIT"
+SRC_URI="https://github.com/PipeWire/pipewire/archive/refs/tags/1.0.5.tar.gz -> pipewire-1.0.5.tar.gz"
+DEPEND="media-sound/alsa-lib libs/glib"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

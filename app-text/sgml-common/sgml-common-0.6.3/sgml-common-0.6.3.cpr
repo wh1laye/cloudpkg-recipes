@@ -1,0 +1,20 @@
+PACKAGE=sgml-common
+VERSION=0.6.3
+CATEGORY=.
+DESCRIPTION="SGML common files"
+HOMEPAGE="https://sourceware.org/sgml-common/"
+LICENSE="GPL-2"
+SRC_URI="https://sourceware.org/sgml-common/sgml-common-0.6.3.tgz -> sgml-common-0.6.3.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure --prefix=/usr
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}
