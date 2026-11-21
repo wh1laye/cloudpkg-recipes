@@ -1,0 +1,17 @@
+PACKAGE=figlet
+VERSION=2.2.5
+CATEGORY=.
+DESCRIPTION="Program for making large letters out of ordinary text"
+HOMEPAGE="http://www.figlet.org/"
+LICENSE="MIT"
+SRC_URI="https://github.com/cmatsuoka/figlet/archive/refs/tags/v2.2.5.tar.gz -> figlet-2.2.5.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" PREFIX=/usr install || exit 1
+}

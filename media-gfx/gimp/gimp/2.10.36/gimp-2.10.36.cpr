@@ -1,0 +1,23 @@
+PACKAGE=gimp
+VERSION=2.10.36
+CATEGORY=.
+DESCRIPTION="GNU Image Manipulation Program"
+HOMEPAGE="https://www.gimp.org/"
+LICENSE="GPL-3"
+SRC_URI="https://download.gimp.org/pub/gimp/v2.10/gimp-2.10.36.tar.gz -> gimp-2.10.36.tar.gz"
+DEPEND="dev-libs/glib dev-libs/gtk"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

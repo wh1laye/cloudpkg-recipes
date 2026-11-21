@@ -1,0 +1,23 @@
+PACKAGE=libntlm
+VERSION=1.7
+CATEGORY=.
+DESCRIPTION="NTLM authentication library"
+HOMEPAGE="https://www.nongnu.org/libntlm/"
+LICENSE="LGPL-2.1"
+SRC_URI="https://download.savannah.gnu.org/releases/libntlm/libntlm-1.7.tar.gz -> libntlm-1.7.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

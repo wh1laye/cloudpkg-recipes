@@ -1,0 +1,23 @@
+PACKAGE=asciiquarium
+VERSION=1.1
+CATEGORY=.
+DESCRIPTION="Aquarium animation in ASCII art"
+HOMEPAGE="https://github.com/hpjansson/asciiquarium"
+LICENSE="GPL-2"
+SRC_URI="https://github.com/hpjansson/asciiquarium/archive/refs/tags/v1.1.tar.gz -> asciiquarium-1.1.tar.gz"
+DEPEND="dev-lang/perl"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

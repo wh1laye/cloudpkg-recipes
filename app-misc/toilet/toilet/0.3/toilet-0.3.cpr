@@ -1,0 +1,23 @@
+PACKAGE=toilet
+VERSION=0.3
+CATEGORY=.
+DESCRIPTION="Filter which converts text to large ASCII art"
+HOMEPAGE="https://github.com/cacalabs/toilet"
+LICENSE="GPL-3"
+SRC_URI="https://github.com/cacalabs/toilet/archive/refs/tags/v0.3.tar.gz -> toilet-0.3.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

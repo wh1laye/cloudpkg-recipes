@@ -1,0 +1,23 @@
+PACKAGE=fortune
+VERSION=1.99.1
+CATEGORY=.
+DESCRIPTION="Fortune cookie program"
+HOMEPAGE="https://github.com/shlomif/fortune-mod"
+LICENSE="BSD"
+SRC_URI="https://github.com/shlomif/fortune-mod/archive/refs/tags/fortune-mod-1.99.1.tar.gz -> fortune-1.99.1.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

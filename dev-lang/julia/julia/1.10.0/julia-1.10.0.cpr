@@ -1,0 +1,23 @@
+PACKAGE=julia
+VERSION=1.10.0
+CATEGORY=.
+DESCRIPTION="Julia programming language"
+HOMEPAGE="https://julialang.org/"
+LICENSE="MIT"
+SRC_URI="https://github.com/JuliaLang/julia/archive/refs/tags/v1.10.0.tar.gz -> julia-1.10.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

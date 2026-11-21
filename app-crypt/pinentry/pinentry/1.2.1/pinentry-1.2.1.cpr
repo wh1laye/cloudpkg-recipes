@@ -1,0 +1,23 @@
+PACKAGE=pinentry
+VERSION=1.2.1
+CATEGORY=.
+DESCRIPTION="Simple passphrase entry dialogs"
+HOMEPAGE="https://www.gnupg.org/software/pinentry/index.html"
+LICENSE="GPL-2"
+SRC_URI="https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.2.1.tar.bz2 -> pinentry-1.2.1.tar.bz2"
+DEPEND="dev-libs/libassuan"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

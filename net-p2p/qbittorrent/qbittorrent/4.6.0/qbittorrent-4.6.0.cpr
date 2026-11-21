@@ -1,0 +1,23 @@
+PACKAGE=qbittorrent
+VERSION=4.6.0
+CATEGORY=.
+DESCRIPTION="BitTorrent client"
+HOMEPAGE="https://www.qbittorrent.org/"
+LICENSE="GPL-2"
+SRC_URI="https://github.com/qbittorrent/qBittorrent/archive/refs/tags/release-4.6.0.tar.gz -> qbittorrent-4.6.0.tar.gz"
+DEPEND="dev-libs/qt5"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,23 @@
+PACKAGE=dart
+VERSION=3.2.3
+CATEGORY=.
+DESCRIPTION="Dart programming language"
+HOMEPAGE="https://dart.dev/"
+LICENSE="BSD"
+SRC_URI="https://github.com/dart-lang/sdk/archive/refs/tags/3.2.3.tar.gz -> dart-3.2.3.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

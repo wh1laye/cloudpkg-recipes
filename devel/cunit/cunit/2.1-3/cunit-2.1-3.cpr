@@ -1,0 +1,23 @@
+PACKAGE=cunit
+VERSION=2.1-3
+CATEGORY=.
+DESCRIPTION="Lightweight unit testing framework for C"
+HOMEPAGE="http://cunit.sourceforge.net/"
+LICENSE="LGPL-2.1"
+SRC_URI="https://downloads.sourceforge.net/project/cunit/CUnit/2.1-3/CUnit-2.1-3.tar.gz -> cunit-2.1-3.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

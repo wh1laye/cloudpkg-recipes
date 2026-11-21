@@ -1,0 +1,23 @@
+PACKAGE=caddy
+VERSION=caddy
+CATEGORY=.
+DESCRIPTION="Fast, cross-platform HTTP/2 web server"
+HOMEPAGE="https://caddyserver.com/"
+LICENSE="Apache-2.0"
+SRC_URI="https://github.com/caddyserver/caddy/archive/refs/tags/v2.7.6.tar.gz -> caddy-2.7.6.tar.gz"
+DEPEND="dev-lang/go"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

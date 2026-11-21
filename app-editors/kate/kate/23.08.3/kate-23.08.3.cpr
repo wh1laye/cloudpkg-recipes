@@ -1,0 +1,23 @@
+PACKAGE=kate
+VERSION=23.08.3
+CATEGORY=.
+DESCRIPTION="Advanced text editor for KDE"
+HOMEPAGE="https://kate-editor.org/"
+LICENSE="LGPL-2.1"
+SRC_URI="https://download.kde.org/stable/kate/23.08.3/kate-23.08.3.tar.xz -> kate-23.08.3.tar.xz"
+DEPEND="dev-libs/qt5"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,23 @@
+PACKAGE=ispell
+VERSION=3.4.02
+CATEGORY=.
+DESCRIPTION="International spell checker"
+HOMEPAGE="http://www.cs.bu.edu/tech/reports/1990-04-ispell.html"
+LICENSE="LGPL-2.1"
+SRC_URI="http://ftp.gnu.org/gnu/non-gnu/ispell/ispell-3.4.02.tar.gz -> ispell-3.4.02.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

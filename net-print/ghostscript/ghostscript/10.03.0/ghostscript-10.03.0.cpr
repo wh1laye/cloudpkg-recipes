@@ -1,0 +1,23 @@
+PACKAGE=ghostscript
+VERSION=10.03.0
+CATEGORY=.
+DESCRIPTION="PostScript and PDF interpreter"
+HOMEPAGE="https://www.ghostscript.com/"
+LICENSE="AGPL-3"
+SRC_URI="https://github.com/ArtifexSoftware/ghostpdl/archive/refs/tags/gs10.03.0.tar.gz -> ghostscript-10.03.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,23 @@
+PACKAGE=erlang
+VERSION=26.2.1
+CATEGORY=.
+DESCRIPTION="Erlang programming language"
+HOMEPAGE="https://www.erlang.org/"
+LICENSE="Apache-2.0"
+SRC_URI="https://github.com/erlang/otp/archive/refs/tags/OTP-26.2.1.tar.gz -> erlang-26.2.1.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

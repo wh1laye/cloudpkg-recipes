@@ -1,0 +1,23 @@
+PACKAGE=gnuplot
+VERSION=6.0.0
+CATEGORY=.
+DESCRIPTION="Portable command-line driven graphing utility"
+HOMEPAGE="http://www.gnuplot.info/"
+LICENSE="GPL-2"
+SRC_URI="https://downloads.sourceforge.net/project/gnuplot/gnuplot/6.0.0/gnuplot-6.0.0.tar.gz -> gnuplot-6.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

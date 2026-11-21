@@ -1,0 +1,23 @@
+PACKAGE=xterm
+VERSION=389
+CATEGORY=.
+DESCRIPTION="X terminal emulator"
+HOMEPAGE="https://invisible-island.net/xterm/"
+LICENSE="MIT"
+SRC_URI="https://invisible-mirror.net/archives/xterm/xterm-389.tgz -> xterm-389.tar.gz"
+DEPEND="x11-libs/libX11"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

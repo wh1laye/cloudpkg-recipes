@@ -1,0 +1,23 @@
+PACKAGE=pdnsd
+VERSION=1.2.9a-par
+CATEGORY=.
+DESCRIPTION="Proxy DNS daemon"
+HOMEPAGE="http://www.thekelleys.org.uk/pdnsd/"
+LICENSE="GPL-2"
+SRC_URI="http://www.thekelleys.org.uk/pdnsd/pdnsd-1.2.9a-par.tar.gz -> pdnsd-1.2.9a-par.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

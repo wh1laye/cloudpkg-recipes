@@ -1,0 +1,23 @@
+PACKAGE=dropbear
+VERSION=2024.85
+CATEGORY=.
+DESCRIPTION="Lightweight SSH server"
+HOMEPAGE="https://matt.ucc.asn.au/dropbear/dropbear.html"
+LICENSE="MIT"
+SRC_URI="https://github.com/mkj/dropbear/archive/refs/tags/DROPBEAR_2024.85.tar.gz -> dropbear-2024.85.tar.gz"
+DEPEND="dev-libs/openssl"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

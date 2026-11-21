@@ -1,0 +1,23 @@
+PACKAGE=check
+VERSION=0.15.2
+CATEGORY=.
+DESCRIPTION="Unit test framework for C"
+HOMEPAGE="https://libcheck.github.io/check/"
+LICENSE="LGPL-2.1"
+SRC_URI="https://github.com/libcheck/check/releases/download/0.15.2/check-0.15.2.tar.gz -> check-0.15.2.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

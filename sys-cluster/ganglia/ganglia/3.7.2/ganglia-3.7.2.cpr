@@ -1,0 +1,23 @@
+PACKAGE=ganglia
+VERSION=3.7.2
+CATEGORY=.
+DESCRIPTION="Scalable distributed monitoring system"
+HOMEPAGE="http://ganglia.info/"
+LICENSE="BSD"
+SRC_URI="https://github.com/ganglia/monitor-core/archive/refs/tags/release-3.7.2.tar.gz -> ganglia-3.7.2.tar.gz"
+DEPEND="dev-libs/apr"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

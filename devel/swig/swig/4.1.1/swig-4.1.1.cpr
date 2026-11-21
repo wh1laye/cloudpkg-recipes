@@ -1,0 +1,23 @@
+PACKAGE=swig
+VERSION=4.1.1
+CATEGORY=.
+DESCRIPTION="Connects C/C++ with higher level languages"
+HOMEPAGE="http://www.swig.org/"
+LICENSE="GPL-3"
+SRC_URI="https://downloads.sourceforge.net/project/swig/swig/swig-4.1.1/swig-4.1.1.tar.gz -> swig-4.1.1.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

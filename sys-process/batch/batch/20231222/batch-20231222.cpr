@@ -1,0 +1,23 @@
+PACKAGE=batch
+VERSION=20231222
+CATEGORY=.
+DESCRIPTION="Batch job scheduler"
+HOMEPAGE="https://batch.dannyb.org/"
+LICENSE="Public"
+SRC_URI="https://batch.dannyb.org/files/batch-20231222.tgz -> batch-20231222.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,23 @@
+PACKAGE=abseil
+VERSION=20240116.1
+CATEGORY=.
+DESCRIPTION="Abseil Common Libraries"
+HOMEPAGE="https://abseil.io/"
+LICENSE="Apache-2.0"
+SRC_URI="https://github.com/abseil/abseil-cpp/archive/refs/tags/20240116.1.tar.gz -> abseil-20240116.1.tar.gz"
+DEPEND="dev-util/cmake"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

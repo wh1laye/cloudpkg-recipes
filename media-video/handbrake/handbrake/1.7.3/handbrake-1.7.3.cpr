@@ -1,0 +1,23 @@
+PACKAGE=handbrake
+VERSION=1.7.3
+CATEGORY=.
+DESCRIPTION="Video transcoder"
+HOMEPAGE="https://handbrake.fr/"
+LICENSE="GPL-2"
+SRC_URI="https://github.com/HandBrake/HandBrake/releases/download/1.7.3/HandBrake-1.7.3-source.tar.gz -> handbrake-1.7.3.tar.gz"
+DEPEND="media-libs/ffmpeg"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

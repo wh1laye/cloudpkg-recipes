@@ -1,0 +1,23 @@
+PACKAGE=firefox
+VERSION=121.0
+CATEGORY=.
+DESCRIPTION="Mozilla Firefox web browser"
+HOMEPAGE="https://www.mozilla.org/firefox/"
+LICENSE="MPL-2.0"
+SRC_URI="https://ftp.mozilla.org/pub/firefox/releases/121.0/source/firefox-121.0.source.tar.xz -> firefox-121.0.source.tar.xz"
+DEPEND="dev-libs/nss dev-libs/nspr"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

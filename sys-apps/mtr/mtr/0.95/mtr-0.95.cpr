@@ -1,0 +1,23 @@
+PACKAGE=mtr
+VERSION=0.95
+CATEGORY=.
+DESCRIPTION="Network diagnostic tool"
+HOMEPAGE="https://www.bitwizard.nl/mtr/"
+LICENSE="GPL-2"
+SRC_URI="https://github.com/traviscross/mtr/archive/refs/tags/v0.95.tar.gz -> mtr-0.95.tar.gz"
+DEPEND="dev-libs/ncurses"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,23 @@
+PACKAGE=tcsh
+VERSION=6.24.07
+CATEGORY=.
+DESCRIPTION="Enhanced C shell"
+HOMEPAGE="https://www.tcsh.org/"
+LICENSE="BSD"
+SRC_URI="https://github.com/tcsh-org/tcsh/archive/refs/tags/tcsh-6.24.07.tar.gz -> tcsh-6.24.07.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

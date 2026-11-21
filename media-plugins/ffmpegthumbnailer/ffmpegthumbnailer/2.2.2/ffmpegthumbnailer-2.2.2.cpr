@@ -1,0 +1,23 @@
+PACKAGE=ffmpegthumbnailer
+VERSION=2.2.2
+CATEGORY=.
+DESCRIPTION="Video thumbnail generator"
+HOMEPAGE="https://github.com/dirkvdb/ffmpegthumbnailer"
+LICENSE="GPL-2"
+SRC_URI="https://github.com/dirkvdb/ffmpegthumbnailer/archive/refs/tags/2.2.2.tar.gz -> ffmpegthumbnailer-2.2.2.tar.gz"
+DEPEND="media-video/ffmpeg"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

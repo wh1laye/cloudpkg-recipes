@@ -1,0 +1,23 @@
+PACKAGE=wine
+VERSION=9.0
+CATEGORY=.
+DESCRIPTION="Windows compatibility layer"
+HOMEPAGE="https://www.winehq.org/"
+LICENSE="LGPL-2.1"
+SRC_URI="https://dl.winehq.org/wine/source/9.0/wine-9.0.tar.xz -> wine-9.0.tar.xz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

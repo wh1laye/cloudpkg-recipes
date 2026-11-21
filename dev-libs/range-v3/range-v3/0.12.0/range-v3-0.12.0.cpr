@@ -1,0 +1,23 @@
+PACKAGE=range-v3
+VERSION=0.12.0
+CATEGORY=.
+DESCRIPTION="Range library for C++11/14/17"
+HOMEPAGE="https://github.com/ericniebler/range-v3"
+LICENSE="BSD"
+SRC_URI="https://github.com/ericniebler/range-v3/archive/refs/tags/0.12.0.tar.gz -> range-v3-0.12.0.tar.gz"
+DEPEND="dev-util/cmake"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

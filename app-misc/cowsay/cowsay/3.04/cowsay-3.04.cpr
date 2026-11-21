@@ -1,0 +1,23 @@
+PACKAGE=cowsay
+VERSION=3.04
+CATEGORY=.
+DESCRIPTION="Configurable talking cow"
+HOMEPAGE="https://github.com/tnalpgge/rank-amateur-cowsay"
+LICENSE="PerlArtistic"
+SRC_URI="https://github.com/tnalpgge/rank-amateur-cowsay/archive/refs/tags/v3.04.tar.gz -> cowsay-3.04.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

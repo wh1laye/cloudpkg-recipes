@@ -1,0 +1,23 @@
+PACKAGE=ksh
+VERSION=2020.0.0
+CATEGORY=.
+DESCRIPTION="Korn shell"
+HOMEPAGE="https://www.ksh.org/"
+LICENSE="EPL-1.0"
+SRC_URI="http://www2.research.att.com/~gsf/download/tar/ksh-2020.0.0.tar.gz -> ksh-2020.0.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

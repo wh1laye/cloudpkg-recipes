@@ -1,0 +1,23 @@
+PACKAGE=matrix-synapse
+VERSION=1.97.0
+CATEGORY=.
+DESCRIPTION="Matrix reference homeserver"
+HOMEPAGE="https://matrix.org/"
+LICENSE="Apache-2.0"
+SRC_URI="https://github.com/matrix-org/synapse/archive/refs/tags/v1.97.0.tar.gz -> matrix-synapse-1.97.0.tar.gz"
+DEPEND="dev-lang/python"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

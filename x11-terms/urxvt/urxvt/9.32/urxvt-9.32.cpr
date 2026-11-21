@@ -1,0 +1,23 @@
+PACKAGE=urxvt
+VERSION=9.32
+CATEGORY=.
+DESCRIPTION="RXVT-unicode terminal emulator"
+HOMEPAGE="http://software.schmorp.de/pkg/rxvt-unicode.html"
+LICENSE="GPL-3"
+SRC_URI="https://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.32.tar.gz -> urxvt-9.32.tar.gz"
+DEPEND="x11-libs/libX11"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

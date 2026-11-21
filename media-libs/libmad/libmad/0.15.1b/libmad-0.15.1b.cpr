@@ -1,0 +1,23 @@
+PACKAGE=libmad
+VERSION=0.15.1b
+CATEGORY=.
+DESCRIPTION="MPEG audio decoder library"
+HOMEPAGE="https://www.underbit.com/products/mad/"
+LICENSE="GPL-2"
+SRC_URI="https://downloads.sourceforge.net/project/mad/libmad/0.15.1b/libmad-0.15.1b.tar.gz -> libmad-0.15.1b.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

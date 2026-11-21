@@ -1,0 +1,23 @@
+PACKAGE=swift
+VERSION=5.10
+CATEGORY=.
+DESCRIPTION="Swift programming language"
+HOMEPAGE="https://swift.org/"
+LICENSE="Apache-2.0"
+SRC_URI="https://github.com/apple/swift/archive/refs/tags/swift-5.10-RELEASE.tar.gz -> swift-5.10.tar.gz"
+DEPEND="dev-util/cmake"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

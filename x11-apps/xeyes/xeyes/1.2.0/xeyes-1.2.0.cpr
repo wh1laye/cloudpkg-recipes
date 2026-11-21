@@ -1,0 +1,23 @@
+PACKAGE=xeyes
+VERSION=1.2.0
+CATEGORY=.
+DESCRIPTION="X11 eyes"
+HOMEPAGE="https://www.x.org/wiki/"
+LICENSE="MIT"
+SRC_URI="https://www.x.org/releases/individual/app/xeyes-1.2.0.tar.gz -> xeyes-1.2.0.tar.gz"
+DEPEND="x11-libs/libX11"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,23 @@
+PACKAGE=atop
+VERSION=2.8.0
+CATEGORY=.
+DESCRIPTION="Advanced system and process monitor"
+HOMEPAGE="https://www.atoptool.nl/"
+LICENSE="GPL-2"
+SRC_URI="https://github.com/Atoptool/atop/archive/refs/tags/v2.8.0.tar.gz -> atop-2.8.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

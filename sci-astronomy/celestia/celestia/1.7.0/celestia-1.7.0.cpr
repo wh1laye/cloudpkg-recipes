@@ -1,0 +1,23 @@
+PACKAGE=celestia
+VERSION=1.7.0
+CATEGORY=.
+DESCRIPTION="3D astronomy software"
+HOMEPAGE="https://celestia.space/"
+LICENSE="GPL-2"
+SRC_URI="https://github.com/CelestiaProject/Celestia/archive/refs/tags/v1.7.0.tar.gz -> celestia-1.7.0.tar.gz"
+DEPEND="dev-libs/qt5"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

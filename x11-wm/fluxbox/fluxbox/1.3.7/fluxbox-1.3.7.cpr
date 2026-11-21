@@ -1,0 +1,23 @@
+PACKAGE=fluxbox
+VERSION=1.3.7
+CATEGORY=.
+DESCRIPTION="Lightweight X11 window manager"
+HOMEPAGE="http://fluxbox.org/"
+LICENSE="MIT"
+SRC_URI="https://downloads.sourceforge.net/project/fluxbox/fluxbox/1.3.7/fluxbox-1.3.7.tar.gz -> fluxbox-1.3.7.tar.gz"
+DEPEND="x11-libs/libX11"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

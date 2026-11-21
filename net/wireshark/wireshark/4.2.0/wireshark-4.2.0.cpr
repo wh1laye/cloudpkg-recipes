@@ -1,0 +1,23 @@
+PACKAGE=wireshark
+VERSION=4.2.0
+CATEGORY=.
+DESCRIPTION="Network protocol analyzer"
+HOMEPAGE="https://www.wireshark.org/"
+LICENSE="GPL-2"
+SRC_URI="https://www.wireshark.org/download/src/all-versions/wireshark-4.2.0.tar.gz -> wireshark-4.2.0.tar.gz"
+DEPEND="dev-libs/glib dev-libs/qt5"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

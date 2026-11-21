@@ -1,0 +1,23 @@
+PACKAGE=netperf
+VERSION=2.7.0
+CATEGORY=.
+DESCRIPTION="Network performance benchmark"
+HOMEPAGE="https://github.com/HewlettPackard/netperf"
+LICENSE="GPL-2"
+SRC_URI="https://github.com/HewlettPackard/netperf/archive/refs/tags/netperf-2.7.0.tar.gz -> netperf-2.7.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

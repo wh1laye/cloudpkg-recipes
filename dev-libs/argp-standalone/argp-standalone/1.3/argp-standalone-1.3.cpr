@@ -1,0 +1,23 @@
+PACKAGE=argp-standalone
+VERSION=1.3
+CATEGORY=.
+DESCRIPTION="Standalone argp library"
+HOMEPAGE="https://repo.or.cz/w/argp-standalone.git"
+LICENSE="LGPL-2.1"
+SRC_URI="https://repo.or.cz/w/argp-standalone.git/snapshot/argp-standalone-1.3.tar.gz -> argp-standalone-1.3.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

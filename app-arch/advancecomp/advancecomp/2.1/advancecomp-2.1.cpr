@@ -1,0 +1,23 @@
+PACKAGE=advancecomp
+VERSION=2.1
+CATEGORY=.
+DESCRIPTION="Recompression utilities for .zip, .png, .mng, .zlib and .gzip files"
+HOMEPAGE="https://www.advancemame.it/comp-readme"
+LICENSE="GPL-2"
+SRC_URI="https://github.com/amadvance/advancecomp/archive/refs/tags/v2.1.tar.gz -> advancecomp-2.1.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

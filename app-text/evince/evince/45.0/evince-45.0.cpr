@@ -1,0 +1,23 @@
+PACKAGE=evince
+VERSION=45.0
+CATEGORY=.
+DESCRIPTION="Document viewer for GNOME"
+HOMEPAGE="https://wiki.gnome.org/Apps/Evince"
+LICENSE="GPL-2"
+SRC_URI="https://download.gnome.org/sources/evince/45/evince-45.0.tar.xz -> evince-45.0.tar.xz"
+DEPEND="app-text/poppler dev-libs/gtk"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,23 @@
+PACKAGE=sshfs
+VERSION=3.7.3
+CATEGORY=.
+DESCRIPTION="FUSE-based SSH filesystem"
+HOMEPAGE="https://github.com/libfuse/sshfs"
+LICENSE="GPL-2"
+SRC_URI="https://github.com/libfuse/sshfs/releases/download/sshfs-3.7.3/sshfs-3.7.3.tar.gz -> sshfs-3.7.3.tar.gz"
+DEPEND="dev-libs/fuse dev-libs/glib"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

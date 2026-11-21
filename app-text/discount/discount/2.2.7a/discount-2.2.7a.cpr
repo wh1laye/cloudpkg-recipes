@@ -1,0 +1,23 @@
+PACKAGE=discount
+VERSION=2.2.7a
+CATEGORY=.
+DESCRIPTION="Markdown implementation"
+HOMEPAGE="https://www.pell.portland.or.us/~orc/Code/discount/"
+LICENSE="BSD-3"
+SRC_URI="https://github.com/Orc/discount/archive/refs/tags/v2.2.7a.tar.gz -> discount-2.2.7a.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,23 @@
+PACKAGE=cups
+VERSION=2.4.7
+CATEGORY=.
+DESCRIPTION="Common Unix Printing System"
+HOMEPAGE="https://www.cups.org/"
+LICENSE="Apache-2.0"
+SRC_URI="https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz -> cups-2.4.7.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

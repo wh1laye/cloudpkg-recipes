@@ -1,0 +1,23 @@
+PACKAGE=roundcube
+VERSION=1.6.4
+CATEGORY=.
+DESCRIPTION="Webmail software"
+HOMEPAGE="https://roundcube.net/"
+LICENSE="GPL-3"
+SRC_URI="https://github.com/roundcube/roundcubemail/archive/refs/tags/1.6.4.tar.gz -> roundcube-1.6.4.tar.gz"
+DEPEND="dev-lang/php"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

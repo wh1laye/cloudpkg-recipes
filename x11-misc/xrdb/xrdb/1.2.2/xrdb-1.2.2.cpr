@@ -1,0 +1,23 @@
+PACKAGE=xrdb
+VERSION=1.2.2
+CATEGORY=.
+DESCRIPTION="X server resource database utility"
+HOMEPAGE="https://www.x.org/wiki/"
+LICENSE="MIT"
+SRC_URI="https://www.x.org/releases/individual/app/xrdb-1.2.2.tar.gz -> xrdb-1.2.2.tar.gz"
+DEPEND="x11-libs/libX11"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

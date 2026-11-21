@@ -1,0 +1,23 @@
+PACKAGE=iperf3
+VERSION=3.16
+CATEGORY=.
+DESCRIPTION="Network bandwidth measurement tool"
+HOMEPAGE="https://iperf.fr/"
+LICENSE="BSD-3"
+SRC_URI="https://github.com/esnet/iperf/archive/refs/tags/3.16.tar.gz -> iperf3-3.16.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

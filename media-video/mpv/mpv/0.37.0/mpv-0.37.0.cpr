@@ -1,0 +1,23 @@
+PACKAGE=mpv
+VERSION=0.37.0
+CATEGORY=.
+DESCRIPTION="Video player based on MPlayer/mplayer2"
+HOMEPAGE="https://mpv.io/"
+LICENSE="GPL-2"
+SRC_URI="https://github.com/mpv-player/mpv/archive/refs/tags/v0.37.0.tar.gz -> mpv-0.37.0.tar.gz"
+DEPEND="media-libs/ffmpeg"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

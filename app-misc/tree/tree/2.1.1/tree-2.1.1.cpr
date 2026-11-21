@@ -1,0 +1,17 @@
+PACKAGE=tree
+VERSION=2.1.1
+CATEGORY=.
+DESCRIPTION="Display directory tree in text form"
+HOMEPAGE="http://mama.indstate.edu/users/ice/tree/"
+LICENSE="GPL-2"
+SRC_URI="http://mama.indstate.edu/users/ice/tree/src/tree-2.1.1.tgz -> tree-2.1.1.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" PREFIX=/usr install || exit 1
+}

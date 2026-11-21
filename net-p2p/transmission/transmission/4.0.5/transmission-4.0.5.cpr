@@ -1,0 +1,23 @@
+PACKAGE=transmission
+VERSION=4.0.5
+CATEGORY=.
+DESCRIPTION="BitTorrent client"
+HOMEPAGE="https://transmissionbt.com/"
+LICENSE="MIT"
+SRC_URI="https://github.com/transmission/transmission/releases/download/4.0.5/transmission-4.0.5.tar.xz -> transmission-4.0.5.tar.xz"
+DEPEND="dev-libs/openssl"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

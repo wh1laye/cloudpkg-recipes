@@ -1,0 +1,23 @@
+PACKAGE=exim
+VERSION=4.97
+CATEGORY=.
+DESCRIPTION="Message transfer agent"
+HOMEPAGE="https://www.exim.org/"
+LICENSE="GPL-2"
+SRC_URI="https://ftp.exim.org/pub/exim/exim4/exim-4.97.tar.gz -> exim-4.97.tar.gz"
+DEPEND="dev-libs/openssl"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

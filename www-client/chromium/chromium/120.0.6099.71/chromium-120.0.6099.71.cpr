@@ -1,0 +1,23 @@
+PACKAGE=chromium
+VERSION=120.0.6099.71
+CATEGORY=.
+DESCRIPTION="Chromium web browser"
+HOMEPAGE="https://www.chromium.org/"
+LICENSE="BSD"
+SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/chromium-120.0.6099.71.tar.xz -> chromium-120.0.6099.71.tar.xz"
+DEPEND="dev-libs/nss"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,23 @@
+PACKAGE=mpd
+VERSION=0.23.16
+CATEGORY=.
+DESCRIPTION="Music Player Daemon"
+HOMEPAGE="https://www.musicpd.org/"
+LICENSE="GPL-2"
+SRC_URI="https://www.musicpd.org/download/mpd/0.23/mpd-0.23.16.tar.xz -> mpd-0.23.16.tar.xz"
+DEPEND="media-libs/libvorbis"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

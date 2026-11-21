@@ -1,0 +1,23 @@
+PACKAGE=libass
+VERSION=0.17.1
+CATEGORY=.
+DESCRIPTION="Subtitle format library"
+HOMEPAGE="https://github.com/libass/libass"
+LICENSE="ISC"
+SRC_URI="https://github.com/libass/libass/releases/download/0.17.1/libass-0.17.1.tar.gz -> libass-0.17.1.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

@@ -1,0 +1,23 @@
+PACKAGE=xscreensaver
+VERSION=6.06
+CATEGORY=.
+DESCRIPTION="X screen saver and locker"
+HOMEPAGE="https://www.jwz.org/xscreensaver/"
+LICENSE="BSD"
+SRC_URI="https://www.jwz.org/xscreensaver/xscreensaver-6.06.tar.gz -> xscreensaver-6.06.tar.gz"
+DEPEND="x11-libs/libX11"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

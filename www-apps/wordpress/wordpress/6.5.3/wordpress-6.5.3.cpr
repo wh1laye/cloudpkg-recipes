@@ -1,0 +1,23 @@
+PACKAGE=wordpress
+VERSION=6.5.3
+CATEGORY=.
+DESCRIPTION="Blog tool and publishing platform"
+HOMEPAGE="https://wordpress.org/"
+LICENSE="GPL-2"
+SRC_URI="https://wordpress.org/wordpress-6.5.3.tar.gz -> wordpress-6.5.3.tar.gz"
+DEPEND="dev-lang/php"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

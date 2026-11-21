@@ -1,0 +1,23 @@
+PACKAGE=389-ds
+VERSION=2.4.1
+CATEGORY=.
+DESCRIPTION="389 Directory Server"
+HOMEPAGE="https://www.port389.org/"
+LICENSE="GPL-3"
+SRC_URI="https://github.com/389ds/389-ds-base/archive/refs/tags/389-ds-base-2.4.1.tar.gz -> 389-ds-2.4.1.tar.gz"
+DEPEND="dev-libs/openssl"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

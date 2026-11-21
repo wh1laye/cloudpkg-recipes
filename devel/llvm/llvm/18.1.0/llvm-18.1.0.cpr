@@ -1,0 +1,23 @@
+PACKAGE=llvm
+VERSION=18.1.0
+CATEGORY=.
+DESCRIPTION="LLVM compiler infrastructure"
+HOMEPAGE="https://llvm.org/"
+LICENSE="Apache-2.0"
+SRC_URI="https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.0/llvm-18.1.0.src.tar.gz -> llvm-18.1.0.src.tar.gz"
+DEPEND="dev-lang/cmake"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}

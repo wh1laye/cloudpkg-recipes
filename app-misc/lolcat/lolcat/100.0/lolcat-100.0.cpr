@@ -1,0 +1,14 @@
+PACKAGE=lolcat
+VERSION=100.0
+CATEGORY=.
+DESCRIPTION="Rainbow coloring for text in terminal"
+HOMEPAGE="https://github.com/busyloop/lolcat"
+LICENSE="WTFPL"
+SRC_URI="https://github.com/busyloop/lolcat/archive/refs/tags/100.0.tar.gz -> lolcat-100.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_install() {
+    install -Dm755 lolcat "${D}/usr/bin/lolcat" || exit 1
+}

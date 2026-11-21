@@ -1,0 +1,14 @@
+PACKAGE=neofetch
+VERSION=7.1.0
+CATEGORY=.
+DESCRIPTION="Command-line system information tool"
+HOMEPAGE="https://github.com/dylanaraps/neofetch"
+LICENSE="MIT"
+SRC_URI="https://github.com/dylanaraps/neofetch/archive/refs/tags/7.1.0.tar.gz -> neofetch-7.1.0.tar.gz"
+DEPEND=""
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_install() {
+    install -Dm755 neofetch "${D}/usr/bin/neofetch" || exit 1
+}

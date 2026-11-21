@@ -1,0 +1,23 @@
+PACKAGE=fmt
+VERSION=10.2.0
+CATEGORY=.
+DESCRIPTION="Formatting library for C++"
+HOMEPAGE="https://github.com/fmtlib/fmt"
+LICENSE="BSD"
+SRC_URI="https://github.com/fmtlib/fmt/archive/refs/tags/10.2.0.tar.gz -> fmt-10.2.0.tar.gz"
+DEPEND="dev-util/cmake"
+RDEPEND=""
+SLOT=0
+KEYWORDS="amd64"
+src_configure() {
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var
+}
+src_compile() {
+    make -j"${JOBS:-$(nproc)}" || exit 1
+}
+src_install() {
+    make DESTDIR="${D}" install || exit 1
+}
